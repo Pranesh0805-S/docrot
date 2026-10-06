@@ -12,8 +12,15 @@ export async function fetchPackage(name, version = 'latest') {
   return {
     name,
     version: resolved,
-    // the registry stores the README of the latest published version
-    readme: data.readme ?? '',
+    readme: await fetchReadme(name, resolved, data.readme),
     repoUrl: repo ? repo.replace(/^git\+/, '').replace(/\.git$/, '') : null,
   };
+}
+
+async function fetchReadme(name, version, fallback) {
+  for (const file of ['README.md', 'readme.md', 'Readme.md']) {
+    const res = await fetch(`https://cdn.jsdelivr.net/npm/${name}@${version}/${file}`);
+    if (res.ok) return res.text();
+  }
+  return fallback ?? '';
 }
