@@ -1,0 +1,17 @@
+{
+  "name": "docrot",
+  "version": "0.1.0",
+  "description": "Finds broken code examples in npm package documentation",
+  "type": "module",
+  "bin": { "docrot": "bin/docrot.js" },
+  "files": ["bin", "src"],
+  "engines": { "node": ">=20" },
+  "scripts": { "test": "node --test" },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^15.0.0",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
+  }
+}
