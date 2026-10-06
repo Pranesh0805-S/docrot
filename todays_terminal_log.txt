@@ -1,0 +1,19 @@
+pasted the code in install.js 
+
+and then runned the command 
+PS D:\docrot> node -e "import('./src/sandbox/install.js').then(async m => { const s = await m.installPackage('express', '5.2.1'); console.log(s.dir); await s.cleanup(); })"
+(node:10892) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+C:\Users\prane\AppData\Local\Temp\docrot-cRdKFc
+
+
+pasted the codes in run.js and index.js 
+
+and then runned the command
+PS D:\docrot> node -e "import('./src/index.js').then(m => m.auditPackage('express')).then(r => console.log(r.version, r.results.map(x => x.line + ':' + x.status).join('  ')))"
+(node:28168) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+5.2.1 34:timeout
+PS D:\docrot> 
+
+no things have been added or commited or pushed and moved the "build sandbox install (src/sandbox/install.js)" from ready to inprogress column and "build npm registry fetcher (src/fetch/npm.js)" from in progress to done column and there is an error on ci.yml notified by github notifications
