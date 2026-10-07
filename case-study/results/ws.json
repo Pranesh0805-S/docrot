@@ -1,0 +1,190 @@
+{
+  "name": "ws",
+  "version": "8.22.0",
+  "repoUrl": "https://github.com/websockets/ws",
+  "summary": {
+    "total": 16,
+    "pass": 2,
+    "fail": 3,
+    "timeout": 11,
+    "apiChecked": 11,
+    "confirmed": 3,
+    "categories": {
+      "Long-running (inconclusive)": 9,
+      "Other": 1,
+      "Broken API reference": 3,
+      "Incomplete snippet (missing context)": 1
+    },
+    "rotRate": 0.273
+  },
+  "results": [
+    {
+      "line": 121,
+      "code": "import WebSocket, { WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer({\n  port: 8080,\n  perMessageDeflate: {\n    zlibDeflateOptions: {\n      // See zlib defaults.\n      chunkSize: 1024,\n      memLevel: 7,\n      level: 3\n    },\n    zlibInflateOptions: {\n      chunkSize: 10 * 1024\n    },\n    // Other options settable:\n    clientNoContextTakeover: true, // Defaults to negotiated value.\n    serverNoContextTakeover: true, // Defaults to negotiated value.\n    serverMaxWindowBits: 10, // Defaults to negotiated value.\n    // Below options specified as default values.\n    concurrencyLimit: 10, // Limits zlib concurrency for perf.\n    threshold: 1024 // Size (in bytes) below which messages\n    // should not be compressed if context takeover is disabled.\n  }\n});",
+      "status": "timeout",
+      "ms": 10013,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 152,
+      "code": "import WebSocket from 'ws';\n\nconst ws = new WebSocket('ws://www.host.com/path', {\n  perMessageDeflate: false\n});",
+      "status": "fail",
+      "ms": 2042,
+      "stderr": "node:events:486\r\n      throw er; // Unhandled 'error' event\r\n      ^\r\n\r\nError: Unexpected server response: 403\r\n    at ClientRequest.<anonymous> (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-XdR6pq\\node_modules\\ws\\lib\\websocket.js:944:7)\r\n    at ClientRequest.emit (node:events:508:28)\r\n    at HTTPParser.parserOnIncomingClient (node:_http_client:780:27)\r\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:125:17)\r\n    at Socket.socketOnData (node:_http_client:615:22)\r\n    at Socket.emit (node:events:508:28)\r\n    at addChunk (node:internal/streams/readable:563:12)\r\n    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)\r\n    at Readable.push (node:internal/streams/readable:394:5)\r\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)\r\nEmitted 'error' event on WebSocket instance at:\r\n    at emitErrorAndClose (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-XdR6pq\\node_modules\\ws\\lib\\websocket.js:1074:13)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Other",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 164,
+      "code": "import WebSocket from 'ws';\n\nconst ws = new WebSocket('ws://www.host.com/path');\n\nws.on('error', console.error);\n\nws.on('open', function open() {\n  ws.send('something');\n});\n\nws.on('message', function message(data) {\n  console.log('received: %s', data);\n});",
+      "status": "pass",
+      "ms": 820,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 182,
+      "code": "import WebSocket from 'ws';\n\nconst ws = new WebSocket('ws://www.host.com/path');\n\nws.on('error', console.error);\n\nws.on('open', function open() {\n  const array = new Float32Array(5);\n\n  for (var i = 0; i < array.length; ++i) {\n    array[i] = i / 2;\n  }\n\n  ws.send(array);\n});",
+      "status": "pass",
+      "ms": 616,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 202,
+      "code": "import { WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer({ port: 8080 });\n\nwss.on('connection', function connection(ws) {\n  ws.on('error', console.error);\n\n  ws.on('message', function message(data) {\n    console.log('received: %s', data);\n  });\n\n  ws.send('something');\n});",
+      "status": "timeout",
+      "ms": 10017,
+      "stderr": "",
+      "category": "Broken API reference",
+      "apiChecked": 3,
+      "apiMissing": [
+        "send"
+      ]
+    },
+    {
+      "line": 220,
+      "code": "import { createServer } from 'https';\nimport { readFileSync } from 'fs';\nimport { WebSocketServer } from 'ws';\n\nconst server = createServer({\n  cert: readFileSync('/path/to/cert.pem'),\n  key: readFileSync('/path/to/key.pem')\n});\nconst wss = new WebSocketServer({ server });\n\nwss.on('connection', function connection(ws) {\n  ws.on('error', console.error);\n\n  ws.on('message', function message(data) {\n    console.log('received: %s', data);\n  });\n\n  ws.send('something');\n});\n\nserver.listen(8080);",
+      "status": "fail",
+      "ms": 79,
+      "stderr": "node:fs:560\r\n  return binding.open(\r\n                 ^\r\n\r\nError: ENOENT: no such file or directory, open 'C:\\path\\to\\cert.pem'\r\n    at Object.openSync (node:fs:560:18)\r\n    at readFileSync (node:fs:444:35)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-XdR6pq/snippet-5.mjs:11:9\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  errno: -4058,\r\n  code: 'ENOENT',\r\n  syscall: 'open',\r\n  path: 'C:\\\\path\\\\to\\\\cert.pem'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Broken API reference",
+      "apiChecked": 3,
+      "apiMissing": [
+        "send"
+      ]
+    },
+    {
+      "line": 246,
+      "code": "import { createServer } from 'http';\nimport { WebSocketServer } from 'ws';\n\nconst server = createServer();\nconst wss1 = new WebSocketServer({ noServer: true });\nconst wss2 = new WebSocketServer({ noServer: true });\n\nwss1.on('connection', function connection(ws) {\n  ws.on('error', console.error);\n\n  // ...\n});\n\nwss2.on('connection', function connection(ws) {\n  ws.on('error', console.error);\n\n  // ...\n});\n\nserver.on('upgrade', function upgrade(request, socket, head) {\n  const { pathname } = new URL(request.url, 'wss://base.url');\n\n  if (pathname === '/foo') {\n    wss1.handleUpgrade(request, socket, head, function done(ws) {\n      wss1.emit('connection', ws, request);\n    });\n  } else if (pathname === '/bar') {\n    wss2.handleUpgrade(request, socket, head, function done(ws) {\n      wss2.emit('connection', ws, request);\n    });\n  } else {\n    socket.destroy();\n  }\n});\n\nserver.listen(8080);",
+      "status": "timeout",
+      "ms": 10010,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 287,
+      "code": "import { createServer } from 'http';\nimport { WebSocketServer } from 'ws';\n\nfunction onSocketError(err) {\n  console.error(err);\n}\n\nconst server = createServer();\nconst wss = new WebSocketServer({ noServer: true });\n\nwss.on('connection', function connection(ws, request, client) {\n  ws.on('error', console.error);\n\n  ws.on('message', function message(data) {\n    console.log(`Received message ${data} from user ${client}`);\n  });\n});\n\nserver.on('upgrade', function upgrade(request, socket, head) {\n  socket.on('error', onSocketError);\n\n  // This function is not defined on purpose. Implement it with your own logic.\n  authenticate(request, function next(err, client) {\n    if (err || !client) {\n      socket.write('HTTP/1.1 401 Unauthorized\\r\\n\\r\\n');\n      socket.destroy();\n      return;\n    }\n\n    socket.removeListener('error', onSocketError);\n\n    wss.handleUpgrade(request, socket, head, function done(ws) {\n      wss.emit('connection', ws, request, client);\n    });\n  });\n});\n\nserver.listen(8080);",
+      "status": "timeout",
+      "ms": 10023,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 335,
+      "code": "import WebSocket, { WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer({ port: 8080 });\n\nwss.on('connection', function connection(ws) {\n  ws.on('error', console.error);\n\n  ws.on('message', function message(data, isBinary) {\n    wss.clients.forEach(function each(client) {\n      if (client.readyState === WebSocket.OPEN) {\n        client.send(data, { binary: isBinary });\n      }\n    });\n  });\n});",
+      "status": "timeout",
+      "ms": 10022,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 356,
+      "code": "import WebSocket, { WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer({ port: 8080 });\n\nwss.on('connection', function connection(ws) {\n  ws.on('error', console.error);\n\n  ws.on('message', function message(data, isBinary) {\n    wss.clients.forEach(function each(client) {\n      if (client !== ws && client.readyState === WebSocket.OPEN) {\n        client.send(data, { binary: isBinary });\n      }\n    });\n  });\n});",
+      "status": "timeout",
+      "ms": 10014,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 376,
+      "code": "import WebSocket from 'ws';\n\nconst ws = new WebSocket('wss://websocket-echo.com/');\n\nws.on('error', console.error);\n\nws.on('open', function open() {\n  console.log('connected');\n  ws.send(Date.now());\n});\n\nws.on('close', function close() {\n  console.log('disconnected');\n});\n\nws.on('message', function message(data) {\n  console.log(`Round-trip time: ${Date.now() - data} ms`);\n\n  setTimeout(function timeout() {\n    ws.send(Date.now());\n  }, 500);\n});",
+      "status": "timeout",
+      "ms": 10010,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 403,
+      "code": "import WebSocket, { createWebSocketStream } from 'ws';\n\nconst ws = new WebSocket('wss://websocket-echo.com/');\n\nconst duplex = createWebSocketStream(ws, { encoding: 'utf8' });\n\nduplex.on('error', console.error);\n\nduplex.pipe(process.stdout);\nprocess.stdin.pipe(duplex);",
+      "status": "timeout",
+      "ms": 10017,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 429,
+      "code": "import { WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer({ port: 8080 });\n\nwss.on('connection', function connection(ws, req) {\n  const ip = req.socket.remoteAddress;\n\n  ws.on('error', console.error);\n});",
+      "status": "timeout",
+      "ms": 10011,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 444,
+      "code": "wss.on('connection', function connection(ws, req) {\n  const ip = req.headers['x-forwarded-for'].split(',')[0].trim();\n\n  ws.on('error', console.error);\n});",
+      "status": "fail",
+      "ms": 80,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-XdR6pq/snippet-13.mjs:6\r\nwss.on('connection', function connection(ws, req) {\r\n^\r\n\r\nReferenceError: wss is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-XdR6pq/snippet-13.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 461,
+      "code": "import { WebSocketServer } from 'ws';\n\nfunction heartbeat() {\n  this.isAlive = true;\n}\n\nconst wss = new WebSocketServer({ port: 8080 });\n\nwss.on('connection', function connection(ws) {\n  ws.isAlive = true;\n  ws.on('error', console.error);\n  ws.on('pong', heartbeat);\n});\n\nconst interval = setInterval(function ping() {\n  wss.clients.forEach(function each(ws) {\n    if (ws.isAlive === false) return ws.terminate();\n\n    ws.isAlive = false;\n    ws.ping();\n  });\n}, 30000);\n\nwss.on('close', function close() {\n  clearInterval(interval);\n});",
+      "status": "timeout",
+      "ms": 10010,
+      "stderr": "",
+      "category": "Broken API reference",
+      "apiChecked": 5,
+      "apiMissing": [
+        "isAlive",
+        "terminate",
+        "ping"
+      ]
+    },
+    {
+      "line": 497,
+      "code": "import WebSocket from 'ws';\n\nfunction heartbeat() {\n  clearTimeout(this.pingTimeout);\n\n  // Use `WebSocket#terminate()`, which immediately destroys the connection,\n  // instead of `WebSocket#close()`, which waits for the close timer.\n  // Delay should be equal to the interval at which your server\n  // sends out pings plus a conservative assumption of the latency.\n  this.pingTimeout = setTimeout(() => {\n    this.terminate();\n  }, 30000 + 1000);\n}\n\nconst client = new WebSocket('wss://websocket-echo.com/');\n\nclient.on('error', console.error);\nclient.on('open', heartbeat);\nclient.on('ping', heartbeat);\nclient.on('close', function clear() {\n  clearTimeout(this.pingTimeout);\n});",
+      "status": "timeout",
+      "ms": 10012,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

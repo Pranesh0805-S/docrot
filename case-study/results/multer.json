@@ -1,0 +1,130 @@
+{
+  "name": "multer",
+  "version": "2.4.0",
+  "repoUrl": "https://github.com/expressjs/multer",
+  "summary": {
+    "total": 11,
+    "pass": 7,
+    "fail": 4,
+    "timeout": 0,
+    "apiChecked": 4,
+    "confirmed": 0,
+    "categories": {
+      "Missing dependency/module": 2,
+      "Incomplete snippet (missing context)": 2
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 28,
+      "code": "const express = require('express')\nconst multer  = require('multer')\nconst upload = multer({ dest: 'uploads/' })\n\nconst app = express()\n\napp.post('/profile', upload.single('avatar'), function (req, res, next) {\n  // req.file is the `avatar` file\n  // req.body will hold the text fields, if there were any\n})\n\napp.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {\n  // req.files is array of `photos` files\n  // req.body will contain the text fields, if there were any\n})\n\nconst uploadMiddleware = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])\napp.post('/cool-profile', uploadMiddleware, function (req, res, next) {\n  // req.files is an object (String -> Array) where fieldname is the key, and the value is array of files\n  //\n  // e.g.\n  //  req.files['avatar'][0] -> File\n  //  req.files['gallery'] -> Array\n  //\n  // req.body will contain the text fields, if there were any\n})",
+      "status": "fail",
+      "ms": 78,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-hTWALC\\snippet-0.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-hTWALC/snippet-0.mjs:6:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-hTWALC\\\\snippet-0.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 59,
+      "code": "const express = require('express')\nconst app = express()\nconst multer  = require('multer')\nconst upload = multer()\n\napp.post('/profile', upload.none(), function (req, res, next) {\n  // req.body contains the text fields\n})",
+      "status": "fail",
+      "ms": 76,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-hTWALC\\snippet-1.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-hTWALC/snippet-1.mjs:6:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-hTWALC\\\\snippet-1.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 84,
+      "code": "const multer  = require('multer')\nconst upload = multer({ dest: './public/data/uploads/' })\napp.post('/stats', upload.single('uploaded_file'), function (req, res) {\n  // req.file is the name of your file in the form above, here 'uploaded_file'\n  // req.body will hold the text fields, if there were any\n  console.log(req.file, req.body)\n});",
+      "status": "fail",
+      "ms": 78,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-hTWALC/snippet-2.mjs:8\r\napp.post('/stats', upload.single('uploaded_file'), function (req, res) {\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-hTWALC/snippet-2.mjs:8:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 144,
+      "code": "const upload = multer({ dest: 'uploads/' })",
+      "status": "pass",
+      "ms": 76,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 182,
+      "code": "[\n  { name: 'avatar', maxCount: 1 },\n  { name: 'gallery', maxCount: 8 }\n]",
+      "status": "pass",
+      "ms": 75,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 210,
+      "code": "const crypto = require('crypto')\n\nconst storage = multer.diskStorage({\n  destination: function (req, file, cb) {\n    cb(null, '/tmp/my-uploads')\n  },\n  filename: function (req, file, cb) {\n    crypto.randomBytes(16, function (err, raw) {\n      if (err) return cb(err)\n      cb(null, file.fieldname + '-' + raw.toString('hex'))\n    })\n  }\n})\n\nconst upload = multer({ storage: storage })",
+      "status": "pass",
+      "ms": 74,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 271,
+      "code": "const storage = multer.memoryStorage()\nconst upload = multer({ storage: storage })",
+      "status": "pass",
+      "ms": 73,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 291,
+      "code": "const upload = multer({\n  limits: function (req) {\n    return { fileSize: req.user.maxUploadSize }\n  }\n})",
+      "status": "pass",
+      "ms": 76,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 323,
+      "code": "function fileFilter (req, file, cb) {\n\n  // The function should call `cb` with a boolean\n  // to indicate if the file should be accepted\n\n  // To reject this file pass `false`, like so:\n  cb(null, false)\n\n  // To accept the file pass `true`, like so:\n  cb(null, true)\n\n  // You can always pass an error if something goes wrong:\n  cb(new Error('I don\\'t have a clue!'))\n\n}",
+      "status": "pass",
+      "ms": 80,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 349,
+      "code": "const upload = multer({\n  storage: multer.memoryStorage(),\n  streamHandler: function (req, busboy) {\n    if (req.rawBody) {\n      busboy.end(req.rawBody)\n    } else {\n      req.pipe(busboy)\n    }\n  }\n})",
+      "status": "pass",
+      "ms": 75,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 388,
+      "code": "const multer = require('multer')\nconst upload = multer().single('avatar')\n\napp.post('/profile', function (req, res) {\n  upload(req, res, function (err) {\n    if (err instanceof multer.MulterError) {\n      // A Multer error occurred when uploading.\n    } else if (err) {\n      // An unknown error occurred when uploading.\n    }\n\n    // Everything went fine.\n  })\n})",
+      "status": "fail",
+      "ms": 78,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-hTWALC/snippet-10.mjs:9\r\napp.post('/profile', function (req, res) {\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-hTWALC/snippet-10.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 1,
+      "apiMissing": []
+    }
+  ]
+}

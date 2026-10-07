@@ -1,0 +1,3 @@
+["express","axios","lodash","moment","request","chalk","commander","debug","async","bluebird",
+ "underscore","uuid","mongoose","body-parser","cors","dotenv","jsonwebtoken","multer","socket.io","passport",
+ "helmet","morgan","winston","yargs","inquirer","node-fetch","cheerio","ws","redis","joi"]

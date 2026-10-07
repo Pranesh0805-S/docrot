@@ -1,0 +1,202 @@
+{
+  "name": "mongoose",
+  "version": "9.11.0",
+  "repoUrl": "git://github.com/Automattic/mongoose",
+  "summary": {
+    "total": 18,
+    "pass": 3,
+    "fail": 14,
+    "timeout": 1,
+    "apiChecked": 9,
+    "confirmed": 0,
+    "categories": {
+      "Not runnable as-is (fragment/TypeScript)": 2,
+      "Long-running (inconclusive)": 1,
+      "Other": 2,
+      "Incomplete snippet (missing context)": 10
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 73,
+      "code": "// Using Node.js `require()`\nconst mongoose = require('mongoose');\n\n// Using ES6 imports\nimport mongoose from 'mongoose';",
+      "status": "fail",
+      "ms": 55,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-0.mjs:10\r\nimport mongoose from 'mongoose';\r\n^^^^^^^^^^^^^^^\r\n\r\nSyntaxError: Identifier 'mongoose' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 83,
+      "code": "import { createRequire } from 'https://deno.land/std@0.177.0/node/module.ts';\nconst require = createRequire(import.meta.url);\n\nconst mongoose = require('mongoose');\n\nmongoose.connect('mongodb://127.0.0.1:27017/test')\n  .then(() => console.log('Connected!'));",
+      "status": "fail",
+      "ms": 53,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-1.mjs:6\r\nimport { createRequire } from 'https://deno.land/std@0.177.0/node/module.ts';\r\n         ^^^^^^^^^^^^^\r\n\r\nSyntaxError: Identifier 'createRequire' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 117,
+      "code": "await mongoose.connect('mongodb://127.0.0.1/my_database');",
+      "status": "timeout",
+      "ms": 10021,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 131,
+      "code": "const Schema = mongoose.Schema;\nconst ObjectId = Schema.ObjectId;\n\nconst BlogPost = new Schema({\n  author: ObjectId,\n  title: String,\n  body: String,\n  date: Date\n});",
+      "status": "pass",
+      "ms": 318,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 158,
+      "code": "const Comment = new Schema({\n  name: { type: String, default: 'hahaha' },\n  age: { type: Number, min: 18, index: true },\n  bio: { type: String, match: /[a-z]/ },\n  date: { type: Date, default: Date.now },\n  buff: Buffer\n});\n\n// a setter\nComment.path('name').set(function(v) {\n  return capitalize(v);\n});\n\n// middleware\nComment.pre('save', function(next) {\n  notify(this.get('email'));\n  next();\n});",
+      "status": "pass",
+      "ms": 314,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 183,
+      "code": "const MyModel = mongoose.model('ModelName');",
+      "status": "fail",
+      "ms": 314,
+      "stderr": "C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-NR3KPl\\node_modules\\mongoose\\lib\\mongoose.js:602\r\n      throw new _mongoose.Error.MissingSchemaError(name);\r\n            ^\r\n\r\nMissingSchemaError: Schema hasn't been registered for model \"ModelName\".\r\nUse mongoose.model(name, schema)\r\n    at Mongoose.model (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-NR3KPl\\node_modules\\mongoose\\lib\\mongoose.js:602:13)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-5.mjs:6:26\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Other",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 189,
+      "code": "const MyModel = mongoose.model('ModelName', mySchema);",
+      "status": "fail",
+      "ms": 310,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-6.mjs:6\r\nconst MyModel = mongoose.model('ModelName', mySchema);\r\n                                            ^\r\n\r\nReferenceError: mySchema is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-6.mjs:6:45\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 195,
+      "code": "const MyModel = mongoose.model('Ticket', mySchema);",
+      "status": "fail",
+      "ms": 313,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-7.mjs:6\r\nconst MyModel = mongoose.model('Ticket', mySchema);\r\n                                         ^\r\n\r\nReferenceError: mySchema is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-7.mjs:6:42\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 203,
+      "code": "const instance = new MyModel();\ninstance.my.key = 'hello';\nawait instance.save();",
+      "status": "fail",
+      "ms": 309,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-8.mjs:6\r\nconst instance = new MyModel();\r\n                 ^\r\n\r\nReferenceError: MyModel is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-8.mjs:6:18\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 211,
+      "code": "await MyModel.find({});",
+      "status": "fail",
+      "ms": 312,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-9.mjs:6\r\nawait MyModel.find({});\r\n^\r\n\r\nReferenceError: MyModel is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-9.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 217,
+      "code": "const instance = await MyModel.findOne({ /* ... */ });\nconsole.log(instance.my.key); // 'hello'",
+      "status": "fail",
+      "ms": 309,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-10.mjs:6\r\nconst instance = await MyModel.findOne({ /* ... */ });\r\n                 ^\r\n\r\nReferenceError: MyModel is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-10.mjs:6:18\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 226,
+      "code": "const conn = mongoose.createConnection('your connection string');\nconst MyModel = conn.model('ModelName', schema);\nconst m = new MyModel();\nawait m.save(); // works",
+      "status": "fail",
+      "ms": 310,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-11.mjs:7\r\nconst MyModel = conn.model('ModelName', schema);\r\n                                        ^\r\n\r\nReferenceError: schema is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-11.mjs:7:41\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 235,
+      "code": "const conn = mongoose.createConnection('your connection string');\nconst MyModel = mongoose.model('ModelName', schema);\nconst m = new MyModel();\nawait m.save(); // does not work b/c the default connection object was never connected",
+      "status": "fail",
+      "ms": 316,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-12.mjs:7\r\nconst MyModel = mongoose.model('ModelName', schema);\r\n                                            ^\r\n\r\nReferenceError: schema is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-12.mjs:7:45\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 252,
+      "code": "// retrieve my model\nconst BlogPost = mongoose.model('BlogPost');\n\n// create a blog post\nconst post = new BlogPost();\n\n// create a comment\npost.comments.push({ title: 'My comment' });\n\nawait post.save();",
+      "status": "fail",
+      "ms": 314,
+      "stderr": "C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-NR3KPl\\node_modules\\mongoose\\lib\\mongoose.js:602\r\n      throw new _mongoose.Error.MissingSchemaError(name);\r\n            ^\r\n\r\nMissingSchemaError: Schema hasn't been registered for model \"BlogPost\".\r\nUse mongoose.model(name, schema)\r\n    at Mongoose.model (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-NR3KPl\\node_modules\\mongoose\\lib\\mongoose.js:602:13)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-13.mjs:7:27\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Other",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 267,
+      "code": "const post = await BlogPost.findById(myId);\npost.comments[0].deleteOne();\nawait post.save();",
+      "status": "fail",
+      "ms": 309,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-14.mjs:6\r\nconst post = await BlogPost.findById(myId);\r\n             ^\r\n\r\nReferenceError: BlogPost is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-14.mjs:6:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 285,
+      "code": "schema.pre('set', function(next, path, val, typel) {\n  // `this` is the current Document\n  this.emit('set', path, val);\n\n  // Pass control to the next pre\n  next();\n});",
+      "status": "fail",
+      "ms": 312,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-15.mjs:6\r\nschema.pre('set', function(next, path, val, typel) {\r\n^\r\n\r\nReferenceError: schema is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-15.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 297,
+      "code": "schema.pre(method, function firstPre(next, methodArg1, methodArg2) {\n  // Mutate methodArg1\n  next('altered-' + methodArg1.toString(), methodArg2);\n});\n\n// pre declaration is chainable\nschema.pre(method, function secondPre(next, methodArg1, methodArg2) {\n  console.log(methodArg1);\n  // => 'altered-originalValOfMethodArg1'\n\n  console.log(methodArg2);\n  // => 'originalValOfMethodArg2'\n\n  // Passing no arguments to `next` automatically passes along the current argument values\n  // i.e., the following `next()` is equivalent to `next(methodArg1, methodArg2)`\n  // and also equivalent to, with the example method arg\n  // values, `next('altered-originalValOfMethodArg1', 'originalValOfMethodArg2')`\n  next();\n});",
+      "status": "fail",
+      "ms": 309,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-16.mjs:6\r\nschema.pre(method, function firstPre(next, methodArg1, methodArg2) {\r\n^\r\n\r\nReferenceError: schema is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-NR3KPl/snippet-16.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 323,
+      "code": "new Schema({\n  broken: { type: Boolean },\n  asset: {\n    name: String,\n    type: String // uh oh, it broke. asset will be interpreted as String\n  }\n});\n\nnew Schema({\n  works: { type: Boolean },\n  asset: {\n    name: String,\n    type: { type: String } // works. asset is an object with a type property\n  }\n});",
+      "status": "pass",
+      "ms": 310,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

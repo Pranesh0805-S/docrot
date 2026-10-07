@@ -1,0 +1,29 @@
+{
+  "name": "express",
+  "version": "5.2.1",
+  "repoUrl": "https://github.com/expressjs/express",
+  "summary": {
+    "total": 1,
+    "pass": 0,
+    "fail": 0,
+    "timeout": 1,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {
+      "Long-running (inconclusive)": 1
+    },
+    "rotRate": null
+  },
+  "results": [
+    {
+      "line": 34,
+      "code": "import express from 'express'\n\nconst app = express()\n\napp.get('/', (req, res) => {\n  res.send('Hello World')\n})\n\napp.listen(3000, () => {\n  console.log('Server is running on http://localhost:3000')\n})",
+      "status": "timeout",
+      "ms": 10025,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

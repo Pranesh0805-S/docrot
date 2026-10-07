@@ -1,0 +1,16 @@
+{
+  "name": "underscore",
+  "version": "1.13.8",
+  "repoUrl": "git://github.com/jashkenas/underscore",
+  "summary": {
+    "total": 0,
+    "pass": 0,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": null
+  },
+  "results": []
+}

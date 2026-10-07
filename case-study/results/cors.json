@@ -1,0 +1,90 @@
+{
+  "name": "cors",
+  "version": "2.8.6",
+  "repoUrl": "https://github.com/expressjs/cors",
+  "summary": {
+    "total": 7,
+    "pass": 0,
+    "fail": 7,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {
+      "Missing dependency/module": 5,
+      "Incomplete snippet (missing context)": 2
+    },
+    "rotRate": null
+  },
+  "results": [
+    {
+      "line": 40,
+      "code": "var express = require('express')\nvar cors = require('cors')\nvar app = express()\n\n// Adds headers: Access-Control-Allow-Origin: *\napp.use(cors())\n\napp.get('/products/:id', function (req, res, next) {\n  res.json({msg: 'Hello'})\n})\n\napp.listen(80, function () {\n  console.log('web server listening on port 80')\n})",
+      "status": "fail",
+      "ms": 126,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-SsLHaF\\snippet-0.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-0.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-SsLHaF\\\\snippet-0.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 59,
+      "code": "var express = require('express')\nvar cors = require('cors')\nvar app = express()\n\n// Adds headers: Access-Control-Allow-Origin: *\napp.get('/products/:id', cors(), function (req, res, next) {\n  res.json({msg: 'Hello'})\n})\n\napp.listen(80, function () {\n  console.log('web server listening on port 80')\n})",
+      "status": "fail",
+      "ms": 60,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-SsLHaF\\snippet-1.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-1.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-SsLHaF\\\\snippet-1.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 78,
+      "code": "var express = require('express')\nvar cors = require('cors')\nvar app = express()\n\nvar corsOptions = {\n  origin: 'http://example.com',\n  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204\n}\n\n// Adds headers: Access-Control-Allow-Origin: http://example.com, Vary: Origin\napp.get('/products/:id', cors(corsOptions), function (req, res, next) {\n  res.json({msg: 'Hello'})\n})\n\napp.listen(80, function () {\n  console.log('web server listening on port 80')\n})",
+      "status": "fail",
+      "ms": 60,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-SsLHaF\\snippet-2.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-2.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-SsLHaF\\\\snippet-2.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 113,
+      "code": "var express = require('express')\nvar cors = require('cors')\nvar app = express()\n\nvar corsOptions = {\n  origin: function (origin, callback) {\n    // db.loadOrigins is an example call to load\n    // a list of origins from a backing database\n    db.loadOrigins(function (error, origins) {\n      callback(error, origins)\n    })\n  }\n}\n\n// Adds headers: Access-Control-Allow-Origin: <matched origin>, Vary: Origin\napp.get('/products/:id', cors(corsOptions), function (req, res, next) {\n  res.json({msg: 'Hello'})\n})\n\napp.listen(80, function () {\n  console.log('web server listening on port 80')\n})",
+      "status": "fail",
+      "ms": 61,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-SsLHaF\\snippet-3.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-3.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-SsLHaF\\\\snippet-3.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 147,
+      "code": "var express = require('express')\nvar cors = require('cors')\nvar app = express()\n\napp.options('/products/:id', cors()) // preflight for DELETE\napp.del('/products/:id', cors(), function (req, res, next) {\n  res.json({msg: 'Hello'})\n})\n\napp.listen(80, function () {\n  console.log('web server listening on port 80')\n})",
+      "status": "fail",
+      "ms": 59,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-SsLHaF\\snippet-4.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-4.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-SsLHaF\\\\snippet-4.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 164,
+      "code": "app.options('*', cors()) // include before other routes",
+      "status": "fail",
+      "ms": 59,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-5.mjs:6\r\napp.options('*', cors()) // include before other routes\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-5.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 188,
+      "code": "var dynamicCorsOptions = function(req, callback) {\n  var corsOptions;\n  if (req.path.startsWith('/auth/connect/')) {\n    // Access-Control-Allow-Origin: http://mydomain.com, Access-Control-Allow-Credentials: true, Vary: Origin\n    corsOptions = {\n      origin: 'http://mydomain.com',\n      credentials: true\n    };\n  } else {\n    // Access-Control-Allow-Origin: *\n    corsOptions = { origin: '*' };\n  }\n  callback(null, corsOptions);\n};\n\napp.use(cors(dynamicCorsOptions));\n\napp.get('/auth/connect/twitter', function (req, res) {\n  res.send('Hello');\n});\n\napp.get('/public', function (req, res) {\n  res.send('Hello');\n});\n\napp.listen(80, function () {\n  console.log('web server listening on port 80')\n})",
+      "status": "fail",
+      "ms": 59,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-6.mjs:21\r\napp.use(cors(dynamicCorsOptions));\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-SsLHaF/snippet-6.mjs:21:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

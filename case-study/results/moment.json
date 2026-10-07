@@ -1,0 +1,16 @@
+{
+  "name": "moment",
+  "version": "2.31.0",
+  "repoUrl": "github:moment/moment",
+  "summary": {
+    "total": 0,
+    "pass": 0,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": null
+  },
+  "results": []
+}

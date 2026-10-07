@@ -1,0 +1,551 @@
+{
+  "name": "winston",
+  "version": "3.19.0",
+  "repoUrl": "https://github.com/winstonjs/winston",
+  "summary": {
+    "total": 53,
+    "pass": 34,
+    "fail": 19,
+    "timeout": 0,
+    "apiChecked": 35,
+    "confirmed": 0,
+    "categories": {
+      "Incomplete snippet (missing context)": 13,
+      "Missing dependency/module": 1,
+      "Not runnable as-is (fragment/TypeScript)": 5
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 50,
+      "code": "const winston = require('winston');\n\nconst logger = winston.createLogger({\n  level: 'info',\n  format: winston.format.json(),\n  defaultMeta: { service: 'user-service' },\n  transports: [\n    //\n    // - Write all logs with importance level of `error` or higher to `error.log`\n    //   (i.e., error, fatal, but not other levels)\n    //\n    new winston.transports.File({ filename: 'error.log', level: 'error' }),\n    //\n    // - Write all logs with importance level of `info` or higher to `combined.log`\n    //   (i.e., fatal, error, warn, and info, but not trace)\n    //\n    new winston.transports.File({ filename: 'combined.log' }),\n  ],\n});\n\n//\n// If we're not in production then log to the `console` with the format:\n// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `\n//\nif (process.env.NODE_ENV !== 'production') {\n  logger.add(new winston.transports.Console({\n    format: winston.format.simple(),\n  }));\n}",
+      "status": "pass",
+      "ms": 137,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 7,
+      "apiMissing": []
+    },
+    {
+      "line": 132,
+      "code": "const levels = {\n  error: 0,\n  warn: 1,\n  info: 2,\n  http: 3,\n  verbose: 4,\n  debug: 5,\n  silly: 6\n};",
+      "status": "pass",
+      "ms": 110,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 147,
+      "code": "const logger = winston.createLogger({\n  transports: [\n    new winston.transports.Console(),\n    new winston.transports.File({ filename: 'combined.log' })\n  ]\n});",
+      "status": "pass",
+      "ms": 118,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 4,
+      "apiMissing": []
+    },
+    {
+      "line": 170,
+      "code": "//\n// Logging\n//\nlogger.log({\n  level: 'info',\n  message: 'Hello distributed log files!'\n});\n\nlogger.info('Hello again distributed logs');",
+      "status": "fail",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-3.mjs:9\r\nlogger.log({\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-3.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 185,
+      "code": "const files = new winston.transports.File({ filename: 'combined.log' });\nconst console = new winston.transports.Console();\n\nlogger\n  .clear()          // Remove all transports\n  .add(console)     // Add console transport\n  .add(files)       // Add file transport\n  .remove(console); // Remove console transport",
+      "status": "fail",
+      "ms": 118,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-4.mjs:9\r\nlogger\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-4.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 199,
+      "code": "const logger = winston.createLogger({\n  level: 'info',\n  transports: [\n    new winston.transports.Console(),\n    new winston.transports.File({ filename: 'combined.log' })\n  ]\n});\n\n//\n// Replaces the previous transports with those in the\n// new configuration wholesale.\n//\nconst DailyRotateFile = require('winston-daily-rotate-file');\nlogger.configure({\n  level: 'verbose',\n  transports: [\n    new DailyRotateFile(opts)\n  ]\n});",
+      "status": "fail",
+      "ms": 114,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'winston-daily-rotate-file'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-pOpMwO\\snippet-5.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-5.mjs:18:25\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-pOpMwO\\\\snippet-5.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 4,
+      "apiMissing": []
+    },
+    {
+      "line": 225,
+      "code": "const logger = winston.createLogger({\n  transports: [\n    new winston.transports.Console(),\n  ]\n});\n\nconst childLogger = logger.child({ requestId: '451' });",
+      "status": "pass",
+      "ms": 109,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 246,
+      "code": "const info = {\n  level: 'info',                 // Level of the logging message\n  message: 'Hey! Log something?' // Descriptive message being logged.\n};",
+      "status": "pass",
+      "ms": 109,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 255,
+      "code": "const { level, message, ...meta } = info;",
+      "status": "fail",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-8.mjs:6\r\nconst { level, message, ...meta } = info;\r\n                                    ^\r\n\r\nReferenceError: info is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-8.mjs:6:37\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 285,
+      "code": "const { LEVEL, MESSAGE, SPLAT } = require('triple-beam');\n\nconsole.log(LEVEL === Symbol.for('level'));\n// true\n\nconsole.log(MESSAGE === Symbol.for('message'));\n// true\n\nconsole.log(SPLAT === Symbol.for('splat'));\n// true",
+      "status": "pass",
+      "ms": 106,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 302,
+      "code": "logger.log('error', 'hello', { message: 'world' });\nlogger.info('hello', { message: 'world' });",
+      "status": "fail",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-10.mjs:6\r\nlogger.log('error', 'hello', { message: 'world' });\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-10.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 318,
+      "code": "const { createLogger, format, transports } = require('winston');\nconst { combine, timestamp, label, printf } = format;\n\nconst myFormat = printf(({ level, message, label, timestamp }) => {\n  return `${timestamp} [${label}] ${level}: ${message}`;\n});\n\nconst logger = createLogger({\n  format: combine(\n    label({ label: 'right meow!' }),\n    timestamp(),\n    myFormat\n  ),\n  transports: [new transports.Console()]\n});",
+      "status": "pass",
+      "ms": 180,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 345,
+      "code": "const { createLogger, format, transports } = require('winston');\nconst { combine, timestamp, label, prettyPrint } = format;\n\nconst logger = createLogger({\n  format: combine(\n    label({ label: 'right meow!' }),\n    timestamp(),\n    prettyPrint()\n  ),\n  transports: [new transports.Console()]\n})\n\nlogger.log({\n  level: 'info',\n  message: 'What time is the testing at?'\n});\n// Outputs:\n// { level: 'info',\n//   message: 'What time is the testing at?',\n//   label: 'right meow!',\n//   timestamp: '2017-09-30T03:57:26.875Z' }",
+      "status": "pass",
+      "ms": 125,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 378,
+      "code": "const { createLogger, format, transports } = require('winston');\nconst logger = createLogger({\n  format: format.combine(\n    format.splat(),\n    format.simple()\n  ),\n  transports: [new transports.Console()]\n});\n\n// info: test message my string {}\nlogger.log('info', 'test message %s', 'my string');\n\n// info: test message 123 {}\nlogger.log('info', 'test message %d', 123);\n\n// info: test message first second {number: 123}\nlogger.log('info', 'test message %s, %s', 'first', 'second', { number: 123 });",
+      "status": "pass",
+      "ms": 146,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 403,
+      "code": "const { createLogger, format, transports } = require('winston');\n\n// Ignore log messages if they have { private: true }\nconst ignorePrivate = format((info, opts) => {\n  if (info.private) { return false; }\n  return info;\n});\n\nconst logger = createLogger({\n  format: format.combine(\n    ignorePrivate(),\n    format.json()\n  ),\n  transports: [new transports.Console()]\n});\n\n// Outputs: {\"level\":\"error\",\"message\":\"Public error to share\"}\nlogger.log({\n  level: 'error',\n  message: 'Public error to share'\n});\n\n// Messages with { private: true } will not be written when logged.\nlogger.log({\n  private: true,\n  level: 'error',\n  message: 'This is super secret - hide it.'\n});",
+      "status": "pass",
+      "ms": 111,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 437,
+      "code": "const { format } = require('winston');\nconst { combine, timestamp, label } = format;\n\nconst willNeverThrow = format.combine(\n  format(info => { return false })(), // Ignores everything\n  format(info => { throw new Error('Never reached') })()\n);",
+      "status": "pass",
+      "ms": 111,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 471,
+      "code": "const { format } = require('winston');\n\nconst volume = format((info, opts) => {\n  if (opts.yell) {\n    info.message = info.message.toUpperCase();\n  } else if (opts.whisper) {\n    info.message = info.message.toLowerCase();\n  }\n\n  return info;\n});\n\n// `volume` is now a function that returns instances of the format.\nconst scream = volume({ yell: true });\nconsole.dir(scream.transform({\n  level: 'info',\n  message: `sorry for making you YELL in your head!`\n}, scream.options));\n// {\n//   level: 'info'\n//   message: 'SORRY FOR MAKING YOU YELL IN YOUR HEAD!'\n// }\n\n// `volume` can be used multiple times to create different formats.\nconst whisper = volume({ whisper: true });\nconsole.dir(whisper.transform({\n  level: 'info',\n  message: `WHY ARE THEY MAKING US YELL SO MUCH!`\n}, whisper.options));\n// {\n//   level: 'info'\n//   message: 'why are they making us yell so much!'\n// }",
+      "status": "pass",
+      "ms": 108,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 518,
+      "code": "{\n  emerg: 0,\n  alert: 1,\n  crit: 2,\n  error: 3,\n  warning: 4,\n  notice: 5,\n  info: 6,\n  debug: 7\n}",
+      "status": "fail",
+      "ms": 55,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-17.mjs:8\r\n  alert: 1,\r\n       ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 534,
+      "code": "{\n  error: 0,\n  warn: 1,\n  info: 2,\n  http: 3,\n  verbose: 4,\n  debug: 5,\n  silly: 6\n}",
+      "status": "fail",
+      "ms": 57,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-18.mjs:8\r\n  warn: 1,\r\n      ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 555,
+      "code": "//\n// Any logger instance\n//\nlogger.log('silly', \"127.0.0.1 - there's no place like home\");\nlogger.log('debug', \"127.0.0.1 - there's no place like home\");\nlogger.log('verbose', \"127.0.0.1 - there's no place like home\");\nlogger.log('info', \"127.0.0.1 - there's no place like home\");\nlogger.log('warn', \"127.0.0.1 - there's no place like home\");\nlogger.log('error', \"127.0.0.1 - there's no place like home\");\nlogger.info(\"127.0.0.1 - there's no place like home\");\nlogger.warn(\"127.0.0.1 - there's no place like home\");\nlogger.error(\"127.0.0.1 - there's no place like home\");\n\n//\n// Default logger\n//\nwinston.log('info', \"127.0.0.1 - there's no place like home\");\nwinston.info(\"127.0.0.1 - there's no place like home\");",
+      "status": "fail",
+      "ms": 108,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-19.mjs:9\r\nlogger.log('silly', \"127.0.0.1 - there's no place like home\");\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-19.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 582,
+      "code": "const logger = winston.createLogger({\n  levels: winston.config.syslog.levels,\n  transports: [\n    new winston.transports.Console({ level: 'error' }),\n    new winston.transports.File({\n      filename: 'combined.log',\n      level: 'info'\n    })\n  ]\n});",
+      "status": "pass",
+      "ms": 115,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 7,
+      "apiMissing": []
+    },
+    {
+      "line": 597,
+      "code": "const transports = {\n  console: new winston.transports.Console({ level: 'warn' }),\n  file: new winston.transports.File({ filename: 'combined.log', level: 'error' })\n};\n\nconst logger = winston.createLogger({\n  transports: [\n    transports.console,\n    transports.file\n  ]\n});\n\nlogger.info('Will not be logged in either transport!');\ntransports.console.level = 'info';\ntransports.file.level = 'info';\nlogger.info('Will be logged in both transports!');",
+      "status": "pass",
+      "ms": 117,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 4,
+      "apiMissing": []
+    },
+    {
+      "line": 624,
+      "code": "const myCustomLevels = {\n  levels: {\n    foo: 0,\n    bar: 1,\n    baz: 2,\n    foobar: 3\n  },\n  colors: {\n    foo: 'blue',\n    bar: 'green',\n    baz: 'yellow',\n    foobar: 'red'\n  }\n};\n\nconst customLevelLogger = winston.createLogger({\n  levels: myCustomLevels.levels\n});\n\ncustomLevelLogger.foobar('some foobar level-ed message');",
+      "status": "pass",
+      "ms": 108,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 652,
+      "code": "winston.addColors(myCustomLevels.colors);",
+      "status": "fail",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-23.mjs:6\r\nwinston.addColors(myCustomLevels.colors);\r\n                  ^\r\n\r\nReferenceError: myCustomLevels is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-23.mjs:6:19\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 661,
+      "code": "baz: 'italic yellow',\nfoobar: 'bold red cyanBG'",
+      "status": "fail",
+      "ms": 55,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-24.mjs:7\r\nfoobar: 'bold red cyanBG'\r\n      ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 680,
+      "code": "winston.format.combine(\n  winston.format.colorize(),\n  winston.format.simple()\n);",
+      "status": "pass",
+      "ms": 107,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 4,
+      "apiMissing": []
+    },
+    {
+      "line": 692,
+      "code": "winston.format.combine(\n  winston.format.json(),\n  winston.format.colorize({ all: true })\n);",
+      "status": "pass",
+      "ms": 106,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 4,
+      "apiMissing": []
+    },
+    {
+      "line": 710,
+      "code": "const logger = winston.createLogger({\n  transports: [\n    new winston.transports.File({\n      filename: 'combined.log',\n      level: 'info'\n    }),\n    new winston.transports.File({\n      filename: 'errors.log',\n      level: 'error'\n    })\n  ]\n});",
+      "status": "pass",
+      "ms": 119,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 728,
+      "code": "const combinedLogs = logger.transports.find(transport => {\n  return transport.filename === 'combined.log'\n});\n\nlogger.remove(combinedLogs);",
+      "status": "fail",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-28.mjs:6\r\nconst combinedLogs = logger.transports.find(transport => {\r\n                     ^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-28.mjs:6:22\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 741,
+      "code": "const Transport = require('winston-transport');\nconst util = require('util');\n\n//\n// Inherit from `winston-transport` so you can take advantage\n// of the base functionality and `.exceptions.handle()`.\n//\nmodule.exports = class YourCustomTransport extends Transport {\n  constructor(opts) {\n    super(opts);\n    //\n    // Consume any custom options here. e.g.:\n    // - Connection information for databases\n    // - Authentication information for APIs (e.g. loggly, papertrail,\n    //   logentries, etc.).\n    //\n  }\n\n  log(info, callback) {\n    setImmediate(() => {\n      this.emit('logged', info);\n    });\n\n    // Perform the writing to the remote service\n    callback();\n  }\n};",
+      "status": "fail",
+      "ms": 109,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-29.mjs:13\r\nmodule.exports = class YourCustomTransport extends Transport {\r\n^\r\n\r\nReferenceError: module is not defined in ES module scope\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-29.mjs:13:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 776,
+      "code": "const logger = winston.createLogger({\n  transports: [\n    new winston.transports.File({\n      filename: 'error.log',\n      level: 'error',\n      format: winston.format.json()\n    }),\n    new winston.transports.Http({\n      level: 'warn',\n      format: winston.format.json()\n    }),\n    new winston.transports.Console({\n      level: 'info',\n      format: winston.format.combine(\n        winston.format.colorize(),\n        winston.format.simple()\n      )\n    })\n  ]\n});",
+      "status": "pass",
+      "ms": 124,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 10,
+      "apiMissing": []
+    },
+    {
+      "line": 807,
+      "code": "const { createLogger, transports } = require('winston');\n\n// Enable exception handling when you create your logger.\nconst logger = createLogger({\n  transports: [\n    new transports.File({ filename: 'combined.log' })\n  ],\n  exceptionHandlers: [\n    new transports.File({ filename: 'exceptions.log' })\n  ]\n});\n\n// Or enable it later on by adding a transport or using `.exceptions.handle`\nconst logger = createLogger({\n  transports: [\n    new transports.File({ filename: 'combined.log' })\n  ]\n});\n\n// Call exceptions.handle with a transport to handle exceptions\nlogger.exceptions.handle(\n  new transports.File({ filename: 'exceptions.log' })\n);",
+      "status": "fail",
+      "ms": 57,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-31.mjs:19\r\nconst logger = createLogger({\r\n      ^\r\n\r\nSyntaxError: Identifier 'logger' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 836,
+      "code": "//\n// You can add a separate exception logger by passing it to `.exceptions.handle`\n//\nwinston.exceptions.handle(\n  new winston.transports.File({ filename: 'path/to/exceptions.log' })\n);\n\n//\n// Alternatively you can set `handleExceptions` to true when adding transports\n// to winston.\n//\nwinston.add(new winston.transports.File({\n  filename: 'path/to/combined.log',\n  handleExceptions: true\n}));",
+      "status": "pass",
+      "ms": 120,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 5,
+      "apiMissing": []
+    },
+    {
+      "line": 859,
+      "code": "const logger = winston.createLogger({ exitOnError: false });\n\n//\n// or, like this:\n//\nlogger.exitOnError = false;",
+      "status": "pass",
+      "ms": 107,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 874,
+      "code": "const logger = winston.createLogger({\n  transports: [\n    new winston.transports.File({ filename: 'path/to/combined.log' })\n  ],\n  exceptionHandlers: [\n    new winston.transports.File({ filename: 'path/to/exceptions.log' })\n  ]\n});",
+      "status": "pass",
+      "ms": 119,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 887,
+      "code": "const logger = winston.createLogger({\n  transports: [\n    new winston.transports.Console({\n      handleExceptions: true\n    })\n  ],\n  exitOnError: false\n});",
+      "status": "pass",
+      "ms": 111,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 901,
+      "code": "function ignoreEpipe(err) {\n  return err.code !== 'EPIPE';\n}\n\nconst logger = winston.createLogger({ exitOnError: ignoreEpipe });\n\n//\n// or, like this:\n//\nlogger.exitOnError = ignoreEpipe;",
+      "status": "pass",
+      "ms": 108,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 922,
+      "code": "const { createLogger, transports } = require('winston');\n\n// Enable rejection handling when you create your logger.\nconst logger = createLogger({\n  transports: [\n    new transports.File({ filename: 'combined.log' })\n  ],\n  rejectionHandlers: [\n    new transports.File({ filename: 'rejections.log' })\n  ]\n});\n\n// Or enable it later on by adding a transport or using `.rejections.handle`\nconst logger = createLogger({\n  transports: [\n    new transports.File({ filename: 'combined.log' })\n  ]\n});\n\n// Call rejections.handle with a transport to handle rejections\nlogger.rejections.handle(\n  new transports.File({ filename: 'rejections.log' })\n);",
+      "status": "fail",
+      "ms": 53,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-37.mjs:19\r\nconst logger = createLogger({\r\n      ^\r\n\r\nSyntaxError: Identifier 'logger' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 951,
+      "code": "//\n// You can add a separate rejection logger by passing it to `.rejections.handle`\n//\nwinston.rejections.handle(\n  new winston.transports.File({ filename: 'path/to/rejections.log' })\n);\n\n//\n// Alternatively you can set `handleRejections` to true when adding transports\n// to winston.\n//\nwinston.add(new winston.transports.File({\n  filename: 'path/to/combined.log',\n  handleRejections: true\n}));",
+      "status": "pass",
+      "ms": 115,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 5,
+      "apiMissing": []
+    },
+    {
+      "line": 974,
+      "code": "//\n// Start profile of 'test'\n//\nlogger.profile('test');\n\nsetTimeout(function () {\n  //\n  // Stop profile of 'test'. Logging will now take place:\n  //   '17 Jan 21:00:00 - info: test duration=1000ms'\n  //\n  logger.profile('test');\n}, 1000);",
+      "status": "fail",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-39.mjs:9\r\nlogger.profile('test');\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-39.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 992,
+      "code": " // Returns an object corresponding to a specific timing. When done\n // is called the timer will finish and log the duration. e.g.:\n //\n const profiler = logger.startTimer();\n setTimeout(function () {\n   profiler.done({ message: 'Logging message' });\n }, 1000);",
+      "status": "fail",
+      "ms": 109,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-40.mjs:9\r\n const profiler = logger.startTimer();\r\n                  ^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-40.mjs:9:19\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 1005,
+      "code": "logger.profile('test', { level: 'debug' });",
+      "status": "fail",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-41.mjs:6\r\nlogger.profile('test', { level: 'debug' });\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-41.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 1015,
+      "code": "const options = {\n  from: new Date() - (24 * 60 * 60 * 1000),\n  until: new Date(),\n  limit: 10,\n  start: 0,\n  order: 'desc',\n  fields: ['message']\n};\n\n//\n// Find items logged between today and yesterday.\n//\nlogger.query(options, function (err, results) {\n  if (err) {\n    /* TODO: handle me */\n    throw err;\n  }\n\n  console.log(results);\n});",
+      "status": "fail",
+      "ms": 108,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-42.mjs:18\r\nlogger.query(options, function (err, results) {\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-42.mjs:18:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 1041,
+      "code": "//\n// Start at the end.\n//\nwinston.stream({ start: -1 }).on('log', function(log) {\n  console.log(log);\n});",
+      "status": "pass",
+      "ms": 109,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 1058,
+      "code": "const winston = require('winston');\n\nwinston.log('info', 'Hello distributed log files!');\nwinston.info('Hello again distributed logs');\n\nwinston.level = 'debug';\nwinston.log('debug', 'Now my debug messages are written to console!');",
+      "status": "pass",
+      "ms": 127,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 1071,
+      "code": "const files = new winston.transports.File({ filename: 'combined.log' });\nconst console = new winston.transports.Console();\n\nwinston.add(console);\nwinston.add(files);\nwinston.remove(console);",
+      "status": "pass",
+      "ms": 140,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 5,
+      "apiMissing": []
+    },
+    {
+      "line": 1082,
+      "code": "winston.configure({\n  transports: [\n    new winston.transports.File({ filename: 'somefile.log' })\n  ]\n});",
+      "status": "pass",
+      "ms": 129,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 1100,
+      "code": "const transport = new winston.transports.Console();\nconst logger = winston.createLogger({\n  transports: [transport]\n});\n\nlogger.on('finish', function (info) {\n  // All `info` log messages has now been logged\n});\n\nlogger.info('CHILL WINSTON!', { seriously: true });\nlogger.end();",
+      "status": "pass",
+      "ms": 115,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 1118,
+      "code": "//\n// Handle errors originating in the logger itself\n//\nlogger.on('error', function (err) { /* Do Something */ });",
+      "status": "fail",
+      "ms": 110,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-48.mjs:9\r\nlogger.on('error', function (err) { /* Do Something */ });\r\n^\r\n\r\nReferenceError: logger is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-pOpMwO/snippet-48.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 1133,
+      "code": "const winston = require('winston');\nconst { format } = winston;\nconst { combine, label, json } = format;\n\n//\n// Configure the logger for `category1`\n//\nwinston.loggers.add('category1', {\n  format: combine(\n    label({ label: 'category one' }),\n    json()\n  ),\n  transports: [\n    new winston.transports.Console({ level: 'silly' }),\n    new winston.transports.File({ filename: 'somefile.log' })\n  ]\n});\n\n//\n// Configure the logger for `category2`\n//\nwinston.loggers.add('category2', {\n  format: combine(\n    label({ label: 'category two' }),\n    json()\n  ),\n  transports: [\n    new winston.transports.Http({ host: 'localhost', port:8080 })\n  ]\n});",
+      "status": "pass",
+      "ms": 123,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 6,
+      "apiMissing": []
+    },
+    {
+      "line": 1169,
+      "code": "const winston = require('winston');\n\n//\n// Grab your preconfigured loggers\n//\nconst category1 = winston.loggers.get('category1');\nconst category2 = winston.loggers.get('category2');\n\ncategory1.info('logging to file and console transports');\ncategory2.info('logging to http transport');",
+      "status": "pass",
+      "ms": 109,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 1184,
+      "code": "const winston = require('winston');\nconst { format } = winston;\nconst { combine, label, json } = format;\n\nconst container = new winston.Container();\n\ncontainer.add('category1', {\n  format: combine(\n    label({ label: 'category one' }),\n    json()\n  ),\n  transports: [\n    new winston.transports.Console({ level: 'silly' }),\n    new winston.transports.File({ filename: 'somefile.log' })\n  ]\n});\n\nconst category1 = container.get('category1');\ncategory1.info('logging to file and console transports');",
+      "status": "pass",
+      "ms": 120,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 4,
+      "apiMissing": []
+    },
+    {
+      "line": 1218,
+      "code": "const logger = winston.createLogger({\n  level: 'info',\n  transports: [new winston.transports.Console({ forceConsole: true })]\n});",
+      "status": "pass",
+      "ms": 111,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    }
+  ]
+}

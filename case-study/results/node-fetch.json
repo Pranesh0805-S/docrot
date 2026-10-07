@@ -1,0 +1,282 @@
+{
+  "name": "node-fetch",
+  "version": "3.3.2",
+  "repoUrl": "https://github.com/node-fetch/node-fetch",
+  "summary": {
+    "total": 26,
+    "pass": 17,
+    "fail": 9,
+    "timeout": 0,
+    "apiChecked": 4,
+    "confirmed": 0,
+    "categories": {
+      "Missing dependency/module": 1,
+      "Other": 2,
+      "Incomplete snippet (missing context)": 2,
+      "Not runnable as-is (fragment/TypeScript)": 4
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 115,
+      "code": "import fetch from 'node-fetch';",
+      "status": "pass",
+      "ms": 93,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 131,
+      "code": "// mod.cjs\nconst fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));",
+      "status": "pass",
+      "ms": 96,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 140,
+      "code": "// fetch-polyfill.js\nimport fetch, {\n  Blob,\n  blobFrom,\n  blobFromSync,\n  File,\n  fileFrom,\n  fileFromSync,\n  FormData,\n  Headers,\n  Request,\n  Response,\n} from 'node-fetch'\n\nif (!globalThis.fetch) {\n  globalThis.fetch = fetch\n  globalThis.Headers = Headers\n  globalThis.Request = Request\n  globalThis.Response = Response\n}\n\n// index.js\nimport './fetch-polyfill'\n\n// ...",
+      "status": "fail",
+      "ms": 92,
+      "stderr": "node:internal/modules/esm/resolve:275\r\n    throw new ERR_MODULE_NOT_FOUND(\r\n          ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-Dxu1fq\\fetch-polyfill' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-Dxu1fq\\snippet-2.mjs\r\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\r\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)\r\n    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {\r\n  code: 'ERR_MODULE_NOT_FOUND',\r\n  url: 'file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/fetch-polyfill'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 10,
+      "apiMissing": []
+    },
+    {
+      "line": 182,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://github.com/');\nconst body = await response.text();\n\nconsole.log(body);",
+      "status": "pass",
+      "ms": 617,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 193,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://api.github.com/users/github');\nconst data = await response.json();\n\nconsole.log(data);",
+      "status": "pass",
+      "ms": 748,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 204,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://httpbin.org/post', {method: 'POST', body: 'a=1'});\nconst data = await response.json();\n\nconsole.log(data);",
+      "status": "pass",
+      "ms": 1485,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 215,
+      "code": "import fetch from 'node-fetch';\n\nconst body = {a: 1};\n\nconst response = await fetch('https://httpbin.org/post', {\n\tmethod: 'post',\n\tbody: JSON.stringify(body),\n\theaders: {'Content-Type': 'application/json'}\n});\nconst data = await response.json();\n\nconsole.log(data);",
+      "status": "pass",
+      "ms": 4817,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 236,
+      "code": "import fetch from 'node-fetch';\n\nconst params = new URLSearchParams();\nparams.append('a', 1);\n\nconst response = await fetch('https://httpbin.org/post', {method: 'POST', body: params});\nconst data = await response.json();\n\nconsole.log(data);",
+      "status": "pass",
+      "ms": 5756,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 254,
+      "code": "import fetch from 'node-fetch';\n\ntry {\n\tawait fetch('https://domain.invalid/');\n} catch (error) {\n\tconsole.log(error);\n}",
+      "status": "pass",
+      "ms": 140,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 268,
+      "code": "import fetch from 'node-fetch';\n\nclass HTTPResponseError extends Error {\n\tconstructor(response) {\n\t\tsuper(`HTTP Error Response: ${response.status} ${response.statusText}`);\n\t\tthis.response = response;\n\t}\n}\n\nconst checkStatus = response => {\n\tif (response.ok) {\n\t\t// response.status >= 200 && response.status < 300\n\t\treturn response;\n\t} else {\n\t\tthrow new HTTPResponseError(response);\n\t}\n}\n\nconst response = await fetch('https://httpbin.org/status/400');\n\ntry {\n\tcheckStatus(response);\n} catch (error) {\n\tconsole.error(error);\n\n\tconst errorBody = await error.response.text();\n\tconsole.error(`Error body: ${errorBody}`);\n}",
+      "status": "pass",
+      "ms": 1215,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 309,
+      "code": "import {createWriteStream} from 'node:fs';\nimport {pipeline} from 'node:stream';\nimport {promisify} from 'node:util'\nimport fetch from 'node-fetch';\n\nconst streamPipeline = promisify(pipeline);\n\nconst response = await fetch('https://github.githubassets.com/images/modules/logos_page/Octocat.png');\n\nif (!response.ok) throw new Error(`unexpected response ${response.statusText}`);\n\nawait streamPipeline(response.body, createWriteStream('./octocat.png'));",
+      "status": "fail",
+      "ms": 771,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-10.mjs:15\r\nif (!response.ok) throw new Error(`unexpected response ${response.statusText}`);\r\n                        ^\r\n\r\nError: unexpected response The requested content does not exist.\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-10.mjs:15:25\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Other",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 327,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://httpbin.org/stream/3');\n\ntry {\n\tfor await (const chunk of response.body) {\n\t\tconsole.dir(JSON.parse(chunk.toString()));\n\t}\n} catch (err) {\n\tconsole.error(err.stack);\n}",
+      "status": "pass",
+      "ms": 1462,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 345,
+      "code": "import fetch from 'node-fetch';\n\nconst read = async body => {\n\tlet error;\n\tbody.on('error', err => {\n\t\terror = err;\n\t});\n\n\tfor await (const chunk of body) {\n\t\tconsole.dir(JSON.parse(chunk.toString()));\n\t}\n\n\treturn new Promise((resolve, reject) => {\n\t\tbody.on('close', () => {\n\t\t\terror ? reject(error) : resolve();\n\t\t});\n\t});\n};\n\ntry {\n\tconst response = await fetch('https://httpbin.org/stream/3');\n\tawait read(response.body);\n} catch (err) {\n\tconsole.error(err.stack);\n}",
+      "status": "pass",
+      "ms": 1405,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 375,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://github.com/');\n\nconsole.log(response.ok);\nconsole.log(response.status);\nconsole.log(response.statusText);\nconsole.log(response.headers.raw());\nconsole.log(response.headers.get('content-type'));",
+      "status": "pass",
+      "ms": 729,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 391,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://example.com');\n\n// Returns an array of values, instead of a string of comma-separated values\nconsole.log(response.headers.raw()['set-cookie']);",
+      "status": "pass",
+      "ms": 1010,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 402,
+      "code": "import fetch, {\n  Blob,\n  blobFrom,\n  blobFromSync,\n  File,\n  fileFrom,\n  fileFromSync,\n} from 'node-fetch'\n\nconst mimetype = 'text/plain'\nconst blob = fileFromSync('./input.txt', mimetype)\nconst url = 'https://httpbin.org/post'\n\nconst response = await fetch(url, { method: 'POST', body: blob })\nconst data = await response.json()\n\nconsole.log(data)",
+      "status": "fail",
+      "ms": 91,
+      "stderr": "node:fs:1725\r\n  const stats = binding.stat(\r\n                        ^\r\n\r\nError: ENOENT: no such file or directory, stat 'C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-Dxu1fq\\input.txt'\r\n    at statSync (node:fs:1725:25)\r\n    at fileFromSync (file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/node_modules/fetch-blob/from.js:34:47)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-15.mjs:16:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  errno: -4058,\r\n  code: 'ENOENT',\r\n  syscall: 'stat',\r\n  path: 'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-Dxu1fq\\\\input.txt'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Other",
+      "apiChecked": 6,
+      "apiMissing": []
+    },
+    {
+      "line": 425,
+      "code": "import fetch, { FormData, File, fileFrom } from 'node-fetch'\n\nconst httpbin = 'https://httpbin.org/post'\nconst formData = new FormData()\nconst binary = new Uint8Array([ 97, 98, 99 ])\nconst abc = new File([binary], 'abc.txt', { type: 'text/plain' })\n\nformData.set('greeting', 'Hello, world!')\nformData.set('file-upload', abc, 'new name.txt')\n\nconst response = await fetch(httpbin, { method: 'POST', body: formData })\nconst data = await response.json()\n\nconsole.log(data)",
+      "status": "pass",
+      "ms": 1108,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 453,
+      "code": "formData.append('upload', {\n\t[Symbol.toStringTag]: 'Blob',\n\tsize: 3,\n  *stream() {\n    yield new Uint8Array([97, 98, 99])\n\t},\n\tarrayBuffer() {\n\t\treturn new Uint8Array([97, 98, 99]).buffer\n\t}\n}, 'abc.txt')",
+      "status": "fail",
+      "ms": 93,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-17.mjs:6\r\nformData.append('upload', {\r\n^\r\n\r\nReferenceError: formData is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-17.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 472,
+      "code": "import fetch, { AbortError } from 'node-fetch';\n\n// AbortController was added in node v14.17.0 globally\nconst AbortController = globalThis.AbortController || await import('abort-controller')\n\nconst controller = new AbortController();\nconst timeout = setTimeout(() => {\n\tcontroller.abort();\n}, 150);\n\ntry {\n\tconst response = await fetch('https://example.com', {signal: controller.signal});\n\tconst data = await response.json();\n} catch (error) {\n\tif (error instanceof AbortError) {\n\t\tconsole.log('request was aborted');\n\t}\n} finally {\n\tclearTimeout(timeout);\n}",
+      "status": "pass",
+      "ms": 258,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 515,
+      "code": "{\n\t// These properties are part of the Fetch Standard\n\tmethod: 'GET',\n\theaders: {},            // Request headers. format is the identical to that accepted by the Headers constructor (see below)\n\tbody: null,             // Request body. can be null, or a Node.js Readable stream\n\tredirect: 'follow',     // Set to `manual` to extract redirect headers, `error` to reject redirect\n\tsignal: null,           // Pass an instance of AbortSignal to optionally abort requests\n\n\t// The following properties are node-fetch extensions\n\tfollow: 20,             // maximum redirect count. 0 to not follow redirect\n\tcompress: true,         // support gzip/deflate content encoding. false to disable\n\tsize: 0,                // maximum response body size in bytes. 0 to disable\n\tagent: null,            // http(s).Agent instance or function that returns an instance (see below)\n\thighWaterMark: 16384,   // the maximum number of bytes to store in the internal buffer before ceasing to read from the underlying resource.\n\tinsecureHTTPParser: false\t// Use an insecure HTTP parser that accepts invalid HTTP headers when `true`.\n}",
+      "status": "fail",
+      "ms": 53,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-19.mjs:9\r\n\theaders: {},            // Request headers. format is the identical to that accepted by the Headers constructor (see below)\r\n\t       ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 564,
+      "code": "import http from 'node:http';\nimport https from 'node:https';\n\nconst httpAgent = new http.Agent({\n\tkeepAlive: true\n});\nconst httpsAgent = new https.Agent({\n\tkeepAlive: true\n});\n\nconst options = {\n\tagent: function(_parsedURL) {\n\t\tif (_parsedURL.protocol == 'http:') {\n\t\t\treturn httpAgent;\n\t\t} else {\n\t\t\treturn httpsAgent;\n\t\t}\n\t}\n};",
+      "status": "pass",
+      "ms": 92,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 594,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://example.com');\nconst r1 = response.clone();\n\nconst results = await Promise.all([response.json(), r1.text()]);\n\nconsole.log(results[0]);\nconsole.log(results[1]);",
+      "status": "fail",
+      "ms": 860,
+      "stderr": "<anonymous_script>:1\r\n<!doctype html><html lang=en><head><meta charset=utf-8><link rel=icon href=data:,><meta name=viewport content=\"width=device-width,initial-scale=1\"><title>Example Domain</title><style>html{color-scheme:light dark;background:light-dark(#eee,#222)}body{font:16px/1.6 system-ui,sans-serif;max-width:26em;margin:auto;padding:25vh 2em 2em;text-align:center}</style></head><body><p>This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.</p><script src=/s.js></script></body></html>\r\n^\r\n\r\nSyntaxError: Unexpected token '<', \"<!doctype \"... is not valid JSON\r\n    at JSON.parse (<anonymous>)\r\n    at Response.json (file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/node_modules/node-fetch/src/body.js:149:15)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\r\n    at async Promise.all (index 0)\r\n    at async file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-21.mjs:11:17\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 608,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://example.com', {\n\t// About 1MB\n\thighWaterMark: 1024 * 1024\n});\n\nconst result = await res.clone().arrayBuffer();\nconsole.dir(result);",
+      "status": "fail",
+      "ms": 726,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-22.mjs:13\r\nconst result = await res.clone().arrayBuffer();\r\n               ^\r\n\r\nReferenceError: res is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-22.mjs:13:16\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 630,
+      "code": "import fetch from 'node-fetch';\n\nconst response = await fetch('https://httpbin.org/status/301', { redirect: 'manual' });\n\nif (response.status === 301 || response.status === 302) {\n\tconst locationURL = new URL(response.headers.get('location'), response.url);\n\tconst response2 = await fetch(locationURL, { redirect: 'manual' });\n\tconsole.dir(response2);\n}",
+      "status": "pass",
+      "ms": 2100,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 732,
+      "code": "// Example adapted from https://fetch.spec.whatwg.org/#example-headers-class\nimport {Headers} from 'node-fetch';\n\nconst meta = {\n\t'Content-Type': 'text/xml'\n};\nconst headers = new Headers(meta);\n\n// The above is equivalent to\nconst meta = [['Content-Type', 'text/xml']];\nconst headers = new Headers(meta);\n\n// You can in fact use any iterable objects, like a Map or even another Headers\nconst meta = new Map();\nmeta.set('Content-Type', 'text/xml');\nconst headers = new Headers(meta);\nconst copyOfHeaders = new Headers(headers);",
+      "status": "fail",
+      "ms": 54,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-24.mjs:15\r\nconst meta = [['Content-Type', 'text/xml']];\r\n      ^\r\n\r\nSyntaxError: Identifier 'meta' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 793,
+      "code": "import http from 'node:http'\nimport { Response } from 'node-fetch'\n\nhttp.createServer(async function (req, res) {\n  const formData = await new Response(req, {\n    headers: req.headers // Pass along the boundary value\n  }).formData()\n  const allFields = [...formData]\n\n  const file = formData.get('uploaded-files')\n  const arrayBuffer = await file.arrayBuffer()\n  const text = await file.text()\n  const whatwgReadableStream = file.stream()\n\n  // other was to consume the request could be to do:\n  const json = await new Response(req).json()\n  const text = await new Response(req).text()\n  const arrayBuffer = await new Response(req).arrayBuffer()\n  const blob = await new Response(req, {\n    headers: req.headers // So that `type` inherits `Content-Type`\n  }.blob()\n})",
+      "status": "fail",
+      "ms": 53,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-Dxu1fq/snippet-25.mjs:22\r\n  const text = await new Response(req).text()\r\n        ^\r\n\r\nSyntaxError: Identifier 'text' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

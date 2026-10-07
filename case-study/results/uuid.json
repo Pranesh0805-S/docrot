@@ -1,0 +1,219 @@
+{
+  "name": "uuid",
+  "version": "14.0.2",
+  "repoUrl": "https://github.com/uuidjs/uuid",
+  "summary": {
+    "total": 20,
+    "pass": 19,
+    "fail": 1,
+    "timeout": 0,
+    "apiChecked": 20,
+    "confirmed": 0,
+    "categories": {
+      "Missing dependency/module": 1
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 34,
+      "code": "import { v4 as uuidv4 } from 'uuid';\n\nuuidv4(); // ⇨ 'b18794e8-5d0d-417c-b361-ba38e78411b4'",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 70,
+      "code": "import { NIL as NIL_UUID } from 'uuid';\n\nNIL_UUID; // ⇨ '00000000-0000-0000-0000-000000000000'",
+      "status": "pass",
+      "ms": 71,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 82,
+      "code": "import { MAX as MAX_UUID } from 'uuid';\n\nMAX_UUID; // ⇨ 'ffffffff-ffff-ffff-ffff-ffffffffffff'",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 104,
+      "code": "import { parse as uuidParse } from 'uuid';\n\n// Parse a UUID\nuuidParse('6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b'); // ⇨\n// Uint8Array(16) [\n//   110, 192, 189, 127,  17,\n//   192,  67, 218, 151,  94,\n//    42, 138, 217, 235, 174,\n//    11\n// ]",
+      "status": "pass",
+      "ms": 69,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 134,
+      "code": "import { stringify as uuidStringify } from 'uuid';\n\nconst uuidBytes = Uint8Array.of(\n  0x6e,\n  0xc0,\n  0xbd,\n  0x7f,\n  0x11,\n  0xc0,\n  0x43,\n  0xda,\n  0x97,\n  0x5e,\n  0x2a,\n  0x8a,\n  0xd9,\n  0xeb,\n  0xae,\n  0x0b\n);\n\nuuidStringify(uuidBytes); // ⇨ '6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b'",
+      "status": "pass",
+      "ms": 72,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 179,
+      "code": "import { v1 as uuidv1 } from 'uuid';\n\nuuidv1(); // ⇨ '57fd0000-c7d3-11ef-841d-514d2167fc5b'",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 187,
+      "code": "import { v1 as uuidv1 } from 'uuid';\n\nconst options = {\n  node: Uint8Array.of(0x01, 0x23, 0x45, 0x67, 0x89, 0xab),\n  clockseq: 0x1234,\n  msecs: new Date('2011-11-01').getTime(),\n  nsecs: 5678,\n};\nuuidv1(options); // ⇨ '710b962e-041c-11e1-9234-0123456789ab'",
+      "status": "pass",
+      "ms": 71,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 203,
+      "code": "import { v1ToV6 } from 'uuid';\n\nv1ToV6('92f62d9e-22c4-11ef-97e9-325096b39f47'); // ⇨ '1ef22c49-2f62-6d9e-97e9-325096b39f47'",
+      "status": "pass",
+      "ms": 71,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 234,
+      "code": "import { v4 as uuidv4 } from 'uuid';\n\nuuidv4(); // ⇨ 'b18794e8-5d0d-417c-b361-ba38e78411b4'",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 242,
+      "code": "import { v4 as uuidv4 } from 'uuid';\n\nconst v4options = {\n  random: Uint8Array.of(\n    0x10,\n    0x91,\n    0x56,\n    0xbe,\n    0xc4,\n    0xfb,\n    0xc1,\n    0xea,\n    0x71,\n    0xb4,\n    0xef,\n    0xe1,\n    0x67,\n    0x1c,\n    0x58,\n    0x36\n  ),\n};\nuuidv4(v4options); // ⇨ '109156be-c4fb-41ea-b1b4-efe1671c5836'",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 286,
+      "code": "import { v5 as uuidv5 } from 'uuid';\n\n// Define a custom namespace.  Readers, create your own using something like\n// https://www.uuidgenerator.net/\nconst MY_NAMESPACE = '1b671a64-40d5-491e-99b0-da01ff1f3341';\n\nuuidv5('Hello, World!', MY_NAMESPACE); // ⇨ '630eb68f-e0fa-5ecc-887a-7c7a62614681'",
+      "status": "pass",
+      "ms": 71,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 298,
+      "code": "import { v5 as uuidv5 } from 'uuid';\n\nuuidv5('https://www.w3.org/', uuidv5.URL); // ⇨ 'c106a26a-21bb-5538-8bf2-57095d1976c1'",
+      "status": "pass",
+      "ms": 73,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 310,
+      "code": "import { v6 as uuidv6 } from 'uuid';\n\nuuidv6(); // ⇨ '1efc7d35-7fd0-6000-841d-504d2167fc5b'",
+      "status": "pass",
+      "ms": 71,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 318,
+      "code": "import { v6 as uuidv6 } from 'uuid';\n\nconst options = {\n  node: [0x01, 0x23, 0x45, 0x67, 0x89, 0xab],\n  clockseq: 0x1234,\n  msecs: new Date('2011-11-01').getTime(),\n  nsecs: 5678,\n};\nuuidv6(options); // ⇨ '1e1041c7-10b9-662e-9234-0123456789ab'",
+      "status": "pass",
+      "ms": 77,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 334,
+      "code": "import { v6ToV1 } from 'uuid';\n\nv6ToV1('1ef22c49-2f62-6d9e-97e9-325096b39f47'); // ⇨ '92f62d9e-22c4-11ef-97e9-325096b39f47'",
+      "status": "pass",
+      "ms": 72,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 357,
+      "code": "import { v7 as uuidv7 } from 'uuid';\n\nuuidv7(); // ⇨ '01941f29-7c00-73e4-a310-744d2167fc5b'",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 382,
+      "code": "import { validate as uuidValidate } from 'uuid';\n\nuuidValidate('not a UUID'); // ⇨ false\nuuidValidate('6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b'); // ⇨ true",
+      "status": "pass",
+      "ms": 69,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 391,
+      "code": "import { version as uuidVersion } from 'uuid';\nimport { validate as uuidValidate } from 'uuid';\n\nfunction uuidValidateV4(uuid) {\n  return uuidValidate(uuid) && uuidVersion(uuid) === 4;\n}\n\nconst v1Uuid = 'd9428888-122b-11e1-b85c-61cd3cbb3210';\nconst v4Uuid = '109156be-c4fb-41ea-b1b4-efe1671c5836';\n\nuuidValidateV4(v4Uuid); // ⇨ true\nuuidValidateV4(v1Uuid); // ⇨ false",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 418,
+      "code": "import { version as uuidVersion } from 'uuid';\n\nuuidVersion('45637ec4-c85f-11ea-87d0-0242ac130003'); // ⇨ 1\nuuidVersion('6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b'); // ⇨ 4",
+      "status": "pass",
+      "ms": 70,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 484,
+      "code": "import 'react-native-get-random-values';\nimport { v4 as uuidv4 } from 'uuid';",
+      "status": "fail",
+      "ms": 74,
+      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'react-native-get-random-values' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-Yf0VCw\\snippet-19.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 1,
+      "apiMissing": []
+    }
+  ]
+}

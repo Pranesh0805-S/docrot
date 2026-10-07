@@ -1,0 +1,16 @@
+{
+  "name": "joi",
+  "version": "18.2.9",
+  "repoUrl": "git://github.com/hapijs/joi",
+  "summary": {
+    "total": 0,
+    "pass": 0,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": null
+  },
+  "results": []
+}

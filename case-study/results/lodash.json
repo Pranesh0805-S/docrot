@@ -1,0 +1,27 @@
+{
+  "name": "lodash",
+  "version": "4.18.1",
+  "repoUrl": "https://github.com/lodash/lodash",
+  "summary": {
+    "total": 1,
+    "pass": 1,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": null
+  },
+  "results": [
+    {
+      "line": 14,
+      "code": "// Load the full build.\nvar _ = require('lodash');\n// Load the core build.\nvar _ = require('lodash/core');\n// Load the FP build for immutable auto-curried iteratee-first data-last methods.\nvar fp = require('lodash/fp');\n\n// Load method categories.\nvar array = require('lodash/array');\nvar object = require('lodash/fp/object');\n\n// Cherry-pick methods for smaller browserify/rollup/webpack bundles.\nvar at = require('lodash/at');\nvar curryN = require('lodash/fp/curryN');",
+      "status": "pass",
+      "ms": 1327,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

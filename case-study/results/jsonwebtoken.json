@@ -1,0 +1,129 @@
+{
+  "name": "jsonwebtoken",
+  "version": "9.0.3",
+  "repoUrl": "https://github.com/auth0/node-jsonwebtoken",
+  "summary": {
+    "total": 11,
+    "pass": 1,
+    "fail": 10,
+    "timeout": 0,
+    "apiChecked": 1,
+    "confirmed": 0,
+    "categories": {
+      "Incomplete snippet (missing context)": 10
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 71,
+      "code": "var jwt = require('jsonwebtoken');\nvar token = jwt.sign({ foo: 'bar' }, 'shhhhh');",
+      "status": "pass",
+      "ms": 107,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 77,
+      "code": "// sign with RSA SHA256\nvar privateKey = fs.readFileSync('private.key');\nvar token = jwt.sign({ foo: 'bar' }, privateKey, { algorithm: 'RS256' });",
+      "status": "fail",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-1.mjs:7\r\nvar privateKey = fs.readFileSync('private.key');\r\n                 ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-1.mjs:7:18\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 84,
+      "code": "jwt.sign({ foo: 'bar' }, privateKey, { algorithm: 'RS256' }, function(err, token) {\n  console.log(token);\n});",
+      "status": "fail",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-2.mjs:6\r\njwt.sign({ foo: 'bar' }, privateKey, { algorithm: 'RS256' }, function(err, token) {\r\n^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-2.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 91,
+      "code": "var older_token = jwt.sign({ foo: 'bar', iat: Math.floor(Date.now() / 1000) - 30 }, 'shhhhh');",
+      "status": "fail",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-3.mjs:6\r\nvar older_token = jwt.sign({ foo: 'bar', iat: Math.floor(Date.now() / 1000) - 30 }, 'shhhhh');\r\n                  ^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-3.mjs:6:19\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 105,
+      "code": "jwt.sign({\n  exp: Math.floor(Date.now() / 1000) + (60 * 60),\n  data: 'foobar'\n}, 'secret');",
+      "status": "fail",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-4.mjs:6\r\njwt.sign({\r\n^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-4.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 114,
+      "code": "jwt.sign({\n  data: 'foobar'\n}, 'secret', { expiresIn: 60 * 60 });\n\n//or even better:\n\njwt.sign({\n  data: 'foobar'\n}, 'secret', { expiresIn: '1h' });",
+      "status": "fail",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-5.mjs:6\r\njwt.sign({\r\n^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-5.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 165,
+      "code": "// verify a token symmetric - synchronous\nvar decoded = jwt.verify(token, 'shhhhh');\nconsole.log(decoded.foo) // bar\n\n// verify a token symmetric\njwt.verify(token, 'shhhhh', function(err, decoded) {\n  console.log(decoded.foo) // bar\n});\n\n// invalid token - synchronous\ntry {\n  var decoded = jwt.verify(token, 'wrong-secret');\n} catch(err) {\n  // err\n}\n\n// invalid token\njwt.verify(token, 'wrong-secret', function(err, decoded) {\n  // err\n  // decoded undefined\n});\n\n// verify a token asymmetric\nvar cert = fs.readFileSync('public.pem');  // get public key\njwt.verify(token, cert, function(err, decoded) {\n  console.log(decoded.foo) // bar\n});\n\n// verify audience\nvar cert = fs.readFileSync('public.pem');  // get public key\njwt.verify(token, cert, { audience: 'urn:foo' }, function(err, decoded) {\n  // if audience mismatch, err == invalid audience\n});\n\n// verify issuer\nvar cert = fs.readFileSync('public.pem');  // get public key\njwt.verify(token, cert, { audience: 'urn:foo', issuer: 'urn:issuer' }, function(err, decoded) {\n  // if issuer mismatch, err == invalid issuer\n});\n\n// verify jwt id\nvar cert = fs.readFileSync('public.pem');  // get public key\njwt.verify(token, cert, { audience: 'urn:foo', issuer: 'urn:issuer', jwtid: 'jwtid' }, function(err, decoded) {\n  // if jwt id mismatch, err == invalid jwt id\n});\n\n// verify subject\nvar cert = fs.readFileSync('public.pem');  // get public key\njwt.verify(token, cert, { audience: 'urn:foo', issuer: 'urn:issuer', jwtid: 'jwtid', subject: 'subject' }, function(err, decoded) {\n  // if subject mismatch, err == invalid subject\n});\n\n// alg mismatch\nvar cert = fs.readFileSync('public.pem'); // get public key\njwt.verify(token, cert, { algorithms: ['RS256'] }, function (err, payload) {\n  // if token alg != RS256,  err == invalid signature\n});\n\n// Verify using getKey callback\n// Example uses https://github.com/auth0/node-jwks-rsa as a way to fetch the keys.\nvar jwksClient = require('jwks-rsa');\nvar client = jwksClient({\n  jwksUri: 'https://sandrino.auth0.com/.well-known/jwks.json'\n});\nfunction getKey(header, callback){\n  client.getSigningKey(header.kid, function(err, key) {\n    var signingKey = key.publicKey || key.rsaPublicKey;\n    callback(null, signingKey);\n  });\n}\n\njwt.verify(token, getKey, options, function(err, decoded) {\n  console.log(decoded.foo) // bar\n});\n",
+      "status": "fail",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-6.mjs:7\r\nvar decoded = jwt.verify(token, 'shhhhh');\r\n              ^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-6.mjs:7:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 264,
+      "code": "// get the decoded payload ignoring signature, no secretOrPrivateKey needed\nvar decoded = jwt.decode(token);\n\n// get the decoded payload and header\nvar decoded = jwt.decode(token, {complete: true});\nconsole.log(decoded.header);\nconsole.log(decoded.payload)",
+      "status": "fail",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-7.mjs:7\r\nvar decoded = jwt.decode(token);\r\n              ^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-7.mjs:7:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 290,
+      "code": "jwt.verify(token, 'shhhhh', function(err, decoded) {\n  if (err) {\n    /*\n      err = {\n        name: 'TokenExpiredError',\n        message: 'jwt expired',\n        expiredAt: 1408621000\n      }\n    */\n  }\n});",
+      "status": "fail",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-8.mjs:6\r\njwt.verify(token, 'shhhhh', function(err, decoded) {\r\n^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-8.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 318,
+      "code": "jwt.verify(token, 'shhhhh', function(err, decoded) {\n  if (err) {\n    /*\n      err = {\n        name: 'JsonWebTokenError',\n        message: 'jwt malformed'\n      }\n    */\n  }\n});",
+      "status": "fail",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-9.mjs:6\r\njwt.verify(token, 'shhhhh', function(err, decoded) {\r\n^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-9.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 340,
+      "code": "jwt.verify(token, 'shhhhh', function(err, decoded) {\n  if (err) {\n    /*\n      err = {\n        name: 'NotBeforeError',\n        message: 'jwt not active',\n        date: 2018-10-04T16:10:44.000Z\n      }\n    */\n  }\n});",
+      "status": "fail",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-10.mjs:6\r\njwt.verify(token, 'shhhhh', function(err, decoded) {\r\n^\r\n\r\nReferenceError: jwt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xbeUpK/snippet-10.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

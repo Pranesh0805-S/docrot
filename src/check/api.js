@@ -16,6 +16,15 @@ function aliasOf(name) {
   return name.replace(/^@[^/]+\//, '').replace(/[-.](\w)/g, (_, c) => c.toUpperCase());
 }
 
+function addNames(p, out) {
+  if (!p) return;
+  if (p.type === 'Identifier') out.add(p.name);
+  else if (p.type === 'ObjectPattern') p.properties.forEach((x) => addNames(x.value ?? x.argument, out));
+  else if (p.type === 'ArrayPattern') p.elements.forEach((x) => addNames(x, out));
+  else if (p.type === 'AssignmentPattern') addNames(p.left, out);
+  else if (p.type === 'RestElement') addNames(p.argument, out);
+}
+
 function chainOf(node) {
   const path = [];
   let cur = node;
@@ -29,6 +38,7 @@ function chainOf(node) {
 }
 
 // Find every API the snippet reads from the package, e.g. axios.CancelToken.source
+// mod = which module system the snippet uses: 'cjs' (require), 'esm' (import) or 'any' (unknown)
 export function collectRefs(code, pkgName) {
   let ast;
   try {
@@ -36,15 +46,15 @@ export function collectRefs(code, pkgName) {
   } catch {
     return null; // fragment, TypeScript, "..." placeholders: can't parse
   }
-  const bindings = new Map(); // local name -> 'default' | 'namespace'
+  const bindings = new Map(); // local name -> { base: 'default'|'namespace', mod }
   const declared = new Set();
   const refs = new Map();
-  const add = (base, path) => refs.set(base + ':' + path.join('.'), { base, path });
+  const add = (base, path, mod) => refs.set(`${base}:${mod}:${path.join('.')}`, { base, mod, path });
 
   const bindPattern = (pattern) => {
     if (pattern.type !== 'ObjectPattern') return;
     for (const p of pattern.properties) {
-      if (p.type === 'Property' && !p.computed && p.key.type === 'Identifier') add('namespace', [p.key.name]);
+      if (p.type === 'Property' && !p.computed && p.key.type === 'Identifier') add('namespace', [p.key.name], 'cjs');
     }
   };
 
@@ -53,26 +63,32 @@ export function collectRefs(code, pkgName) {
       for (const s of n.specifiers) {
         declared.add(s.local.name);
         if (n.source.value !== pkgName) continue;
-        if (s.type === 'ImportDefaultSpecifier') bindings.set(s.local.name, 'default');
-        else if (s.type === 'ImportNamespaceSpecifier') bindings.set(s.local.name, 'namespace');
-        else add('namespace', [s.imported.name ?? s.imported.value]);
+        if (s.type === 'ImportDefaultSpecifier') bindings.set(s.local.name, { base: 'default', mod: 'esm' });
+        else if (s.type === 'ImportNamespaceSpecifier') bindings.set(s.local.name, { base: 'namespace', mod: 'esm' });
+        else add('namespace', [s.imported.name ?? s.imported.value], 'esm');
       }
     },
     VariableDeclarator(n) {
-      if (n.id.type === 'Identifier') declared.add(n.id.name);
+      addNames(n.id, declared);
       const c = n.init;
       const isReq =
         c?.type === 'CallExpression' && c.callee.name === 'require' &&
         c.arguments[0]?.value === pkgName;
       if (!isReq) return;
-      if (n.id.type === 'Identifier') bindings.set(n.id.name, 'default');
+      if (n.id.type === 'Identifier') bindings.set(n.id.name, { base: 'default', mod: 'cjs' });
       else bindPattern(n.id);
     },
+    // parameters, function and class names are local variables, not the package
+    FunctionDeclaration(n) { addNames(n.id, declared); n.params.forEach((p) => addNames(p, declared)); },
+    FunctionExpression(n) { addNames(n.id, declared); n.params.forEach((p) => addNames(p, declared)); },
+    ArrowFunctionExpression(n) { n.params.forEach((p) => addNames(p, declared)); },
+    ClassDeclaration(n) { addNames(n.id, declared); },
+    CatchClause(n) { addNames(n.param, declared); },
   });
 
   // snippet uses `axios` without importing it: assume it means the package
   const alias = aliasOf(pkgName);
-  if (!bindings.has(alias) && !declared.has(alias)) bindings.set(alias, 'default');
+  if (!bindings.has(alias) && !declared.has(alias)) bindings.set(alias, { base: 'default', mod: 'any' });
 
   const writes = new Set();
   walk.full(ast, (n) => {
@@ -83,31 +99,45 @@ export function collectRefs(code, pkgName) {
   walk.full(ast, (n) => {
     if (n.type !== 'MemberExpression' || writes.has(n)) return;
     const c = chainOf(n);
-    if (c && bindings.has(c.root)) add(bindings.get(c.root), c.path);
+    const b = c && bindings.get(c.root);
+    if (b) add(b.base, c.path, b.mod);
   });
   return [...refs.values()];
 }
 
+// Runs inside the sandbox folder. A ref is only "missing" if it is missing
+// from every module shape the snippet could be using (CommonJS and ESM differ for some packages).
 const CHECKER = `
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 const { pkg, refs } = JSON.parse(readFileSync('refs.json', 'utf8'));
-let m;
-try { m = await import(pkg); } catch (e) { console.log(JSON.stringify({ error: String(e.message) })); process.exit(0); }
+let esm, cjs;
+try { esm = await import(pkg); } catch {}
+try { cjs = createRequire(process.cwd() + '/')(pkg); } catch {}
+if (!esm && !cjs) { console.log(JSON.stringify({ error: 'package could not be loaded' })); process.exit(0); }
 const isObj = (o) => o != null && (typeof o === 'object' || typeof o === 'function');
+function roots(r) {
+  const e = esm ? (r.base === 'default' ? [esm.default ?? esm] : [esm, esm.default]) : [];
+  const c = cjs ? [cjs] : [];
+  const list = r.mod === 'cjs' ? c : r.mod === 'esm' ? e : [...e, ...c];
+  return list.filter(isObj);
+}
+function walkPath(root, path) {
+  let cur = root;
+  for (let i = 0; i < path.length; i++) {
+    if (!isObj(cur)) return { status: 'unknown' };
+    try {
+      if (!(path[i] in cur)) return { status: 'missing', at: i };
+      cur = cur[path[i]];
+    } catch { return { status: 'unknown' }; }
+  }
+  return { status: 'ok' };
+}
 const out = [];
 for (const r of refs) {
-  let cur = r.base === 'default' ? (m.default ?? m) : m;
-  for (let i = 0; i < r.path.length; i++) {
-    if (!isObj(cur)) break;
-    const seg = r.path[i];
-    let next;
-    try {
-      if (seg in cur) next = cur[seg];
-      else if (i === 0 && r.base === 'namespace' && isObj(m.default) && seg in m.default) next = m.default[seg];
-      else { out.push({ i: r.i, ref: r.path.slice(0, i + 1).join('.') }); break; }
-    } catch { break; }
-    cur = next;
-  }
+  const results = roots(r).map((root) => walkPath(root, r.path));
+  if (!results.length || results.some((x) => x.status !== 'missing')) continue;
+  out.push({ i: r.i, ref: r.path.slice(0, results[0].at + 1).join('.') });
 }
 console.log(JSON.stringify({ missing: out }));
 `;

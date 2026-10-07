@@ -1,0 +1,16 @@
+{
+  "name": "bluebird",
+  "version": "3.7.2",
+  "repoUrl": "git://github.com/petkaantonov/bluebird",
+  "summary": {
+    "total": 0,
+    "pass": 0,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": null
+  },
+  "results": []
+}

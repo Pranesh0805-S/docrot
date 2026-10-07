@@ -1,0 +1,142 @@
+{
+  "name": "debug",
+  "version": "4.4.3",
+  "repoUrl": "git://github.com/debug-js/debug",
+  "summary": {
+    "total": 12,
+    "pass": 6,
+    "fail": 5,
+    "timeout": 1,
+    "apiChecked": 3,
+    "confirmed": 0,
+    "categories": {
+      "Missing dependency/module": 1,
+      "Long-running (inconclusive)": 1,
+      "Not runnable as-is (fragment/TypeScript)": 1,
+      "Incomplete snippet (missing context)": 3
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 22,
+      "code": "var debug = require('debug')('http')\n  , http = require('http')\n  , name = 'My App';\n\n// fake app\n\ndebug('booting %o', name);\n\nhttp.createServer(function(req, res){\n  debug(req.method + ' ' + req.url);\n  res.end('hello\\n');\n}).listen(3000, function(){\n  debug('listening');\n});\n\n// fake worker of some kind\n\nrequire('./worker');",
+      "status": "fail",
+      "ms": 69,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module './worker'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OuS31Z\\snippet-0.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-0.mjs:23:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-OuS31Z\\\\snippet-0.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Missing dependency/module",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 45,
+      "code": "var a = require('debug')('worker:a')\n  , b = require('debug')('worker:b');\n\nfunction work() {\n  a('doing lots of uninteresting work');\n  setTimeout(work, Math.random() * 1000);\n}\n\nwork();\n\nfunction workb() {\n  b('doing some work');\n  setTimeout(workb, Math.random() * 2000);\n}\n\nworkb();",
+      "status": "timeout",
+      "ms": 10015,
+      "stderr": "",
+      "category": "Long-running (inconclusive)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 106,
+      "code": "  \"windowsDebug\": \"@powershell -Command $env:DEBUG='*';node app.js\",",
+      "status": "fail",
+      "ms": 59,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-2.mjs:6\r\n  \"windowsDebug\": \"@powershell -Command $env:DEBUG='*';node app.js\",\r\n                ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 202,
+      "code": "const createDebug = require('debug')\ncreateDebug.formatters.h = (v) => {\n  return v.toString('hex')\n}\n\n// …elsewhere\nconst debug = createDebug('foo')\ndebug('this is hex: %h', new Buffer('hello world'))\n//   foo this is hex: 68656c6c6f20776f726c6421 +0ms",
+      "status": "pass",
+      "ms": 64,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 225,
+      "code": "localStorage.debug = 'worker:*'",
+      "status": "fail",
+      "ms": 64,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-4.mjs:6\r\nlocalStorage.debug = 'worker:*'\r\n^\r\n\r\nReferenceError: localStorage is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-4.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 231,
+      "code": "a = debug('worker:a');\nb = debug('worker:b');\n\nsetInterval(function(){\n  a('doing some work');\n}, 1000);\n\nsetInterval(function(){\n  b('doing some work');\n}, 1200);",
+      "status": "fail",
+      "ms": 64,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-5.mjs:6\r\na = debug('worker:a');\r\n  ^\r\n\r\nReferenceError: a is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-5.mjs:6:3\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 254,
+      "code": "var debug = require('debug');\nvar error = debug('app:error');\n\n// by default stderr is used\nerror('goes to stderr!');\n\nvar log = debug('app:log');\n// set this namespace to log via console.log\nlog.log = console.log.bind(console); // don't forget to bind to console!\nlog('goes to stdout');\nerror('still goes to stderr!');\n\n// set all output to go via console.info\n// overrides all per-namespace log settings\ndebug.log = console.info.bind(console);\nerror('now goes to stdout via console.info');\nlog('still goes to stdout, but via console.info now');",
+      "status": "pass",
+      "ms": 66,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 276,
+      "code": "const log = require('debug')('auth');\n\n//creates new debug instance with extended namespace\nconst logSign = log.extend('sign');\nconst logLogin = log.extend('login');\n\nlog('hello'); // auth hello\nlogSign('hello'); //auth:sign hello\nlogLogin('hello'); //auth:login hello",
+      "status": "pass",
+      "ms": 64,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 292,
+      "code": "let debug = require('debug');\n\nconsole.log(1, debug.enabled('test'));\n\ndebug.enable('test');\nconsole.log(2, debug.enabled('test'));\n\ndebug.disable();\nconsole.log(3, debug.enabled('test'));\n",
+      "status": "pass",
+      "ms": 67,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 3,
+      "apiMissing": []
+    },
+    {
+      "line": 331,
+      "code": "let debug = require('debug');\ndebug.enable('foo:*,-foo:bar');\nlet namespaces = debug.disable();\ndebug.enable(namespaces);",
+      "status": "pass",
+      "ms": 62,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 346,
+      "code": "const debug = require('debug')('http');\n\nif (debug.enabled) {\n  // do stuff...\n}",
+      "status": "pass",
+      "ms": 64,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 362,
+      "code": "worker = fork(WORKER_WRAP_PATH, [workerPath], {\n  stdio: [\n    /* stdin: */ 0,\n    /* stdout: */ 'pipe',\n    /* stderr: */ 'pipe',\n    'ipc',\n  ],\n  env: Object.assign({}, process.env, {\n    DEBUG_COLORS: 1 // without this settings, colors won't be shown\n  }),\n});\n\nworker.stderr.pipe(process.stderr, { end: false });",
+      "status": "fail",
+      "ms": 62,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-11.mjs:6\r\nworker = fork(WORKER_WRAP_PATH, [workerPath], {\r\n^\r\n\r\nReferenceError: fork is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-OuS31Z/snippet-11.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+[
+  {
+    "package": "express",
+    "version": "5.2.1",
+    "snippets": 1,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "axios",
+    "version": "1.20.0",
+    "snippets": 77,
+    "checked": 61,
+    "broken": 0
+  },
+  {
+    "package": "lodash",
+    "version": "4.18.1",
+    "snippets": 1,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "moment",
+    "version": "2.31.0",
+    "snippets": 0,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "request",
+    "version": "2.88.2",
+    "snippets": 37,
+    "checked": 23,
+    "broken": 0
+  },
+  {
+    "package": "chalk",
+    "version": "6.0.1",
+    "snippets": 6,
+    "checked": 6,
+    "broken": 0
+  },
+  {
+    "package": "commander",
+    "version": "15.0.0",
+    "snippets": 42,
+    "checked": 8,
+    "broken": 0
+  },
+  {
+    "package": "debug",
+    "version": "4.4.3",
+    "snippets": 12,
+    "checked": 3,
+    "broken": 0
+  },
+  {
+    "package": "async",
+    "version": "3.2.6",
+    "snippets": 2,
+    "checked": 2,
+    "broken": 0
+  },
+  {
+    "package": "bluebird",
+    "version": "3.7.2",
+    "snippets": 0,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "underscore",
+    "version": "1.13.8",
+    "snippets": 0,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "uuid",
+    "version": "14.0.2",
+    "snippets": 20,
+    "checked": 20,
+    "broken": 0
+  },
+  {
+    "package": "mongoose",
+    "version": "9.11.0",
+    "snippets": 18,
+    "checked": 9,
+    "broken": 0
+  },
+  {
+    "package": "body-parser",
+    "version": "2.3.0",
+    "snippets": 4,
+    "checked": 3,
+    "broken": 0
+  },
+  {
+    "package": "cors",
+    "version": "2.8.6",
+    "snippets": 7,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "dotenv",
+    "version": "18.0.6",
+    "snippets": 29,
+    "checked": 9,
+    "broken": 0
+  },
+  {
+    "package": "jsonwebtoken",
+    "version": "9.0.3",
+    "snippets": 11,
+    "checked": 1,
+    "broken": 0
+  },
+  {
+    "package": "multer",
+    "version": "2.4.0",
+    "snippets": 11,
+    "checked": 4,
+    "broken": 0
+  },
+  {
+    "package": "socket.io",
+    "version": "4.8.4",
+    "snippets": 7,
+    "checked": 1,
+    "broken": 0
+  },
+  {
+    "package": "passport",
+    "version": "0.7.0",
+    "snippets": 4,
+    "checked": 4,
+    "broken": 0
+  },
+  {
+    "package": "helmet",
+    "version": "8.3.0",
+    "snippets": 37,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "morgan",
+    "version": "1.12.1",
+    "snippets": 14,
+    "checked": 2,
+    "broken": 0
+  },
+  {
+    "package": "winston",
+    "version": "3.19.0",
+    "snippets": 53,
+    "checked": 35,
+    "broken": 0
+  },
+  {
+    "package": "yargs",
+    "version": "18.2.0",
+    "snippets": 2,
+    "checked": 1,
+    "broken": 1
+  },
+  {
+    "package": "inquirer",
+    "version": "14.2.3",
+    "snippets": 6,
+    "checked": 5,
+    "broken": 0
+  },
+  {
+    "package": "node-fetch",
+    "version": "3.3.2",
+    "snippets": 26,
+    "checked": 4,
+    "broken": 0
+  },
+  {
+    "package": "cheerio",
+    "version": "1.2.0",
+    "snippets": 6,
+    "checked": 2,
+    "broken": 0
+  },
+  {
+    "package": "ws",
+    "version": "8.22.0",
+    "snippets": 16,
+    "checked": 11,
+    "broken": 3
+  },
+  {
+    "package": "redis",
+    "version": "6.3.0",
+    "snippets": 2,
+    "checked": 0,
+    "broken": 0
+  },
+  {
+    "package": "joi",
+    "version": "18.2.9",
+    "snippets": 0,
+    "checked": 0,
+    "broken": 0
+  }
+]
