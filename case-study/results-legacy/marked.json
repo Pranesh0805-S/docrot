@@ -1,0 +1,27 @@
+{
+  "name": "marked",
+  "version": "18.1.0",
+  "repoUrl": "https://github.com/markedjs/marked",
+  "summary": {
+    "total": 1,
+    "pass": 1,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 1,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 79,
+      "code": "import { marked } from 'marked';\nconst html = marked.parse('# Marked in Node.js');\nconsole.log(html);",
+      "status": "pass",
+      "ms": 67,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    }
+  ]
+}

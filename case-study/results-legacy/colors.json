@@ -1,0 +1,87 @@
+{
+  "name": "colors",
+  "version": "1.4.0",
+  "repoUrl": "ssh://git@github.com/Marak/colors.js",
+  "summary": {
+    "total": 7,
+    "pass": 7,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 4,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 91,
+      "code": "var colors = require('colors');\n\nconsole.log('hello'.green); // outputs green text\nconsole.log('i like cake and pies'.underline.red) // outputs red underlined text\nconsole.log('inverse the color'.inverse); // inverses the color\nconsole.log('OMG Rainbows!'.rainbow); // rainbow\nconsole.log('Run the trap'.trap); // Drops the bass\n",
+      "status": "pass",
+      "ms": 63,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 104,
+      "code": "var colors = require('colors/safe');\n\nconsole.log(colors.green('hello')); // outputs green text\nconsole.log(colors.red.underline('i like cake and pies')) // outputs red underlined text\nconsole.log(colors.inverse('inverse the color')); // inverses the color\nconsole.log(colors.rainbow('OMG Rainbows!')); // rainbow\nconsole.log(colors.trap('Run the trap')); // Drops the bass\n",
+      "status": "pass",
+      "ms": 66,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 136,
+      "code": "var colors = require('colors');\ncolors.enable();\ncolors.disable();",
+      "status": "pass",
+      "ms": 65,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 2,
+      "apiMissing": []
+    },
+    {
+      "line": 144,
+      "code": "var name = 'Marak';\nconsole.log(colors.green('Hello %s'), name);\n// outputs -> 'Hello Marak'",
+      "status": "pass",
+      "ms": 63,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 154,
+      "code": "\nvar colors = require('colors');\n\ncolors.setTheme({\n  silly: 'rainbow',\n  input: 'grey',\n  verbose: 'cyan',\n  prompt: 'grey',\n  info: 'green',\n  data: 'grey',\n  help: 'cyan',\n  warn: 'yellow',\n  debug: 'blue',\n  error: 'red'\n});\n\n// outputs red text\nconsole.log(\"this is an error\".error);\n\n// outputs yellow text\nconsole.log(\"this is a warning\".warn);",
+      "status": "pass",
+      "ms": 68,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 180,
+      "code": "var colors = require('colors/safe');\n\n// set single property\nvar error = colors.red;\nerror('this is red');\n\n// set theme\ncolors.setTheme({\n  silly: 'rainbow',\n  input: 'grey',\n  verbose: 'cyan',\n  prompt: 'grey',\n  info: 'green',\n  data: 'grey',\n  help: 'cyan',\n  warn: 'yellow',\n  debug: 'blue',\n  error: 'red'\n});\n\n// outputs red text\nconsole.log(colors.error(\"this is an error\"));\n\n// outputs yellow text\nconsole.log(colors.warn(\"this is a warning\"));\n",
+      "status": "pass",
+      "ms": 64,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 211,
+      "code": "var colors = require('colors');\n\ncolors.setTheme({\n  custom: ['red', 'underline']\n});\n\nconsole.log('test'.custom);",
+      "status": "pass",
+      "ms": 65,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    }
+  ]
+}

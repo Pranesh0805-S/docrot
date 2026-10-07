@@ -1,0 +1,29 @@
+{
+  "name": "handlebars",
+  "version": "4.7.10",
+  "repoUrl": "https://github.com/handlebars-lang/handlebars.js",
+  "summary": {
+    "total": 1,
+    "pass": 0,
+    "fail": 1,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {
+      "Incomplete snippet (missing context)": 1
+    },
+    "rotRate": null
+  },
+  "results": [
+    {
+      "line": 32,
+      "code": "var source = \"<p>Hello, my name is {{name}}. I am from {{hometown}}. I have \" +\n             \"{{kids.length}} kids:</p>\" +\n             \"<ul>{{#kids}}<li>{{name}} is {{age}}</li>{{/kids}}</ul>\";\nvar template = Handlebars.compile(source);\n\nvar data = { \"name\": \"Alan\", \"hometown\": \"Somewhere, TX\",\n             \"kids\": [{\"name\": \"Jimmy\", \"age\": \"12\"}, {\"name\": \"Sally\", \"age\": \"4\"}]};\nvar result = template(data);\n\n// Would render:\n// <p>Hello, my name is Alan. I am from Somewhere, TX. I have 2 kids:</p>\n// <ul>\n//   <li>Jimmy is 12</li>\n//   <li>Sally is 4</li>\n// </ul>",
+      "status": "fail",
+      "ms": 737,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-6zNck2/snippet-0.mjs:9\r\nvar template = Handlebars.compile(source);\r\n               ^\r\n\r\nReferenceError: Handlebars is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-6zNck2/snippet-0.mjs:9:16\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Incomplete snippet (missing context)",
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

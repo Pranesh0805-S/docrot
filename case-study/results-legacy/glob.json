@@ -1,0 +1,39 @@
+{
+  "name": "glob",
+  "version": "13.0.6",
+  "repoUrl": "ssh://git@github.com/isaacs/node-glob",
+  "summary": {
+    "total": 2,
+    "pass": 1,
+    "fail": 1,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {
+      "Not runnable as-is (fragment/TypeScript)": 1
+    },
+    "rotRate": null
+  },
+  "results": [
+    {
+      "line": 25,
+      "code": "// load using import\nimport { glob, globSync, globStream, globStreamSync, Glob } from 'glob'\n// or using commonjs, that's fine, too\nconst {\n  glob,\n  globSync,\n  globStream,\n  globStreamSync,\n  Glob,\n} = require('glob')\n\n// the main glob() and globSync() resolve/return array of filenames\n\n// all js files, but don't look in node_modules\nconst jsfiles = await glob('**/*.js', { ignore: 'node_modules/**' })\n\n// pass in a signal to cancel the glob walk\nconst stopAfter100ms = await glob('**/*.css', {\n  signal: AbortSignal.timeout(100),\n})\n\n// multiple patterns supported as well\nconst images = await glob(['css/*.{png,jpeg}', 'public/*.{png,jpeg}'])\n\n// but of course you can do that with the glob pattern also\n// the sync function is the same, just returns a string[] instead\n// of Promise<string[]>\nconst imagesAlt = globSync('{css,public}/*.{png,jpeg}')\n\n// you can also stream them, this is a Minipass stream\nconst filesStream = globStream(['**/*.dat', 'logs/**/*.log'])\n\n// construct a Glob object if you wanna do it that way, which\n// allows for much faster walks if you have to look in the same\n// folder multiple times.\nconst g = new Glob('**/foo', {})\n// glob objects are async iterators, can also do globIterate() or\n// g.iterate(), same deal\nfor await (const file of g) {\n  console.log('found a foo file:', file)\n}\n// pass a glob as the glob options to reuse its settings and caches\nconst g2 = new Glob('**/bar', g)\n// sync iteration works as well\nfor (const file of g2) {\n  console.log('found a bar file:', file)\n}\n\n// you can also pass withFileTypes: true to get Path objects\n// these are like a fs.Dirent, but with some more added powers\n// check out https://isaacs.github.io/path-scurry/classes/PathBase.html\n// for more info on their API\nconst g3 = new Glob('**/baz/**', { withFileTypes: true })\ng3.stream().on('data', path => {\n  console.log(\n    'got a path object',\n    path.fullpath(),\n    path.isDirectory(),\n    path.readdirSync().map(e => e.name),\n  )\n})\n\n// if you use stat:true and withFileTypes, you can sort results\n// by things like modified time, filter by permission mode, etc.\n// All Stats fields will be available in that case. Slightly\n// slower, though.\n// For example:\nconst results = await glob('**', { stat: true, withFileTypes: true })\n\nconst timeSortedFiles = results\n  .sort((a, b) => a.mtimeMs - b.mtimeMs)\n  .map(path => path.fullpath())\n\nconst groupReadableFiles = results\n  .filter(path => path.mode & 0o040)\n  .map(path => path.fullpath())\n\n// custom ignores can be done like this, for example by saying\n// you'll ignore all markdown files, and all folders named 'docs'\nconst customIgnoreResults = await glob('**', {\n  ignore: {\n    ignored: p => /\\.md$/.test(p.name),\n    childrenIgnored: p => p.isNamed('docs'),\n  },\n})\n\n// another fun use case, only return files with the same name as\n// their parent folder, plus either `.ts` or `.js`\nconst folderNamedModules = await glob('**/*.{ts,js}', {\n  ignore: {\n    ignored: p => {\n      const pp = p.parent\n      return !(p.isNamed(pp.name + '.ts') || p.isNamed(pp.name + '.js'))\n    },\n  },\n})\n\n// find all files edited in the last hour, to do this, we ignore\n// all of them that are more than an hour old\nconst newFiles = await glob('**', {\n  // need stat so we have mtime\n  stat: true,\n  // only want the files, not the dirs\n  nodir: true,\n  ignore: {\n    ignored: p => {\n      return new Date() - p.mtime > 60 * 60 * 1000\n    },\n    // could add similar childrenIgnored here as well, but\n    // directory mtime is inconsistent across platforms, so\n    // probably better not to, unless you know the system\n    // tracks this reliably.\n  },\n})",
+      "status": "fail",
+      "ms": 55,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-8U1Fv2/snippet-0.mjs:10\r\n  glob,\r\n  ^\r\n\r\nSyntaxError: Identifier 'glob' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 541,
+      "code": "const results = await glob(\n  [\n    // likely to match first, since it's just a stat\n    'a/b/c/d/e/f',\n\n    // this pattern is more complicated! It must to various readdir()\n    // calls and test the results against a regular expression, and that\n    // is certainly going to take a little bit longer.\n    //\n    // So, later on, it encounters a match at 'a/b/c/d/e', but it's too\n    // late to ignore a/b/c/d/e/f, because it's already been emitted.\n    'a/[bdf]/?/[a-z]/*',\n  ],\n  { includeChildMatches: false },\n)",
+      "status": "pass",
+      "ms": 110,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 0,
+      "apiMissing": []
+    }
+  ]
+}

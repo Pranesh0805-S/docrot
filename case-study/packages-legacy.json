@@ -1,0 +1,2 @@
+["request-promise","node-uuid","q","optimist","colors","cli-table","mkdirp","rimraf","glob","marked",
+ "mime","semver","minimatch","fs-extra","ejs","handlebars","bcryptjs","node-schedule","mysql","nconf"]

@@ -1,0 +1,49 @@
+{
+  "name": "mkdirp",
+  "version": "3.0.1",
+  "repoUrl": "https://github.com/isaacs/node-mkdirp",
+  "summary": {
+    "total": 3,
+    "pass": 2,
+    "fail": 1,
+    "timeout": 0,
+    "apiChecked": 2,
+    "confirmed": 0,
+    "categories": {
+      "Not runnable as-is (fragment/TypeScript)": 1
+    },
+    "rotRate": 0
+  },
+  "results": [
+    {
+      "line": 13,
+      "code": "// hybrid module, import or require() both work\nimport { mkdirp } from 'mkdirp'\n// or:\nconst { mkdirp } = require('mkdirp')\n\n// return value is a Promise resolving to the first directory created\nmkdirp('/tmp/foo/bar/baz').then(made =>\n  console.log(`made directories, starting with ${made}`)\n)",
+      "status": "fail",
+      "ms": 54,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-YBYvvV/snippet-0.mjs:9\r\nconst { mkdirp } = require('mkdirp')\r\n        ^\r\n\r\nSyntaxError: Identifier 'mkdirp' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Not runnable as-is (fragment/TypeScript)",
+      "apiChecked": 0,
+      "apiMissing": []
+    },
+    {
+      "line": 33,
+      "code": "import { mkdirp } from 'mkdirp'\n\n// return value is the first directory created\nconst made = mkdirp.sync('/tmp/foo/bar/baz')\nconsole.log(`made directories, starting with ${made}`)",
+      "status": "pass",
+      "ms": 64,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    },
+    {
+      "line": 45,
+      "code": "import { mkdirp } from 'mkdirp'",
+      "status": "pass",
+      "ms": 61,
+      "stderr": "",
+      "category": null,
+      "apiChecked": 1,
+      "apiMissing": []
+    }
+  ]
+}

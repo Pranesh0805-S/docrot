@@ -1,0 +1,16 @@
+{
+  "name": "bcryptjs",
+  "version": "3.0.3",
+  "repoUrl": "https://github.com/dcodeIO/bcrypt.js",
+  "summary": {
+    "total": 0,
+    "pass": 0,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": null
+  },
+  "results": []
+}

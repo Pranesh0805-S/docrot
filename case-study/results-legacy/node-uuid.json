@@ -1,0 +1,16 @@
+{
+  "name": "node-uuid",
+  "version": "1.4.8",
+  "repoUrl": "https://github.com/broofa/node-uuid",
+  "summary": {
+    "total": 0,
+    "pass": 0,
+    "fail": 0,
+    "timeout": 0,
+    "apiChecked": 0,
+    "confirmed": 0,
+    "categories": {},
+    "rotRate": null
+  },
+  "results": []
+}
