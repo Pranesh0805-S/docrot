@@ -164,8 +164,8 @@
     "package": "yargs",
     "version": "18.2.0",
     "snippets": 2,
-    "checked": 1,
-    "broken": 1
+    "checked": 0,
+    "broken": 0
   },
   {
     "package": "inquirer",
@@ -192,8 +192,8 @@
     "package": "ws",
     "version": "8.22.0",
     "snippets": 16,
-    "checked": 11,
-    "broken": 3
+    "checked": 10,
+    "broken": 0
   },
   {
     "package": "redis",

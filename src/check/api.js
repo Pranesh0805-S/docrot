@@ -96,11 +96,22 @@ export function collectRefs(code, pkgName) {
     if (n.type === 'UpdateExpression') writes.add(n.argument);
     if (n.type === 'UnaryExpression' && n.operator === 'delete') writes.add(n.argument);
   });
-  walk.full(ast, (n) => {
-    if (n.type !== 'MemberExpression' || writes.has(n)) return;
-    const c = chainOf(n);
-    const b = c && bindings.get(c.root);
-    if (b) add(b.base, c.path, b.mod);
+  const FUNCS = new Set(['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression']);
+  const shadowed = (name, ancestors) =>
+    ancestors.some((a) => {
+      const names = new Set();
+      if (FUNCS.has(a.type)) a.params.forEach((p) => addNames(p, names));
+      else if (a.type === 'CatchClause') addNames(a.param, names);
+      return names.has(name);
+    });
+  walk.ancestor(ast, {
+    MemberExpression(n, _state, ancestors) {
+      if (writes.has(n)) return;
+      const c = chainOf(n);
+      const b = c && bindings.get(c.root);
+      // a callback parameter with the same name (e.g. (yargs) => yargs.positional()) is not the package
+      if (b && !shadowed(c.root, ancestors)) add(b.base, c.path, b.mod);
+    },
   });
   return [...refs.values()];
 }
