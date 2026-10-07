@@ -6,6 +6,8 @@ docrot installs a package, pulls the README examples for that exact version, che
 
 ## Usage
 
+Requires Node.js 22.12 or newer.
+
 > Until the package is published to npm, run it with `node bin/docrot.js check axios`.
 
 ```bash

@@ -11,10 +11,11 @@
     "src"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "prepublishOnly": "npm test"
   },
   "license": "MIT",
   "dependencies": {
@@ -24,5 +25,22 @@
     "remark-parse": "^11.0.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0"
-  }
+  },
+  "author": "Pranesh S",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pranesh0805-S/docrot.git"
+  },
+  "homepage": "https://github.com/Pranesh0805-S/docrot#readme",
+  "bugs": {
+    "url": "https://github.com/Pranesh0805-S/docrot/issues"
+  },
+  "keywords": [
+    "readme",
+    "docs",
+    "documentation",
+    "code-examples",
+    "testing",
+    "npm"
+  ]
 }
