@@ -1,6 +1,6 @@
 # Triage: failures the static checker could not explain
 
-Verify each by hand: install the package at that version in a fresh folder and run the example as written.
+Each candidate was reviewed by reading the snippet, its error message and the surrounding README. Entries marked REAL should be re-checked against the project's current `main` branch before anything is reported upstream.
 
 **Result: 26 candidates. 5 real documentation problems (3 invalid as written, 2 outdated by platform changes), 21 not documentation errors (including 1 false alarm from the tool).**
 

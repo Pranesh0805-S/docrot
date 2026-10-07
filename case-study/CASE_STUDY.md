@@ -4,11 +4,11 @@
 
 ## 1. Problem
 
-Developers copy README examples first. If an example is broken, they lose time and trust the package less. Maintainers rarely re-run their own docs. I wanted to measure how often README code is actually broken, and build a tool that can tell real breakage from noise.
+Developers copy README examples first. If an example is broken, they lose time and trust the package less. README examples are easy to leave untested. I wanted to measure how often README code is actually broken, and build a tool that can tell real breakage from noise.
 
 ## 2. Evidence
 
-**Sample:** 50 npm packages, tested at their latest version: 30 popular ones (express, axios, mongoose, ...) and 20 older or less active ones (request, mkdirp, mysql, ...).
+**Sample:** 50 npm packages, tested at their latest version: 30 popular ones (express, axios, mongoose, ...) and 20 older or less active ones (request, mkdirp, mysql, ...). Packages were tested at their latest versions on 7 October 2026.
 
 **Naive run (execute every JavaScript snippet):** on Axios 1.20.0, 65 of 77 snippets failed. None of them was broken documentation. Nearly all were fragments that depend on earlier text in the README.
 
@@ -22,7 +22,7 @@ Developers copy README examples first. If an example is broken, they lose time a
 | Older | 20 | 11 | 58 | 0 |
 | Total | 50 | 31 | 270 | 0 |
 
-**Runtime triage:** 26 failures could not be explained automatically. I went through every one by hand (see `triage.md`):
+**Runtime triage:** 26 failures could not be explained automatically. I reviewed every one by reading the snippet, the error and the surrounding README (see `triage.md`):
 
 | Outcome | Count |
 |---|---|
@@ -40,7 +40,7 @@ Early versions of the tool reported breakage that wasn't there. Each cause was a
 3. **CommonJS vs ESM:** `require('ws')` and `import 'ws'` expose different shapes.
 4. **Browser-style examples:** relative URLs and cancellation demos fail in Node by design.
 5. **Continuation snippets:** an example builds on the previous one (`mime.define()` after `new Mime(...)`).
-6. **ESM/CommonJS alternatives in one block:** READMEs show `import x from 'x'` and `const x = require('x')` together, separated by "or". A naive check calls that a double declaration. 7 of the 9 packages the first version flagged were this.
+6. **ESM/CommonJS alternatives in one block:** READMEs show `import x from 'x'` and `const x = require('x')` together, separated by "or". A naive check calls that a double declaration. 7 of the 11 packages the first version flagged were this.
 7. **Other alternatives in one block:** the same name declared several times with comments like "// Or enable it later" or "The above is equivalent to". All 4 remaining double-declaration hits were this, so they are reported as warnings, never as confirmed breakage.
 
 ## 4. Solution
@@ -79,6 +79,7 @@ docrot (this repo):
 - 19 of 50 packages had nothing checkable (examples just call the default export, or use TypeScript).
 - Sample of 50 packages, not a random sample of npm.
 - Triage verdicts are my reading of each snippet plus its error; a maintainer could disagree on edge cases.
+- Findings were checked against the published package versions. Confirmation against each project's current `main` branch is still pending.
 - Snippets run on my machine. Untrusted packages should be tested in a container.
 
 ## Next steps
