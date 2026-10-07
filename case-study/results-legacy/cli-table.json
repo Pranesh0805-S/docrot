@@ -8,72 +8,87 @@
     "fail": 3,
     "timeout": 0,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 3
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 29,
       "code": "var Table = require('cli-table');\n\n// instantiate\nvar table = new Table({\n    head: ['TH 1 label', 'TH 2 label']\n  , colWidths: [100, 200]\n});\n\n// table is an Array, so you can `push`, `unshift`, `splice` and friends\ntable.push(\n    ['First value', 'Second value']\n  , ['First value', 'Second value']\n);\n\nconsole.log(table.toString());",
       "status": "pass",
-      "ms": 251,
+      "ms": 288,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 61,
       "code": "var Table = require('cli-table');\nvar table = new Table();\n\ntable.push(\n    { 'Some key': 'Some value' }\n  , { 'Another key': 'Another value' }\n);\n\nconsole.log(table.toString());",
       "status": "pass",
-      "ms": 74,
+      "ms": 122,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 78,
       "code": "var Table = require('cli-table');\nvar table = new Table({ head: [\"\", \"Top Header 1\", \"Top Header 2\"] });\n\ntable.push(\n    { 'Left Header 1': ['Value Row 1 Col 1', 'Value Row 1 Col 2'] }\n  , { 'Left Header 2': ['Value Row 2 Col 1', 'Value Row 2 Col 2'] }\n);\n\nconsole.log(table.toString());",
       "status": "pass",
-      "ms": 72,
+      "ms": 127,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 92,
       "code": "var table = new Table({\n  chars: { 'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗'\n         , 'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝'\n         , 'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼'\n         , 'right': '║' , 'right-mid': '╢' , 'middle': '│' }\n});\n\ntable.push(\n    ['foo', 'bar', 'baz']\n  , ['frob', 'bar', 'quuz']\n);\n\nconsole.log(table.toString());\n// Outputs:\n//\n//╔══════╤═════╤══════╗\n//║ foo  │ bar │ baz  ║\n//╟──────┼─────┼──────╢\n//║ frob │ bar │ quuz ║\n//╚══════╧═════╧══════╝",
       "status": "fail",
-      "ms": 67,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VLM0Dq/snippet-3.mjs:6\r\nvar table = new Table({\r\n            ^\r\n\r\nReferenceError: Table is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VLM0Dq/snippet-3.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 132,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-5FPWNY/snippet-3.mjs:6\r\nvar table = new Table({\r\n            ^\r\n\r\nReferenceError: Table is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-5FPWNY/snippet-3.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 117,
       "code": "var table = new Table({ chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''} });\ntable.push(\n    ['foo', 'bar', 'baz']\n  , ['frobnicate', 'bar', 'quuz']\n);\n\nconsole.log(table.toString());\n// Outputs: (note the lack of the horizontal line between rows)\n//┌────────────┬─────┬──────┐\n//│ foo        │ bar │ baz  │\n//│ frobnicate │ bar │ quuz │\n//└────────────┴─────┴──────┘",
       "status": "fail",
-      "ms": 65,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VLM0Dq/snippet-4.mjs:6\r\nvar table = new Table({ chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''} });\r\n            ^\r\n\r\nReferenceError: Table is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VLM0Dq/snippet-4.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 121,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-5FPWNY/snippet-4.mjs:6\r\nvar table = new Table({ chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''} });\r\n            ^\r\n\r\nReferenceError: Table is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-5FPWNY/snippet-4.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 135,
       "code": "var table = new Table({\n  chars: { 'top': '' , 'top-mid': '' , 'top-left': '' , 'top-right': ''\n         , 'bottom': '' , 'bottom-mid': '' , 'bottom-left': '' , 'bottom-right': ''\n         , 'left': '' , 'left-mid': '' , 'mid': '' , 'mid-mid': ''\n         , 'right': '' , 'right-mid': '' , 'middle': ' ' },\n  style: { 'padding-left': 0, 'padding-right': 0 }\n});\n\ntable.push(\n    ['foo', 'bar', 'baz']\n  , ['frobnicate', 'bar', 'quuz']\n);\n\nconsole.log(table.toString());\n// Outputs:\n//foo        bar baz\n//frobnicate bar quuz",
       "status": "fail",
-      "ms": 65,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VLM0Dq/snippet-5.mjs:6\r\nvar table = new Table({\r\n            ^\r\n\r\nReferenceError: Table is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VLM0Dq/snippet-5.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 123,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-5FPWNY/snippet-5.mjs:6\r\nvar table = new Table({\r\n            ^\r\n\r\nReferenceError: Table is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-5FPWNY/snippet-5.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

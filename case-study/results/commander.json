@@ -8,6 +8,9 @@
     "fail": 8,
     "timeout": 0,
     "apiChecked": 8,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Other": 6,
@@ -20,421 +23,505 @@
       "line": 78,
       "code": "import { program } from 'commander';\n\nprogram\n  .option('--first')\n  .option('-s, --separator <char>')\n  .argument('<string>');\n\nprogram.parse();\n\nconst options = program.opts();\nconst limit = options.first ? 1 : undefined;\nconsole.log(program.args[0].split(options.separator, limit));",
       "status": "fail",
-      "ms": 66,
+      "ms": 124,
       "stderr": "error: missing required argument 'string'\n",
       "category": "Other",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 105,
       "code": "import { Command } from 'commander';\nconst program = new Command();\n\nprogram\n  .name('string-util')\n  .description('CLI to some JavaScript string utilities')\n  .version('0.8.0');\n\nprogram.command('split')\n  .description('Split a string into substrings and display as an array')\n  .argument('<string>', 'string to split')\n  .option('--first', 'display just the first substring')\n  .option('-s, --separator <char>', 'separator character', ',')\n  .action((str, options) => {\n    const limit = options.first ? 1 : undefined;\n    console.log(str.split(options.separator, limit));\n  });\n\nprogram.parse();",
       "status": "fail",
-      "ms": 68,
+      "ms": 123,
       "stderr": "Usage: string-util [options] [command]\n\nCLI to some JavaScript string utilities\n\nOptions:\n  -V, --version             output the version number\n  -h, --help                display help for command\n\nCommands:\n  split [options] <string>  Split a string into substrings and display as an\n                            array\n  help [command]            display help for command\n",
       "category": "Other",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 152,
       "code": "import { program } from 'commander';",
       "status": "pass",
-      "ms": 66,
+      "ms": 123,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 158,
       "code": "// CommonJS (.cjs)\nconst { Command } = require('commander');\nconst program = new Command();",
       "status": "pass",
-      "ms": 68,
+      "ms": 128,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 164,
       "code": "// ECMAScript (.mjs)\nimport { Command } from 'commander';\nconst program = new Command();",
       "status": "pass",
-      "ms": 70,
+      "ms": 120,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 180,
       "code": "program\n  .option('-p, --port <number>', 'server port number')\n  .option('--trace', 'add extra debugging output')\n  .option('--ws, --workspace <name>', 'use a custom workspace')",
       "status": "pass",
-      "ms": 67,
+      "ms": 112,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 217,
       "code": "program\n  .option('-d, --debug', 'output extra debugging')\n  .option('-s, --small', 'small pizza size')\n  .option('-p, --pizza-type <type>', 'flavour of pizza');\n\nprogram.parse(process.argv);\n\nconst options = program.opts();\nif (options.debug) console.log(options);\nconsole.log('pizza details:');\nif (options.small) console.log('- small pizza size');\nif (options.pizzaType) console.log(`- ${options.pizzaType}`);",
       "status": "pass",
-      "ms": 67,
+      "ms": 118,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 259,
       "code": "program\n  .option('-c, --cheese <type>', 'add the specified type of cheese', 'blue');\n\nprogram.parse();\n\nconsole.log(`cheese: ${program.opts().cheese}`);",
       "status": "pass",
-      "ms": 69,
+      "ms": 116,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 282,
       "code": "program\n  .option('--no-sauce', 'Remove sauce')\n  .option('--cheese <flavour>', 'cheese flavour', 'mozzarella')\n  .option('--no-cheese', 'plain with no cheese')\n  .parse();\n\nconst options = program.opts();\nconst sauceStr = options.sauce ? 'sauce' : 'no sauce';\nconst cheeseStr = (options.cheese === false) ? 'no cheese' : `${options.cheese} cheese`;\nconsole.log(`You ordered a pizza with ${sauceStr} and ${cheeseStr}`);",
       "status": "pass",
-      "ms": 69,
+      "ms": 116,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 311,
       "code": "program\n  .option('-c, --cheese [type]', 'Add cheese with optional type');\n\nprogram.parse(process.argv);\n\nconst options = program.opts();\nif (options.cheese === undefined) console.log('no cheese');\nelse if (options.cheese === true) console.log('add cheese');\nelse console.log(`add cheese type ${options.cheese}`);",
       "status": "pass",
-      "ms": 69,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 346,
       "code": "program\n  .requiredOption('-c, --cheese <type>', 'pizza must have cheese');\n\nprogram.parse();",
       "status": "fail",
-      "ms": 67,
+      "ms": 111,
       "stderr": "error: required option '-c, --cheese <type>' not specified\n",
       "category": "Other",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 367,
       "code": "program\n  .option('-n, --number <numbers...>', 'specify numbers')\n  .option('-l, --letter [letters...]', 'specify letters');\n\nprogram.parse();\n\nconsole.log('Options: ', program.opts());\nconsole.log('Remaining arguments: ', program.args);",
       "status": "pass",
-      "ms": 68,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 396,
       "code": "program.version('0.0.1');",
       "status": "pass",
-      "ms": 68,
+      "ms": 113,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 408,
       "code": "program.version('0.0.1', '-v, --vers', 'output the current version');",
       "status": "pass",
-      "ms": 68,
+      "ms": 117,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 419,
       "code": "program\n  .addOption(new Option('-s, --secret').hideHelp())\n  .addOption(new Option('-t, --timeout <delay>', 'timeout in seconds').default(60, 'one minute'))\n  .addOption(new Option('-d, --drink <size>', 'drink size').choices(['small', 'medium', 'large']))\n  .addOption(new Option('-p, --port <number>', 'port number').env('PORT'))\n  .addOption(new Option('--donate [amount]', 'optional donation in dollars').preset('20').argParser(parseFloat))\n  .addOption(new Option('--disable-server', 'disables the server').conflicts('port'))\n  .addOption(new Option('--free-drink', 'small drink included free ').implies({ drink: 'small' }));",
       "status": "pass",
-      "ms": 68,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 466,
       "code": "function myParseInt(value, dummyPrevious) {\n  // parseInt takes a string and a radix\n  const parsedValue = parseInt(value, 10);\n  if (isNaN(parsedValue)) {\n    throw new commander.InvalidArgumentError('Not a number.');\n  }\n  return parsedValue;\n}\n\nfunction increaseVerbosity(dummyValue, previous) {\n  return previous + 1;\n}\n\nfunction collect(value, previous) {\n  return previous.concat([value]);\n}\n\nfunction commaSeparatedList(value, dummyPrevious) {\n  return value.split(',');\n}\n\nprogram\n  .option('-f, --float <number>', 'float argument', parseFloat)\n  .option('-i, --integer <number>', 'integer argument', myParseInt)\n  .option('-v, --verbose', 'verbosity that can be increased', increaseVerbosity, 0)\n  .option('-c, --collect <value>', 'repeatable value', collect, [])\n  .option('-l, --list <items>', 'comma separated list', commaSeparatedList)\n;\n\nprogram.parse();\n\nconst options = program.opts();\nif (options.float !== undefined) console.log(`float: ${options.float}`);\nif (options.integer !== undefined) console.log(`integer: ${options.integer}`);\nif (options.verbose > 0) console.log(`verbosity: ${options.verbose}`);\nif (options.collect.length > 0) console.log(options.collect);\nif (options.list !== undefined) console.log(options.list);",
       "status": "pass",
-      "ms": 69,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 531,
       "code": "// Command implemented using action handler (description is supplied separately to `.command`)\n// Returns new command for configuring.\nprogram\n  .command('clone <source> [destination]')\n  .description('clone a repository into a newly created directory')\n  .action((source, destination) => {\n    console.log('clone command called');\n  });\n\n// Command implemented using stand-alone executable file, indicated by adding description as second parameter to `.command`.\n// Returns `this` for adding more commands.\nprogram\n  .command('start <service>', 'start named service')\n  .command('stop [service]', 'stop named service, or all if no name supplied');\n\n// Command prepared separately.\n// Returns `this` for adding more commands.\nprogram\n  .addCommand(build.makeBuildCommand());",
       "status": "fail",
-      "ms": 67,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/snippet-16.mjs:24\r\n  .addCommand(build.makeBuildCommand());\r\n              ^\r\n\r\nReferenceError: build is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/snippet-16.mjs:24:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 113,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/snippet-16.mjs:24\r\n  .addCommand(build.makeBuildCommand());\r\n              ^\r\n\r\nReferenceError: build is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/snippet-16.mjs:24:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 574,
       "code": "program\n  .version('0.1.0')\n  .argument('<username>', 'user to login')\n  .argument('[password]', 'password for user, if required', 'no password given')\n  .action((username, password) => {\n    console.log('username:', username);\n    console.log('password:', password);\n  });",
       "status": "pass",
-      "ms": 67,
+      "ms": 120,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 590,
       "code": "program\n  .version('0.1.0')\n  .command('rmdir')\n  .argument('<dirs...>')\n  .action(function (dirs) {\n    dirs.forEach((dir) => {\n      console.log('rmdir %s', dir);\n    });\n  });",
       "status": "pass",
-      "ms": 66,
+      "ms": 114,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 604,
       "code": "program\n  .arguments('<username> <password>');",
       "status": "pass",
-      "ms": 66,
+      "ms": 114,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 615,
       "code": "program\n  .addArgument(new commander.Argument('<drink-size>', 'drink cup size').choices(['small', 'medium', 'large']))\n  .addArgument(new commander.Argument('[timeout]', 'timeout in seconds').default(60, 'one minute'))",
       "status": "pass",
-      "ms": 67,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 633,
       "code": "program\n  .command('add')\n  .argument('<first>', 'integer argument', myParseInt)\n  .argument('[second]', 'integer argument', myParseInt, 1000)\n  .action((first, second) => {\n    console.log(`${first} + ${second} = ${first + second}`);\n  })\n;",
       "status": "fail",
-      "ms": 68,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/snippet-21.mjs:8\r\n  .argument('<first>', 'integer argument', myParseInt)\r\n                                           ^\r\n\r\nReferenceError: myParseInt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/snippet-21.mjs:8:44\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 115,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/snippet-21.mjs:8\r\n  .argument('<first>', 'integer argument', myParseInt)\r\n                                           ^\r\n\r\nReferenceError: myParseInt is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/snippet-21.mjs:8:44\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 651,
       "code": "program\n  .argument('<name>')\n  .option('-t, --title <honorific>', 'title to use before name')\n  .option('-d, --debug', 'display some debugging')\n  .action((name, options, command) => {\n    if (options.debug) {\n      console.error('Called %s with options %o', command.name(), options);\n    }\n    const title = options.title ? `${options.title} ` : '';\n    console.log(`Thank-you ${title}${name}`);\n  });",
       "status": "pass",
-      "ms": 67,
+      "ms": 124,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 669,
       "code": "program\n  .command('serve')\n  .argument('<script>')\n  .option('-p, --port <number>', 'port number', 80)\n  .action(function() {\n    console.error('Run script %s on port %s', this.args[0], this.opts().port);\n  });",
       "status": "pass",
-      "ms": 67,
+      "ms": 111,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 681,
       "code": "async function run() { /* code goes here */ }\n\nasync function main() {\n  program\n    .command('run')\n    .action(run);\n  await program.parseAsync(process.argv);\n}",
       "status": "pass",
-      "ms": 66,
+      "ms": 114,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 707,
       "code": "program\n  .name('pm')\n  .version('0.1.0')\n  .command('install [package-names...]', 'install one or more packages')\n  .command('search [query]', 'search with optional query')\n  .command('update', 'update installed packages', { executableFile: 'myUpdateSubCommand' })\n  .command('list', 'list packages installed', { isDefault: true });\n\nprogram.parse(process.argv);",
       "status": "fail",
-      "ms": 70,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1206\r\n    throw new Error(executableMissing);\r\n          ^\r\n\r\nError: 'pm-list' does not exist\r\n - if 'list' is not meant to be an executable command, remove description parameter from '.command()' and use '.description()' instead\r\n - if the default executable name is not suitable, use the executableFile option to supply a custom name or path\r\n - searched for local subcommand relative to directory 'C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-nfSeDW'\r\n    at Command._checkForMissingExecutable (file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1206:11)\r\n    at Command._executeSubCommand (file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1291:12)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1377:14\r\n    at Command._chainOrCall (file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1500:12)\r\n    at Command._dispatchSubcommand (file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1375:25)\r\n    at Command._parseCommand (file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1581:19)\r\n    at Command.parse (file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/node_modules/commander/lib/command.js:1084:10)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-nfSeDW/snippet-25.mjs:14:9\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 117,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1206\r\n    throw new Error(executableMissing);\r\n          ^\r\n\r\nError: 'pm-list' does not exist\r\n - if 'list' is not meant to be an executable command, remove description parameter from '.command()' and use '.description()' instead\r\n - if the default executable name is not suitable, use the executableFile option to supply a custom name or path\r\n - searched for local subcommand relative to directory 'C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-b8d6Cx'\r\n    at Command._checkForMissingExecutable (file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1206:11)\r\n    at Command._executeSubCommand (file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1291:12)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1377:14\r\n    at Command._chainOrCall (file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1500:12)\r\n    at Command._dispatchSubcommand (file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1375:25)\r\n    at Command._parseCommand (file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1581:19)\r\n    at Command.parse (file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/node_modules/commander/lib/command.js:1084:10)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-b8d6Cx/snippet-25.mjs:14:9\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Other",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 727,
       "code": "program\n  .option('-t, --trace', 'display trace statements for commands')\n  .hook('preAction', (thisCommand, actionCommand) => {\n    if (thisCommand.opts().trace) {\n      console.log(`About to call action handler for subcommand: ${actionCommand.name()}`);\n      console.log('arguments: %O', actionCommand.args);\n      console.log('options: %o', actionCommand.opts());\n    }\n  });",
       "status": "pass",
-      "ms": 69,
+      "ms": 112,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 789,
       "code": "program\n  .option('-f, --foo', 'enable some foo');\n\nprogram.addHelpText('after', `\n\nExample call:\n  $ custom-help --help`);",
       "status": "pass",
-      "ms": 68,
+      "ms": 112,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 831,
       "code": "program.showHelpAfterError();\n// or\nprogram.showHelpAfterError('(add --help for additional information)');",
       "status": "pass",
-      "ms": 68,
+      "ms": 112,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 846,
       "code": "program.showSuggestionAfterError(false);",
       "status": "pass",
-      "ms": 68,
+      "ms": 116,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 872,
       "code": "program.name('pizza');\nconst pm = new Command('pm');",
       "status": "pass",
-      "ms": 67,
+      "ms": 114,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 884,
       "code": "program\n  .name(\"my-command\")\n  .usage(\"[global options] command\")",
       "status": "pass",
-      "ms": 68,
+      "ms": 114,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 901,
       "code": "program\n  .command(\"duplicate\")\n  .summary(\"make a copy\")\n  .description(`Make a copy of the current project.\nThis may require additional disk space.\n  `);",
       "status": "pass",
-      "ms": 68,
+      "ms": 110,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 914,
       "code": "program\n  .helpOption('-e, --HELP', 'read more information');",
       "status": "pass",
-      "ms": 65,
+      "ms": 113,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 927,
       "code": "program.helpCommand('assist [command]', 'show assistance');",
       "status": "pass",
-      "ms": 67,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 956,
       "code": "program.on('option:verbose', function () {\n  process.env.VERBOSE = this.opts().verbose;\n});",
       "status": "pass",
-      "ms": 68,
+      "ms": 112,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 976,
       "code": "program.parse(); // parse process.argv and auto-detect electron and special node flags\nprogram.parse(process.argv); // assume argv[0] is app and argv[1] is script\nprogram.parse(['--port', '80'], { from: 'user' }); // just user supplied arguments, nothing special about argv[0]",
       "status": "fail",
-      "ms": 67,
+      "ms": 113,
       "stderr": "error: unknown option '--port'\n",
       "category": "Other",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1027,
       "code": "program\n  .storeOptionsAsProperties()\n  .option('-d, --debug')\n  .action((commandAndOptions) => {\n    if (commandAndOptions.debug) {\n      console.error(`Called ${commandAndOptions.name()}`);\n    }\n  });",
       "status": "pass",
-      "ms": 67,
+      "ms": 113,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1058,
       "code": "import { createCommand } from 'commander';\nconst program = createCommand();",
       "status": "pass",
-      "ms": 67,
+      "ms": 113,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1101,
       "code": "program.error('Password must be longer than four characters');\nprogram.error('Custom processing has failed', { exitCode: 2, code: 'my.custom.error' });",
       "status": "fail",
-      "ms": 68,
+      "ms": 113,
       "stderr": "Password must be longer than four characters\n",
       "category": "Other",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1119,
       "code": "program.exitOverride();\n\ntry {\n  program.parse(process.argv);\n} catch (err) {\n  // custom processing...\n}",
       "status": "pass",
-      "ms": 67,
+      "ms": 116,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1134,
       "code": "function errorColor(str) {\n  // Add ANSI escape codes to display text in red.\n  return `\\x1b[31m${str}\\x1b[0m`;\n}\n\nprogram\n  .configureOutput({\n    // Visibly override write routines as example!\n    writeOut: (str) => process.stdout.write(`[OUT] ${str}`),\n    writeErr: (str) => process.stdout.write(`[ERR] ${str}`),\n    // Highlight errors in color.\n    outputError: (str, write) => write(errorColor(str))\n  });",
       "status": "pass",
-      "ms": 68,
+      "ms": 112,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

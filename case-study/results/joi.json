@@ -8,6 +8,9 @@
     "fail": 0,
     "timeout": 0,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {},
     "rotRate": null

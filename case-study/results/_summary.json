@@ -32,7 +32,7 @@
     "version": "2.88.2",
     "snippets": 37,
     "checked": 23,
-    "broken": 0
+    "broken": 2
   },
   {
     "package": "chalk",

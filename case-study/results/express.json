@@ -8,22 +8,27 @@
     "fail": 0,
     "timeout": 1,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Long-running (inconclusive)": 1
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 34,
       "code": "import express from 'express'\n\nconst app = express()\n\napp.get('/', (req, res) => {\n  res.send('Hello World')\n})\n\napp.listen(3000, () => {\n  console.log('Server is running on http://localhost:3000')\n})",
       "status": "timeout",
-      "ms": 10027,
+      "ms": 10026,
       "stderr": "",
       "category": "Long-running (inconclusive)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

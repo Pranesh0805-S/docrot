@@ -8,6 +8,9 @@
     "fail": 3,
     "timeout": 0,
     "apiChecked": 4,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 3
@@ -19,41 +22,49 @@
       "line": 64,
       "code": "passport.use(new LocalStrategy(\n  function(username, password, done) {\n    User.findOne({ username: username }, function (err, user) {\n      if (err) { return done(err); }\n      if (!user) { return done(null, false); }\n      if (!user.verifyPassword(password)) { return done(null, false); }\n      return done(null, user);\n    });\n  }\n));",
       "status": "fail",
-      "ms": 66,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-3Yrx6r/snippet-0.mjs:6\r\npassport.use(new LocalStrategy(\r\n                 ^\r\n\r\nReferenceError: LocalStrategy is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-3Yrx6r/snippet-0.mjs:6:18\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 119,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-rdWgtS/snippet-0.mjs:6\r\npassport.use(new LocalStrategy(\r\n                 ^\r\n\r\nReferenceError: LocalStrategy is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-rdWgtS/snippet-0.mjs:6:18\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 91,
       "code": "passport.serializeUser(function(user, done) {\n  done(null, user.id);\n});\n\npassport.deserializeUser(function(id, done) {\n  User.findById(id, function (err, user) {\n    done(err, user);\n  });\n});",
       "status": "pass",
-      "ms": 66,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 111,
       "code": "var app = express();\napp.use(require('serve-static')(__dirname + '/../../public'));\napp.use(require('cookie-parser')());\napp.use(require('body-parser').urlencoded({ extended: true }));\napp.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));\napp.use(passport.initialize());\napp.use(passport.session());",
       "status": "fail",
-      "ms": 66,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-3Yrx6r/snippet-2.mjs:6\r\nvar app = express();\r\n          ^\r\n\r\nReferenceError: express is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-3Yrx6r/snippet-2.mjs:6:11\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 118,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-rdWgtS/snippet-2.mjs:6\r\nvar app = express();\r\n          ^\r\n\r\nReferenceError: express is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-rdWgtS/snippet-2.mjs:6:11\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 126,
       "code": "app.post('/login', \n  passport.authenticate('local', { failureRedirect: '/login' }),\n  function(req, res) {\n    res.redirect('/');\n  });",
       "status": "fail",
-      "ms": 67,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-3Yrx6r/snippet-3.mjs:6\r\napp.post('/login', \r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-3Yrx6r/snippet-3.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 118,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-rdWgtS/snippet-3.mjs:6\r\napp.post('/login', \r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-rdWgtS/snippet-3.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

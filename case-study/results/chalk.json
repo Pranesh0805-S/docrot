@@ -8,6 +8,9 @@
     "fail": 0,
     "timeout": 0,
     "apiChecked": 6,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {},
     "rotRate": 0
@@ -17,61 +20,73 @@
       "line": 46,
       "code": "import chalk from 'chalk';\n\nconsole.log(chalk.blue('Hello world!'));",
       "status": "pass",
-      "ms": 62,
+      "ms": 117,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 54,
       "code": "import chalk from 'chalk';\n\nconst log = console.log;\n\n// Combine styled and normal strings\nlog(chalk.blue('Hello') + ' World' + chalk.red('!'));\n\n// Compose multiple styles using the chainable API\nlog(chalk.blue.bgRed.bold('Hello world!'));\n\n// Pass in multiple arguments\nlog(chalk.blue('Hello', 'World!', 'Foo', 'bar', 'biz', 'baz'));\n\n// Nest styles\nlog(chalk.red('Hello', chalk.underline.bgBlue('world') + '!'));\n\n// Nest styles of the same type even (color, underline, background)\nlog(chalk.green(\n\t'I am a green line ' +\n\tchalk.blue.underline.bold('with a blue substring') +\n\t' that becomes green again!'\n));\n\n// ES2015 template literal\nlog(`\nCPU: ${chalk.red('90%')}\nRAM: ${chalk.green('40%')}\nDISK: ${chalk.yellow('70%')}\n`);\n\n// Use RGB colors in terminal emulators that support it.\nlog(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));\nlog(chalk.hex('#DEADED').bold('Bold gray!'));",
       "status": "pass",
-      "ms": 62,
+      "ms": 129,
       "stderr": "",
       "category": null,
       "apiChecked": 12,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 92,
       "code": "import chalk from 'chalk';\n\nconst error = chalk.bold.red;\nconst warning = chalk.hex('#FFA500'); // Orange color\n\nconsole.log(error('Error!'));\nconsole.log(warning('Warning!'));",
       "status": "pass",
-      "ms": 63,
+      "ms": 116,
       "stderr": "",
       "category": null,
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 104,
       "code": "import chalk from 'chalk';\n\nconst name = 'Sindre';\nconsole.log(chalk.green('Hello %s'), name);\n//=> 'Hello Sindre'",
       "status": "pass",
-      "ms": 64,
+      "ms": 115,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 130,
       "code": "import {Chalk} from 'chalk';\n\nconst customChalk = new Chalk({level: 0});",
       "status": "pass",
-      "ms": 62,
+      "ms": 111,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 163,
       "code": "import {modifierNames, foregroundColorNames} from 'chalk';\n\nconsole.log(modifierNames.includes('bold'));\n//=> true\n\nconsole.log(foregroundColorNames.includes('pink'));\n//=> false",
       "status": "pass",
-      "ms": 62,
+      "ms": 106,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

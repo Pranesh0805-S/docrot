@@ -8,503 +8,604 @@
     "fail": 43,
     "timeout": 0,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 15,
       "Not runnable as-is (fragment/TypeScript)": 28
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 22,
       "code": "step1(function (value1) {\n    step2(value1, function(value2) {\n        step3(value2, function(value3) {\n            step4(value3, function(value4) {\n                // Do something with value4\n            });\n        });\n    });\n});",
       "status": "fail",
-      "ms": 89,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-0.mjs:6\r\nstep1(function (value1) {\r\n^\r\n\r\nReferenceError: step1 is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-0.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 161,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-0.mjs:6\r\nstep1(function (value1) {\r\n^\r\n\r\nReferenceError: step1 is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-0.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 36,
       "code": "Q.fcall(promisedStep1)\n.then(promisedStep2)\n.then(promisedStep3)\n.then(promisedStep4)\n.then(function (value4) {\n    // Do something with value4\n})\n.catch(function (error) {\n    // Handle any error from all above steps\n})\n.done();",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-1.mjs:6\r\nQ.fcall(promisedStep1)\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-1.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-1.mjs:6\r\nQ.fcall(promisedStep1)\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-1.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 113,
       "code": "promiseMeSomething()\n.then(function (value) {\n}, function (reason) {\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-2.mjs:6\r\npromiseMeSomething()\r\n^\r\n\r\nReferenceError: promiseMeSomething is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-2.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 116,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-2.mjs:6\r\npromiseMeSomething()\r\n^\r\n\r\nReferenceError: promiseMeSomething is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-2.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 142,
       "code": "var outputPromise = getInputPromise()\n.then(function (input) {\n}, function (reason) {\n});",
       "status": "fail",
-      "ms": 61,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-3.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-3.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 111,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-3.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-3.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 167,
       "code": "var outputPromise = getInputPromise()\n.then(function (value) {\n});",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-4.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-4.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 109,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-4.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-4.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 176,
       "code": "var outputPromise = getInputPromise()\n.then(null, function (error) {\n});",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-5.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-5.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-5.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-5.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 185,
       "code": "var outputPromise = getInputPromise()\n.fail(function (error) {\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-6.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-6.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 105,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-6.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-6.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 201,
       "code": "var outputPromise = getInputPromise()\n.fin(function () {\n    // close files, database connections, stop servers, conclude tests\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-7.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-7.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-7.mjs:6\r\nvar outputPromise = getInputPromise()\r\n                    ^\r\n\r\nReferenceError: getInputPromise is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-7.mjs:6:21\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 223,
       "code": "return getUsername()\n.then(function (username) {\n    return getUser(username)\n    .then(function (user) {\n        // if we get here without an error,\n        // the value returned here\n        // or the exception thrown here\n        // resolves the promise returned\n        // by the first line\n    })\n});",
       "status": "fail",
-      "ms": 53,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-8.mjs:6\r\nreturn getUsername()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 88,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-8.mjs:6\r\nreturn getUsername()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 237,
       "code": "return getUsername()\n.then(function (username) {\n    return getUser(username);\n})\n.then(function (user) {\n    // if we get here without an error,\n    // the value returned here\n    // or the exception thrown here\n    // resolves the promise returned\n    // by the first line\n});",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-9.mjs:6\r\nreturn getUsername()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 93,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-9.mjs:6\r\nreturn getUsername()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 254,
       "code": "function authenticate() {\n    return getUsername()\n    .then(function (username) {\n        return getUser(username);\n    })\n    // chained because we will not need the user name in the next event\n    .then(function (user) {\n        return getPassword()\n        // nested because we need both user and password next\n        .then(function (password) {\n            if (user.passwordHash !== hash(password)) {\n                throw new Error(\"Can't authenticate\");\n            }\n        });\n    });\n}",
       "status": "pass",
-      "ms": 55,
+      "ms": 97,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 279,
       "code": "return Q.all([\n    eventualAdd(2, 2),\n    eventualAdd(10, 20)\n]);",
       "status": "fail",
-      "ms": 61,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-11.mjs:6\r\nreturn Q.all([\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 92,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-11.mjs:6\r\nreturn Q.all([\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 292,
       "code": "function eventualAdd(a, b) {\n    return Q.spread([a, b], function (a, b) {\n        return a + b;\n    })\n}",
       "status": "pass",
-      "ms": 57,
+      "ms": 104,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 302,
       "code": "return getUsername()\n.then(function (username) {\n    return [username, getUser(username)];\n})\n.spread(function (username, user) {\n});",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-13.mjs:6\r\nreturn getUsername()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 95,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-13.mjs:6\r\nreturn getUsername()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 318,
       "code": "Q.allSettled(promises)\n.then(function (results) {\n    results.forEach(function (result) {\n        if (result.state === \"fulfilled\") {\n            var value = result.value;\n        } else {\n            var reason = result.reason;\n        }\n    });\n});",
       "status": "fail",
-      "ms": 61,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-14.mjs:6\r\nQ.allSettled(promises)\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-14.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-14.mjs:6\r\nQ.allSettled(promises)\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-14.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 335,
       "code": "Q.any(promises)\n.then(function (first) {\n    // Any of the promises was fulfilled.\n}, function (error) {\n    // All of the promises were rejected.\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-15.mjs:6\r\nQ.any(promises)\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-15.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-15.mjs:6\r\nQ.any(promises)\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-15.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 349,
       "code": "return foo(initialVal).then(bar).then(baz).then(qux);",
       "status": "fail",
-      "ms": 53,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-16.mjs:6\r\nreturn foo(initialVal).then(bar).then(baz).then(qux);\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 87,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-16.mjs:6\r\nreturn foo(initialVal).then(bar).then(baz).then(qux);\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 356,
       "code": "var funcs = [foo, bar, baz, qux];\n\nvar result = Q(initialVal);\nfuncs.forEach(function (f) {\n    result = result.then(f);\n});\nreturn result;",
       "status": "fail",
-      "ms": 53,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-17.mjs:12\r\nreturn result;\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 91,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-17.mjs:12\r\nreturn result;\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 368,
       "code": "return funcs.reduce(function (soFar, f) {\n    return soFar.then(f);\n}, Q(initialVal));",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-18.mjs:6\r\nreturn funcs.reduce(function (soFar, f) {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 93,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-18.mjs:6\r\nreturn funcs.reduce(function (soFar, f) {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 376,
       "code": "return funcs.reduce(Q.when, Q(initialVal));",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-19.mjs:6\r\nreturn funcs.reduce(Q.when, Q(initialVal));\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 89,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-19.mjs:6\r\nreturn funcs.reduce(Q.when, Q(initialVal));\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 386,
       "code": "return foo()\n.then(function (value) {\n    throw new Error(\"Can't bar.\");\n}, function (error) {\n    // We only get here if \"foo\" fails\n});",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-20.mjs:6\r\nreturn foo()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 93,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-20.mjs:6\r\nreturn foo()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 403,
       "code": "return foo()\n.then(function (value) {\n    throw new Error(\"Can't bar.\");\n})\n.fail(function (error) {\n    // We get here with either foo's error or bar's error\n});",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-21.mjs:6\r\nreturn foo()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 90,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-21.mjs:6\r\nreturn foo()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 420,
       "code": "return uploadFile()\n.then(function () {\n    // Success uploading the file\n}, function (err) {\n    // There was an error, and we get the reason for error\n}, function (progress) {\n    // We get notified of the upload's progress as it is executed\n});",
       "status": "fail",
-      "ms": 53,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-22.mjs:6\r\nreturn uploadFile()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-22.mjs:6\r\nreturn uploadFile()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 434,
       "code": "return uploadFile().progress(function (progress) {\n    // We get notified of the upload's progress\n});",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-23.mjs:6\r\nreturn uploadFile().progress(function (progress) {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-23.mjs:6\r\nreturn uploadFile().progress(function (progress) {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 449,
       "code": "return foo()\n.then(function () {\n    return \"bar\";\n});",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-24.mjs:6\r\nreturn foo()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 95,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-24.mjs:6\r\nreturn foo()\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 458,
       "code": "foo()\n.then(function () {\n    return \"bar\";\n})\n.done();",
       "status": "fail",
-      "ms": 61,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-25.mjs:6\r\nfoo()\r\n^\r\n\r\nReferenceError: foo is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-25.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 102,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-25.mjs:6\r\nfoo()\r\n^\r\n\r\nReferenceError: foo is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-25.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 484,
       "code": "return Q.fcall(function () {\n    return 10;\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-26.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-26.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 492,
       "code": "return Q.fcall(function () {\n    throw new Error(\"Can't do it\");\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-27.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 90,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-27.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 502,
       "code": "return Q.fcall(eventualAdd, 2, 2);",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-28.mjs:6\r\nreturn Q.fcall(eventualAdd, 2, 2);\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-28.mjs:6\r\nreturn Q.fcall(eventualAdd, 2, 2);\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 513,
       "code": "var deferred = Q.defer();\nFS.readFile(\"foo.txt\", \"utf-8\", function (error, text) {\n    if (error) {\n        deferred.reject(new Error(error));\n    } else {\n        deferred.resolve(text);\n    }\n});\nreturn deferred.promise;",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-29.mjs:14\r\nreturn deferred.promise;\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-29.mjs:14\r\nreturn deferred.promise;\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 529,
       "code": "// this:\ndeferred.reject(new Error(\"Can't do it\"));\n\n// is shorthand for:\nvar rejection = Q.fcall(function () {\n    throw new Error(\"Can't do it\");\n});\ndeferred.resolve(rejection);",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-30.mjs:7\r\ndeferred.reject(new Error(\"Can't do it\"));\r\n^\r\n\r\nReferenceError: deferred is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-30.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 135,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-30.mjs:7\r\ndeferred.reject(new Error(\"Can't do it\"));\r\n^\r\n\r\nReferenceError: deferred is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-30.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 542,
       "code": "function delay(ms) {\n    var deferred = Q.defer();\n    setTimeout(deferred.resolve, ms);\n    return deferred.promise;\n}",
       "status": "pass",
-      "ms": 57,
+      "ms": 144,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 552,
       "code": "function timeout(promise, ms) {\n    var deferred = Q.defer();\n    Q.when(promise, deferred.resolve);\n    delay(ms).then(function () {\n        deferred.reject(new Error(\"Timed out\"));\n    });\n    return deferred.promise;\n}",
       "status": "pass",
-      "ms": 60,
+      "ms": 122,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 571,
       "code": "function requestOkText(url) {\n    var request = new XMLHttpRequest();\n    var deferred = Q.defer();\n\n    request.open(\"GET\", url, true);\n    request.onload = onload;\n    request.onerror = onerror;\n    request.onprogress = onprogress;\n    request.send();\n\n    function onload() {\n        if (request.status === 200) {\n            deferred.resolve(request.responseText);\n        } else {\n            deferred.reject(new Error(\"Status code was \" + request.status));\n        }\n    }\n\n    function onerror() {\n        deferred.reject(new Error(\"Can't XHR \" + JSON.stringify(url)));\n    }\n\n    function onprogress(event) {\n        deferred.notify(event.loaded / event.total);\n    }\n\n    return deferred.promise;\n}",
       "status": "pass",
-      "ms": 57,
+      "ms": 103,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 604,
       "code": "requestOkText(\"http://localhost:3000\")\n.then(function (responseText) {\n    // If the HTTP response returns 200 OK, log the response text.\n    console.log(responseText);\n}, function (error) {\n    // If there's an error or a non-200 status code, log the error.\n    console.error(error);\n}, function (progress) {\n    // Log the progress as it comes in.\n    console.log(\"Request progress: \" + Math.round(progress * 100) + \"%\");\n});",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-34.mjs:6\r\nrequestOkText(\"http://localhost:3000\")\r\n^\r\n\r\nReferenceError: requestOkText is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-34.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 110,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-34.mjs:6\r\nrequestOkText(\"http://localhost:3000\")\r\n^\r\n\r\nReferenceError: requestOkText is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-34.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 625,
       "code": "function requestOkText(url) {\n    return Q.Promise(function(resolve, reject, notify) {\n        var request = new XMLHttpRequest();\n\n        request.open(\"GET\", url, true);\n        request.onload = onload;\n        request.onerror = onerror;\n        request.onprogress = onprogress;\n        request.send();\n\n        function onload() {\n            if (request.status === 200) {\n                resolve(request.responseText);\n            } else {\n                reject(new Error(\"Status code was \" + request.status));\n            }\n        }\n\n        function onerror() {\n            reject(new Error(\"Can't XHR \" + JSON.stringify(url)));\n        }\n\n        function onprogress(event) {\n            notify(event.loaded / event.total);\n        }\n    });\n}",
       "status": "pass",
-      "ms": 57,
+      "ms": 111,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 666,
       "code": "return Q.when(valueOrPromise, function (value) {\n}, function (error) {\n});",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-36.mjs:6\r\nreturn Q.when(valueOrPromise, function (value) {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 135,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-36.mjs:6\r\nreturn Q.when(valueOrPromise, function (value) {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 677,
       "code": "return Q.all([a, b]);",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-37.mjs:6\r\nreturn Q.all([a, b]);\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-37.mjs:6\r\nreturn Q.all([a, b]);\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 681,
       "code": "return Q.fcall(function () {\n    return [a, b];\n})\n.all();",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-38.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-38.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 694,
       "code": "return Q($.ajax(...))\n.then(function () {\n});",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-39.mjs:6\r\nreturn Q($.ajax(...))\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 102,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-39.mjs:6\r\nreturn Q($.ajax(...))\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 704,
       "code": "return Q.invoke($, 'ajax', ...)\n.then(function () {\n});",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-40.mjs:6\r\nreturn Q.invoke($, 'ajax', ...)\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-40.mjs:6\r\nreturn Q.invoke($, 'ajax', ...)\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 740,
       "code": "return Q.fcall(function () {\n    return [{ foo: \"bar\" }, { foo: \"baz\" }];\n})\n.then(function (value) {\n    return value[0].foo;\n});",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-41.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 111,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-41.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 751,
       "code": "return Q.fcall(function () {\n    return [{ foo: \"bar\" }, { foo: \"baz\" }];\n})\n.get(0)\n.get(\"foo\");",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-42.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 111,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-42.mjs:6\r\nreturn Q.fcall(function () {\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 768,
       "code": "return Q.nfcall(FS.readFile, \"foo.txt\", \"utf-8\");\nreturn Q.nfapply(FS.readFile, [\"foo.txt\", \"utf-8\"]);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-43.mjs:6\r\nreturn Q.nfcall(FS.readFile, \"foo.txt\", \"utf-8\");\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-43.mjs:6\r\nreturn Q.nfcall(FS.readFile, \"foo.txt\", \"utf-8\");\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 778,
       "code": "return Q.ninvoke(redisClient, \"get\", \"user:1:id\");\nreturn Q.npost(redisClient, \"get\", [\"user:1:id\"]);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-44.mjs:6\r\nreturn Q.ninvoke(redisClient, \"get\", \"user:1:id\");\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 102,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-44.mjs:6\r\nreturn Q.ninvoke(redisClient, \"get\", \"user:1:id\");\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 785,
       "code": "var readFile = Q.denodeify(FS.readFile);\nreturn readFile(\"foo.txt\", \"utf-8\");\n\nvar redisClientGet = Q.nbind(redisClient.get, redisClient);\nreturn redisClientGet(\"user:1:id\");",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-45.mjs:7\r\nreturn readFile(\"foo.txt\", \"utf-8\");\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-45.mjs:7\r\nreturn readFile(\"foo.txt\", \"utf-8\");\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 796,
       "code": "var deferred = Q.defer();\nFS.readFile(\"foo.txt\", \"utf-8\", deferred.makeNodeResolver());\nreturn deferred.promise;",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-46.mjs:8\r\nreturn deferred.promise;\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-46.mjs:8\r\nreturn deferred.promise;\r\n^^^^^^\r\n\r\nSyntaxError: Illegal return statement\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 808,
       "code": "function theDepthsOfMyProgram() {\n  Q.delay(100).done(function explode() {\n    throw new Error(\"boo!\");\n  });\n}\n\ntheDepthsOfMyProgram();",
       "status": "fail",
-      "ms": 61,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-47.mjs:7\r\n  Q.delay(100).done(function explode() {\r\n  ^\r\n\r\nReferenceError: Q is not defined\r\n    at theDepthsOfMyProgram (file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-47.mjs:7:3)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-47.mjs:12:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-47.mjs:7\r\n  Q.delay(100).done(function explode() {\r\n  ^\r\n\r\nReferenceError: Q is not defined\r\n    at theDepthsOfMyProgram (file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-47.mjs:7:3)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-47.mjs:12:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 832,
       "code": "Q.longStackSupport = true;",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-48.mjs:6\r\nQ.longStackSupport = true;\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BAtpvh/snippet-48.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-48.mjs:6\r\nQ.longStackSupport = true;\r\n^\r\n\r\nReferenceError: Q is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-JhpOeX/snippet-48.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

@@ -8,244 +8,293 @@
     "fail": 21,
     "timeout": 0,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 16,
       "Missing dependency/module": 1,
       "Not runnable as-is (fragment/TypeScript)": 4
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 60,
       "code": "var rp = require('request-promise');",
       "status": "pass",
-      "ms": 2394,
+      "ms": 3867,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 68,
       "code": "rp('http://www.google.com')\n    .then(function (htmlString) {\n        // Process html...\n    })\n    .catch(function (err) {\n        // Crawling failed...\n    });",
       "status": "fail",
-      "ms": 234,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-1.mjs:6\r\nrp('http://www.google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-1.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 490,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-1.mjs:6\r\nrp('http://www.google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-1.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 80,
       "code": "var cheerio = require('cheerio'); // Basically jQuery for node.js\n\nvar options = {\n    uri: 'http://www.google.com',\n    transform: function (body) {\n        return cheerio.load(body);\n    }\n};\n\nrp(options)\n    .then(function ($) {\n        // Process html like you would with jQuery...\n    })\n    .catch(function (err) {\n        // Crawling failed or Cheerio choked...\n    });",
       "status": "fail",
-      "ms": 233,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'cheerio'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-MHSwR6\\snippet-2.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-2.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-MHSwR6\\\\snippet-2.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 427,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'cheerio'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-g86aBW\\snippet-2.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-2.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-g86aBW\\\\snippet-2.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 101,
       "code": "var options = {\n    uri: 'https://api.github.com/user/repos',\n    qs: {\n        access_token: 'xxxxx xxxxx' // -> uri + '?access_token=xxxxx%20xxxxx'\n    },\n    headers: {\n        'User-Agent': 'Request-Promise'\n    },\n    json: true // Automatically parses the JSON string in the response\n};\n\nrp(options)\n    .then(function (repos) {\n        console.log('User has %d repos', repos.length);\n    })\n    .catch(function (err) {\n        // API call failed...\n    });",
       "status": "fail",
-      "ms": 228,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-3.mjs:17\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-3.mjs:17:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 423,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-3.mjs:17\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-3.mjs:17:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 126,
       "code": "var options = {\n    method: 'POST',\n    uri: 'http://api.posttestserver.com/post',\n    body: {\n        some: 'payload'\n    },\n    json: true // Automatically stringifies the body to JSON\n};\n\nrp(options)\n    .then(function (parsedBody) {\n        // POST succeeded...\n    })\n    .catch(function (err) {\n        // POST failed...\n    });",
       "status": "fail",
-      "ms": 227,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-4.mjs:15\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-4.mjs:15:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 417,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-4.mjs:15\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-4.mjs:15:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 149,
       "code": "var options = {\n    method: 'POST',\n    uri: 'http://posttestserver.com/post.php',\n    form: {\n        // Like <input type=\"text\" name=\"name\">\n        name: 'Josh'\n    },\n    headers: {\n        /* 'content-type': 'application/x-www-form-urlencoded' */ // Is set automatically\n    }\n};\n\nrp(options)\n    .then(function (body) {\n        // POST succeeded...\n    })\n    .catch(function (err) {\n        // POST failed...\n    });",
       "status": "fail",
-      "ms": 231,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-5.mjs:18\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-5.mjs:18:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 443,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-5.mjs:18\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-5.mjs:18:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 173,
       "code": "var options = {\n    method: 'POST',\n    uri: 'http://posttestserver.com/post.php',\n    formData: {\n        // Like <input type=\"text\" name=\"name\">\n        name: 'Jenn',\n        // Like <input type=\"file\" name=\"file\">\n        file: {\n            value: fs.createReadStream('test/test.jpg'),\n            options: {\n                filename: 'test.jpg',\n                contentType: 'image/jpg'\n            }\n        }\n    },\n    headers: {\n        /* 'content-type': 'multipart/form-data' */ // Is set automatically\n    }\n};\n\nrp(options)\n    .then(function (body) {\n        // POST succeeded...\n    })\n    .catch(function (err) {\n        // POST failed...\n    });",
       "status": "fail",
-      "ms": 226,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-6.mjs:14\r\n            value: fs.createReadStream('test/test.jpg'),\r\n                   ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-6.mjs:14:20\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 455,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-6.mjs:14\r\n            value: fs.createReadStream('test/test.jpg'),\r\n                   ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-6.mjs:14:20\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 205,
       "code": "var tough = require('tough-cookie');\n\n// Easy creation of the cookie - see tough-cookie docs for details\nlet cookie = new tough.Cookie({\n    key: \"some_key\",\n    value: \"some_value\",\n    domain: 'api.mydomain.com',\n    httpOnly: true,\n    maxAge: 31536000\n});\n\n// Put cookie in an jar which can be used across multiple requests\nvar cookiejar = rp.jar();\ncookiejar.setCookie(cookie, 'https://api.mydomain.com');\n// ...all requests to https://api.mydomain.com will include the cookie\n\nvar options = {\n    uri: 'https://api.mydomain.com/...',\n    jar: cookiejar // Tells rp to include cookies in jar that match uri\n};\n\nrp(options)\n    .then(function (body) {\n        // Request succeeded...\n    })\n    .catch(function (err) {\n        // Request failed...\n    });",
       "status": "fail",
-      "ms": 229,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-7.mjs:18\r\nvar cookiejar = rp.jar();\r\n                ^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-7.mjs:18:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 409,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-7.mjs:18\r\nvar cookiejar = rp.jar();\r\n                ^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-7.mjs:18:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 238,
       "code": "var options = {\n    method: 'DELETE',\n    uri: 'http://my-server/path/to/resource/1234',\n    resolveWithFullResponse: true    //  <---  <---  <---  <---\n};\n\nrp(options)\n    .then(function (response) {\n        console.log(\"DELETE succeeded with status %d\", response.statusCode);\n    })\n    .catch(function (err) {\n        // Delete failed...\n    });",
       "status": "fail",
-      "ms": 228,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-8.mjs:12\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-8.mjs:12:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 396,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-8.mjs:12\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-8.mjs:12:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 256,
       "code": "var options = {\n    uri: 'http://www.google.com/this-page-does-not-exist.html',\n    simple: false    //  <---  <---  <---  <---\n};\n\nrp(options)\n    .then(function (body) {\n        // Request succeeded but might as well be a 404\n        // Usually combined with resolveWithFullResponse = true to check response.statusCode\n    })\n    .catch(function (err) {\n        // Request failed due to technical reasons...\n    });",
       "status": "fail",
-      "ms": 229,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-9.mjs:11\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-9.mjs:11:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 413,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-9.mjs:11\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-9.mjs:11:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 304,
       "code": "// As a Request user you would write:\nvar request = require('request');\n\nrequest('http://google.com', function (err, response, body) {\n    if (err) {\n        handleError({ error: err, response: response, ... });\n    } else if (!(/^2/.test('' + response.statusCode))) { // Status Codes other than 2xx\n        handleError({ error: body, response: response, ... });\n    } else {\n        process(body);\n    }\n});\n\n// As a Request-Promise user you can now write the equivalent code:\nvar rp = require('request-promise');\n\nrp('http://google.com')\n    .then(process, handleError);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-10.mjs:11\r\n        handleError({ error: err, response: response, ... });\r\n                                                          ^\r\n\r\nSyntaxError: Unexpected token '}'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-10.mjs:11\r\n        handleError({ error: err, response: response, ... });\r\n                                                          ^\r\n\r\nSyntaxError: Unexpected token '}'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 325,
       "code": "// The same is available for all http method shortcuts:\nrequest.post('http://example.com/api', function (err, response, body) { ... });\nrp.post('http://example.com/api').then(...);",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-11.mjs:7\r\nrequest.post('http://example.com/api', function (err, response, body) { ... });\r\n                                                                        ^^^\r\n\r\nSyntaxError: Unexpected token '...'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-11.mjs:7\r\nrequest.post('http://example.com/api', function (err, response, body) { ... });\r\n                                                                        ^^^\r\n\r\nSyntaxError: Unexpected token '...'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 333,
       "code": "rp('http://google.com')\n    .catch(handleError);\n\n// ... is syntactical sugar for:\n\nrp('http://google.com')\n    .then(null, handleError);\n\n\n// However, this:\nrp('http://google.com')\n    .then(process)\n    .catch(handleError);\n\n// ... is safer than:\nrp('http://google.com')\n    .then(process, handleError);",
       "status": "fail",
-      "ms": 229,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-12.mjs:6\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-12.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 442,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-12.mjs:6\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-12.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 357,
       "code": "rp('http://google.com')\n    .finally(function () {\n\t    // This is called after the request finishes either successful or not successful.\n\t});",
       "status": "fail",
-      "ms": 229,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-13.mjs:6\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-13.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 469,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-13.mjs:6\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-13.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 377,
       "code": "// This works:\nrp('http://google.com').then(function () { ... });\nrp('http://google.com').catch(function () { ... });\n\n// This works as well since additional methods are only used AFTER the FIRST call in the chain:\nrp('http://google.com').then(function () { ... }).spread(function () { ... });\nrp('http://google.com').catch(function () { ... }).error(function () { ... });\n\n// Using additional methods as the FIRST call in the chain does not work:\n// rp('http://google.com').bind(this).then(function () { ... });\n\n// Use .promise() in these cases:\nrp('http://google.com').promise().bind(this).then(function () { ... });",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-14.mjs:7\r\nrp('http://google.com').then(function () { ... });\r\n                                           ^^^\r\n\r\nSyntaxError: Unexpected token '...'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 79,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-14.mjs:7\r\nrp('http://google.com').then(function () { ... });\r\n                                           ^^^\r\n\r\nSyntaxError: Unexpected token '...'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 395,
       "code": "// Per default the body is passed to the fulfillment handler:\nrp('http://google.com')\n    .then(function (body) {\n        // Process the html of the Google web page...\n    });\n\n// The resolveWithFullResponse options allows to pass the full response:\nrp({ uri: 'http://google.com', resolveWithFullResponse: true })\n    .then(function (response) {\n        // Access response.statusCode, response.body etc.\n    });\n",
       "status": "fail",
-      "ms": 228,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-15.mjs:7\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-15.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 320,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-15.mjs:7\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-15.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 412,
       "code": "// The rejection handler is called with a reason object...\nrp('http://google.com')\n    .catch(function (reason) {\n        // Handle failed request...\n\t});\n\n// ... and would be equivalent to this Request-only implementation:\nvar options = { uri: 'http://google.com' };\n\nrequest(options, function (err, response, body) {\n    var reason;\n    if (err) {\n        reason = {\n            cause: err,\n            error: err,\n            options: options,\n            response: response\n        };\n\t} else if (!(/^2/.test('' + response.statusCode))) { // Status Codes other than 2xx\n        reason = {\n            statusCode: response.statusCode,\n            error: body,\n            options: options,\n            response: response\n        };\n    }\n\n    if (reason) {\n        // Handle failed request...\n    }\n});\n\n\n// If you pass the simple option as false...\nrp({ uri: 'http://google.com', simple: false })\n    .catch(function (reason) {\n        // Handle failed request...\n\t});\n\n// ... the equivalent Request-only code would be:\nrequest(options, function (err, response, body) {\n    if (err) {\n        var reason = {\n            cause: err,\n            error: err,\n            options: options,\n            response: response\n        };\n        // Handle failed request...\n\t}\n});\n// E.g. a 404 would now fulfill the promise.\n// Combine it with resolveWithFullResponse = true to check the status code in the fulfillment handler.",
       "status": "fail",
-      "ms": 226,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-16.mjs:7\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-16.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 306,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-16.mjs:7\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-16.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 470,
       "code": "var errors = require('request-promise/errors');\n\nrp('http://google.com')\n\t.catch(errors.StatusCodeError, function (reason) {\n        // The server responded with a status codes other than 2xx.\n        // Check reason.statusCode\n\t})\n    .catch(errors.RequestError, function (reason) {\n        // The request failed due to technical reasons.\n        // reason.cause is the Error object Request would pass into a callback.\n\t});",
       "status": "fail",
-      "ms": 244,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-17.mjs:8\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-17.mjs:8:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 421,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-17.mjs:8\r\nrp('http://google.com')\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-17.mjs:8:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 488,
       "code": "// Just for fun you could reverse the response body:\nvar options = {\n\turi: 'http://google.com',\n    transform: function (body, response, resolveWithFullResponse) {\n        return body.split('').reverse().join('');\n    }\n};\n\nrp(options)\n    .then(function (reversedBody) {\n        // ;D\n    });\n\n\n// However, you could also do something useful:\nvar $ = require('cheerio'); // Basically jQuery for node.js\n\nfunction autoParse(body, response, resolveWithFullResponse) {\n    // FIXME: The content type string could contain additional values like the charset.\n    // Consider using the `content-type` library for a robust comparison.\n    if (response.headers['content-type'] === 'application/json') {\n        return JSON.parse(body);\n    } else if (response.headers['content-type'] === 'text/html') {\n        return $.load(body);\n    } else {\n        return body;\n    }\n}\n\noptions.transform = autoParse;\n\nrp(options)\n    .then(function (autoParsedBody) {\n        // :)\n    });\n\n\n// You can go one step further and set the transform as the default:\nvar rpap = rp.defaults({ transform: autoParse });\n\nrpap('http://google.com')\n    .then(function (autoParsedBody) {\n        // :)\n    });\n\nrpap('http://echojs.com')\n    .then(function (autoParsedBody) {\n        // =)\n    });",
       "status": "fail",
-      "ms": 225,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-18.mjs:14\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-18.mjs:14:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 325,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-18.mjs:14\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-18.mjs:14:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 542,
       "code": "function reverseBody(body, response, resolveWithFullResponse) {\n    response.body = response.body.split('').reverse().join('');\n    return resolveWithFullResponse ? response : response.body;\n}",
       "status": "pass",
-      "ms": 233,
+      "ms": 326,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 551,
       "code": "var options = {\n\turi: 'http://the-server.com/will-return/404',\n\tsimple: true,\n    transform: function (body, response, resolveWithFullResponse) { /* ... */ }\n};\n\nrp(options)\n    .catch(errors.StatusCodeError, function (reason) {\n        // reason.response is the transformed response\n    });",
       "status": "fail",
-      "ms": 228,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-20.mjs:12\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-20.mjs:12:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 331,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-20.mjs:12\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-20.mjs:12:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 570,
       "code": "var errors = require('request-promise/errors');\n\nvar options = {\n\turi: 'http://google.com',\n    transform: function (body, response, resolveWithFullResponse) {\n        throw new Error('Transform failed!');\n    }\n};\n\nrp(options)\n    .catch(errors.TransformError, function (reason) {\n        console.log(reason.cause.message); // => Transform failed!\n        // reason.response is the original response for which the transform operation failed\n    });",
       "status": "fail",
-      "ms": 229,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-21.mjs:15\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-21.mjs:15:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 326,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-21.mjs:15\r\nrp(options)\r\n^\r\n\r\nReferenceError: rp is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-21.mjs:15:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 604,
       "code": "before(function (done) {\n\n    var filename = \"fileForResponse\";\n    mockery.enable({\n        warnOnReplace: false,\n        warnOnUnregistered: false,\n        useCleanCache: true\n    });\n\n    mockery.registerMock('request-promise', function () {\n        var response = fs.readFileSync(__dirname + '/data/' + filename, 'utf8');\n        return Bluebird.resolve(response.trim());\n    });\n\n    done();\n});\n\nafter(function (done) {\n    mockery.disable();\n    mockery.deregisterAll();\n    done();\n});\n\ndescribe('custom test case', function () {\n    //  Test some function/module/... which uses request-promise\n    //  and it will always receive the predefined \"fileForResponse\" as data, e.g.:\n    var rp = require('request-promise');\n    rp(...).then(function(data) {\n        // ➞ data is what is in fileForResponse\n    });\n});",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-MHSwR6/snippet-22.mjs:33\r\n    rp(...).then(function(data) {\r\n          ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 74,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-g86aBW/snippet-22.mjs:33\r\n    rp(...).then(function(data) {\r\n          ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

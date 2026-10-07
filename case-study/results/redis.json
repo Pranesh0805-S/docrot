@@ -8,32 +8,39 @@
     "fail": 0,
     "timeout": 2,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Long-running (inconclusive)": 2
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 181,
       "code": "const client = await createClient()\n  .on(\"error\", (err) => console.error(err))\n  .connect();\n\nawait client.ping(client.commandOptions({ isolated: true }));",
       "status": "timeout",
-      "ms": 10020,
+      "ms": 10023,
       "stderr": "AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1142:49)\n    at afterConnectMultiple (node:net:1723:7) {\n  code: 'ECONNREFUSED',\n  [errors]: [\n    Error: connect ECONNREFUSED ::1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '::1',\n      port: 6379\n    },\n    Error: connect ECONNREFUSED 127.0.0.1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '127.0.0.1',\n      port: 6379\n    }\n  ]\n}\nAggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1142:49)\n    at afterConnectMultiple (node:net:1723:7) {\n  code: 'ECONNREFUSED',\n  [errors]: [\n    Error: connect ECONNREFUSED ::1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '::1',\n      port: 6379\n    },\n    Error: connect ECONNREFUSED 127.0.0.1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '127.0.0.1',\n      port: 6379\n    }\n  ]\n}\nAggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1142:49)\n    at afterConnectMultiple (node:net:1723:7) {\n  code: 'ECONNREFUSED',\n  [errors]: [\n    Error: connect ECONNREFUSED ::1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '::1',\n      port: 6379\n    },\n    Error: connect ECONNREFUSED 127.0.0.1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (",
       "category": "Long-running (inconclusive)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 191,
       "code": "const pool = await createClientPool()\n  .on(\"error\", (err) => console.error(err))\n  .connect();\n\nawait pool.ping();",
       "status": "timeout",
-      "ms": 10016,
+      "ms": 10041,
       "stderr": "AggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1142:49)\n    at afterConnectMultiple (node:net:1723:7) {\n  code: 'ECONNREFUSED',\n  [errors]: [\n    Error: connect ECONNREFUSED ::1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '::1',\n      port: 6379\n    },\n    Error: connect ECONNREFUSED 127.0.0.1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '127.0.0.1',\n      port: 6379\n    }\n  ]\n}\nAggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1142:49)\n    at afterConnectMultiple (node:net:1723:7) {\n  code: 'ECONNREFUSED',\n  [errors]: [\n    Error: connect ECONNREFUSED ::1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '::1',\n      port: 6379\n    },\n    Error: connect ECONNREFUSED 127.0.0.1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '127.0.0.1',\n      port: 6379\n    }\n  ]\n}\nAggregateError [ECONNREFUSED]: \n    at internalConnectMultiple (node:net:1142:49)\n    at afterConnectMultiple (node:net:1723:7) {\n  code: 'ECONNREFUSED',\n  [errors]: [\n    Error: connect ECONNREFUSED ::1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (node:net:1716:16) {\n      errno: -4078,\n      code: 'ECONNREFUSED',\n      syscall: 'connect',\n      address: '::1',\n      port: 6379\n    },\n    Error: connect ECONNREFUSED 127.0.0.1:6379\n        at createConnectionError (node:net:1686:14)\n        at afterConnectMultiple (",
       "category": "Long-running (inconclusive)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

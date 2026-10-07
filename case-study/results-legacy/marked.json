@@ -8,6 +8,9 @@
     "fail": 0,
     "timeout": 0,
     "apiChecked": 1,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {},
     "rotRate": 0
@@ -17,11 +20,13 @@
       "line": 79,
       "code": "import { marked } from 'marked';\nconst html = marked.parse('# Marked in Node.js');\nconsole.log(html);",
       "status": "pass",
-      "ms": 67,
+      "ms": 127,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

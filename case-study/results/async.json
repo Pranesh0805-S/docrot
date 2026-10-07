@@ -8,6 +8,9 @@
     "fail": 2,
     "timeout": 0,
     "apiChecked": 2,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 2
@@ -19,21 +22,25 @@
       "line": 23,
       "code": "// for use with Node-style callbacks...\nvar async = require(\"async\");\n\nvar obj = {dev: \"/dev.json\", test: \"/test.json\", prod: \"/prod.json\"};\nvar configs = {};\n\nasync.forEachOf(obj, (value, key, callback) => {\n    fs.readFile(__dirname + value, \"utf8\", (err, data) => {\n        if (err) return callback(err);\n        try {\n            configs[key] = JSON.parse(data);\n        } catch (e) {\n            return callback(e);\n        }\n        callback();\n    });\n}, err => {\n    if (err) console.error(err.message);\n    // configs is now a map of JSON data\n    doSomethingWith(configs);\n});",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-OlFpXA/snippet-0.mjs:13\r\n    fs.readFile(__dirname + value, \"utf8\", (err, data) => {\r\n    ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-OlFpXA/snippet-0.mjs:13:5\r\n    at replenish (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OlFpXA\\node_modules\\async\\dist\\async.js:447:21)\r\n    at C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OlFpXA\\node_modules\\async\\dist\\async.js:452:13\r\n    at eachOfLimit (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OlFpXA\\node_modules\\async\\dist\\async.js:478:36)\r\n    at awaitable (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OlFpXA\\node_modules\\async\\dist\\async.js:212:32)\r\n    at eachOfGeneric (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OlFpXA\\node_modules\\async\\dist\\async.js:513:16)\r\n    at Object.eachOf (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OlFpXA\\node_modules\\async\\dist\\async.js:627:16)\r\n    at Object.awaitable (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-OlFpXA\\node_modules\\async\\dist\\async.js:212:32)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-OlFpXA/snippet-0.mjs:12:7\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 111,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BivZ8Q/snippet-0.mjs:13\r\n    fs.readFile(__dirname + value, \"utf8\", (err, data) => {\r\n    ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BivZ8Q/snippet-0.mjs:13:5\r\n    at replenish (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-BivZ8Q\\node_modules\\async\\dist\\async.js:447:21)\r\n    at C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-BivZ8Q\\node_modules\\async\\dist\\async.js:452:13\r\n    at eachOfLimit (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-BivZ8Q\\node_modules\\async\\dist\\async.js:478:36)\r\n    at awaitable (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-BivZ8Q\\node_modules\\async\\dist\\async.js:212:32)\r\n    at eachOfGeneric (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-BivZ8Q\\node_modules\\async\\dist\\async.js:513:16)\r\n    at Object.eachOf (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-BivZ8Q\\node_modules\\async\\dist\\async.js:627:16)\r\n    at Object.awaitable (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-BivZ8Q\\node_modules\\async\\dist\\async.js:212:32)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BivZ8Q/snippet-0.mjs:12:7\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 47,
       "code": "var async = require(\"async\");\n\n// ...or ES2017 async functions\nasync.mapLimit(urls, 5, async function(url) {\n    const response = await fetch(url)\n    return response.body\n}, (err, results) => {\n    if (err) throw err\n    // results is now an array of the response bodies\n    console.log(results)\n})",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-OlFpXA/snippet-1.mjs:9\r\nasync.mapLimit(urls, 5, async function(url) {\r\n               ^\r\n\r\nReferenceError: urls is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-OlFpXA/snippet-1.mjs:9:16\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 110,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BivZ8Q/snippet-1.mjs:9\r\nasync.mapLimit(urls, 5, async function(url) {\r\n               ^\r\n\r\nReferenceError: urls is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-BivZ8Q/snippet-1.mjs:9:16\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

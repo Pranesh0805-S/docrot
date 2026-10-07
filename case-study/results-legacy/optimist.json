@@ -8,162 +8,195 @@
     "fail": 10,
     "timeout": 0,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Not runnable as-is (fragment/TypeScript)": 10
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 33,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist').argv;\n\nif (argv.rif - 5 * argv.xup > 7.138) {\n    console.log('Buy more riffiwobbles');\n}\nelse {\n    console.log('Sell the xupptumblers');\n}",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-0.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-0.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 60,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist').argv;\nconsole.log('(%d,%d)', argv.x, argv.y);",
       "status": "fail",
-      "ms": 53,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-1.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-1.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 76,
       "code": "#!/usr/bin/env node\nvar util = require('util');\nvar argv = require('optimist').argv;\n\nif (argv.s) {\n    util.print(argv.fr ? 'Le chat dit: ' : 'The cat says: ');\n}\nconsole.log(\n    (argv.fr ? 'miaou' : 'meow') + (argv.p ? '.' : '')\n);",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-2.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-2.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 105,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist').argv;\nconsole.log('(%d,%d)', argv.x, argv.y);\nconsole.log(argv._);",
       "status": "fail",
-      "ms": 52,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-3.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-3.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 127,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist')\n    .usage('Usage: $0 -x [num] -y [num]')\n    .demand(['x','y'])\n    .argv;\n\nconsole.log(argv.x / argv.y);",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-4.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-4.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 156,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist')\n    .default('x', 10)\n    .default('y', 10)\n    .argv\n;\nconsole.log(argv.x + argv.y);",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-5.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-5.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 173,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist')\n    .default({ x : 10, y : 10 })\n    .argv\n;\nconsole.log(argv.x + argv.y);",
       "status": "fail",
-      "ms": 53,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-6.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-6.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 192,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist')\n    .boolean('v')\n    .argv\n;\nconsole.dir(argv);",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-7.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-7.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 209,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist')\n    .boolean(['x','y','z'])\n    .argv\n;\nconsole.dir([ argv.x, argv.y, argv.z ]);\nconsole.dir(argv._);",
       "status": "fail",
-      "ms": 52,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-8.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-8.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 233,
       "code": "#!/usr/bin/env node\nvar argv = require('optimist')\n    .usage('Count the lines in a file.\\nUsage: $0')\n    .demand('f')\n    .alias('f', 'file')\n    .describe('f', 'Load a file')\n    .argv\n;\n\nvar fs = require('fs');\nvar s = fs.createReadStream(argv.file);\n\nvar lines = 0;\ns.on('data', function (buf) {\n    lines += buf.toString().match(/\\n/g).length;\n});\n\ns.on('end', function () {\n    console.log(lines);\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-JB09JM/snippet-9.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-RjCOzp/snippet-9.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 278,
       "code": "require('optimist').argv",
       "status": "pass",
-      "ms": 125,
+      "ms": 177,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 286,
       "code": "require('optimist')([ '-x', '1', '-y', '2' ]).argv",
       "status": "pass",
-      "ms": 58,
+      "ms": 107,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 292,
       "code": "require('optimist').parse([ '-x', '1', '-y', '2' ])",
       "status": "pass",
-      "ms": 59,
+      "ms": 106,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 339,
       "code": "var argv = require('optimist')\n    .options('f', {\n        alias : 'file',\n        default : '/etc/passwd',\n    })\n    .argv\n;",
       "status": "pass",
-      "ms": 58,
+      "ms": 96,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 351,
       "code": "var argv = require('optimist')\n    .alias('f', 'file')\n    .default('f', '/etc/passwd')\n    .argv\n;",
       "status": "pass",
-      "ms": 60,
+      "ms": 96,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

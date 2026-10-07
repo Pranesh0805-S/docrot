@@ -8,6 +8,9 @@
     "fail": 6,
     "timeout": 0,
     "apiChecked": 2,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Missing dependency/module": 6
@@ -19,141 +22,169 @@
       "line": 28,
       "code": "import morgan from 'morgan'",
       "status": "pass",
-      "ms": 69,
+      "ms": 123,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 36,
       "code": "var morgan = require('morgan')",
       "status": "pass",
-      "ms": 66,
+      "ms": 123,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 55,
       "code": "morgan('tiny')",
       "status": "pass",
-      "ms": 69,
+      "ms": 121,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 63,
       "code": "morgan(':method :url :status :res[content-length] - :response-time ms')",
       "status": "pass",
-      "ms": 67,
+      "ms": 124,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 71,
       "code": "morgan(function (tokens, req, res) {\n  return [\n    tokens.method(req, res),\n    tokens.url(req, res),\n    tokens.status(req, res),\n    tokens.res(req, res, 'content-length'), '-',\n    tokens['response-time'](req, res), 'ms'\n  ].join(' ')\n})",
       "status": "pass",
-      "ms": 66,
+      "ms": 122,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 100,
       "code": "// EXAMPLE: only log error responses\nmorgan('combined', {\n  skip: function (req, res) { return res.statusCode < 400 }\n})",
       "status": "pass",
-      "ms": 66,
+      "ms": 120,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 118,
       "code": "morgan(function (tokens, req, res) {\n  return {\n    method: tokens.method(req, res),\n    url: tokens.url(req, res),\n    status: Number(tokens.status(req, res))\n  }\n}, {\n  stream: {\n    writableObjectMode: true,\n    write: function (entry) {\n      // entry is the object returned by the format function\n    }\n  }\n})",
       "status": "pass",
-      "ms": 67,
+      "ms": 126,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 206,
       "code": "morgan.token('type', function (req, res) { return req.headers['content-type'] })",
       "status": "pass",
-      "ms": 67,
+      "ms": 124,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 315,
       "code": "var express = require('express')\nvar morgan = require('morgan')\n\nvar app = express()\n\napp.use(morgan('combined'))\n\napp.get('/', function (req, res) {\n  res.send('hello, world!')\n})",
       "status": "fail",
-      "ms": 67,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-gwZXzJ\\snippet-8.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-gwZXzJ/snippet-8.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-gwZXzJ\\\\snippet-8.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 119,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-4Wqj9z\\snippet-8.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-4Wqj9z/snippet-8.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-4Wqj9z\\\\snippet-8.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 332,
       "code": "var finalhandler = require('finalhandler')\nvar http = require('http')\nvar morgan = require('morgan')\n\n// create \"middleware\"\nvar logger = morgan('combined')\n\nhttp.createServer(function (req, res) {\n  var done = finalhandler(req, res)\n  logger(req, res, function (err) {\n    if (err) return done(err)\n\n    // respond to request\n    res.setHeader('content-type', 'text/plain')\n    res.end('hello, world!')\n  })\n})",
       "status": "fail",
-      "ms": 70,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'finalhandler'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-gwZXzJ\\snippet-9.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-gwZXzJ/snippet-9.mjs:6:20\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-gwZXzJ\\\\snippet-9.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 115,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'finalhandler'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-4Wqj9z\\snippet-9.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-4Wqj9z/snippet-9.mjs:6:20\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-4Wqj9z\\\\snippet-9.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 359,
       "code": "var express = require('express')\nvar fs = require('fs')\nvar morgan = require('morgan')\nvar path = require('path')\n\nvar app = express()\n\n// create a write stream (in append mode)\nvar accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })\n\n// setup the logger\napp.use(morgan('combined', { stream: accessLogStream }))\n\napp.get('/', function (req, res) {\n  res.send('hello, world!')\n})",
       "status": "fail",
-      "ms": 68,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-gwZXzJ\\snippet-10.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-gwZXzJ/snippet-10.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-gwZXzJ\\\\snippet-10.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 125,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-4Wqj9z\\snippet-10.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-4Wqj9z/snippet-10.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-4Wqj9z\\\\snippet-10.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 384,
       "code": "var express = require('express')\nvar morgan = require('morgan')\nvar path = require('path')\nvar rfs = require('rotating-file-stream') // version 2.x\n\nvar app = express()\n\n// create a rotating write stream\nvar accessLogStream = rfs.createStream('access.log', {\n  interval: '1d', // rotate daily\n  path: path.join(__dirname, 'log')\n})\n\n// setup the logger\napp.use(morgan('combined', { stream: accessLogStream }))\n\napp.get('/', function (req, res) {\n  res.send('hello, world!')\n})",
       "status": "fail",
-      "ms": 67,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-gwZXzJ\\snippet-11.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-gwZXzJ/snippet-11.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-gwZXzJ\\\\snippet-11.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 119,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-4Wqj9z\\snippet-11.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-4Wqj9z/snippet-11.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-4Wqj9z\\\\snippet-11.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 418,
       "code": "var express = require('express')\nvar fs = require('fs')\nvar morgan = require('morgan')\nvar path = require('path')\n\nvar app = express()\n\n// log only 4xx and 5xx responses to console\napp.use(morgan('dev', {\n  skip: function (req, res) { return res.statusCode < 400 }\n}))\n\n// log all requests to access.log\napp.use(morgan('common', {\n  stream: fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })\n}))\n\napp.get('/', function (req, res) {\n  res.send('hello, world!')\n})",
       "status": "fail",
-      "ms": 68,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-gwZXzJ\\snippet-12.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-gwZXzJ/snippet-12.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-gwZXzJ\\\\snippet-12.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 124,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-4Wqj9z\\snippet-12.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-4Wqj9z/snippet-12.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-4Wqj9z\\\\snippet-12.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 445,
       "code": "var express = require('express')\nvar morgan = require('morgan')\nvar uuid = require('uuid')\n\nmorgan.token('id', function getId (req) {\n  return req.id\n})\n\nvar app = express()\n\napp.use(assignId)\napp.use(morgan(':id :method :url :response-time'))\n\napp.get('/', function (req, res) {\n  res.send('hello, world!')\n})\n\nfunction assignId (req, res, next) {\n  req.id = uuid.v4()\n  next()\n}",
       "status": "fail",
-      "ms": 69,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-gwZXzJ\\snippet-13.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-gwZXzJ/snippet-13.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-gwZXzJ\\\\snippet-13.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 115,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-4Wqj9z\\snippet-13.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-4Wqj9z/snippet-13.mjs:6:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-4Wqj9z\\\\snippet-13.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

@@ -8,6 +8,9 @@
     "fail": 1,
     "timeout": 0,
     "apiChecked": 6,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Other": 1
@@ -19,81 +22,97 @@
       "line": 35,
       "code": "import mime from 'mime';\n\nmime.getType('txt');                    // ⇨ 'text/plain'\nmime.getExtension('text/plain');        // ⇨ 'txt'",
       "status": "pass",
-      "ms": 58,
+      "ms": 103,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 46,
       "code": "import mime from 'mime/lite';",
       "status": "pass",
-      "ms": 70,
+      "ms": 116,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 56,
       "code": "mime.getType('js');             // ⇨ 'text/javascript'\nmime.getType('json');           // ⇨ 'application/json'\n\nmime.getType('txt');            // ⇨ 'text/plain'\nmime.getType('dir/text.txt');   // ⇨ 'text/plain'\nmime.getType('dir\\\\text.txt');  // ⇨ 'text/plain'\nmime.getType('.text.txt');      // ⇨ 'text/plain'\nmime.getType('.txt');           // ⇨ 'text/plain'",
       "status": "pass",
-      "ms": 61,
+      "ms": 107,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 69,
       "code": "mime.getType('foo/txt');        // ⇨ null\nmime.getType('bogus_type');     // ⇨ null",
       "status": "pass",
-      "ms": 62,
+      "ms": 105,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 78,
       "code": "mime.getExtension('text/plain');               // ⇨ 'txt'\nmime.getExtension('application/json');         // ⇨ 'json'\nmime.getExtension('text/html; charset=utf8');  // ⇨ 'html'",
       "status": "pass",
-      "ms": 61,
+      "ms": 104,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 91,
       "code": "mime.getAllExtensions('image/jpeg'); // ⇨ Set(3) { 'jpeg', 'jpg', 'jpe' }",
       "status": "pass",
-      "ms": 61,
+      "ms": 100,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 102,
       "code": "import { Mime } from 'mime/lite';\n\nimport standardTypes from 'mime/types/standard.js';\nimport otherTypes from 'mime/types/other.js';\n\nconst mime = new Mime(standardTypes, otherTypes);",
       "status": "pass",
-      "ms": 64,
+      "ms": 107,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 122,
       "code": "mime.define({'text/x-abc': ['abc', 'abcd']});\n\nmime.getType('abcd');            // ⇨ 'text/x-abc'\nmime.getExtension('text/x-abc')  // ⇨ 'abc'",
       "status": "fail",
-      "ms": 61,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-0WyQoq/node_modules/mime/dist/src/Mime.js:68\r\n            throw new Error('define() not allowed for built-in Mime objects. See https://github.com/broofa/mime/blob/main/README.md#custom-mime-instances');\r\n                  ^\r\n\r\nError: define() not allowed for built-in Mime objects. See https://github.com/broofa/mime/blob/main/README.md#custom-mime-instances\r\n    at Mime.define (file:///C:/Users/prane/AppData/Local/Temp/docrot-0WyQoq/node_modules/mime/dist/src/Mime.js:68:19)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-0WyQoq/snippet-7.mjs:6:6\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-xWn30r/node_modules/mime/dist/src/Mime.js:68\r\n            throw new Error('define() not allowed for built-in Mime objects. See https://github.com/broofa/mime/blob/main/README.md#custom-mime-instances');\r\n                  ^\r\n\r\nError: define() not allowed for built-in Mime objects. See https://github.com/broofa/mime/blob/main/README.md#custom-mime-instances\r\n    at Mime.define (file:///C:/Users/prane/AppData/Local/Temp/docrot-xWn30r/node_modules/mime/dist/src/Mime.js:68:19)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-xWn30r/snippet-7.mjs:6:6\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Other",
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

@@ -8,6 +8,9 @@
     "fail": 0,
     "timeout": 0,
     "apiChecked": 1,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {},
     "rotRate": 0
@@ -17,81 +20,97 @@
       "line": 36,
       "code": "const fs = require('fs') // this is no longer necessary",
       "status": "pass",
-      "ms": 85,
+      "ms": 162,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 42,
       "code": "const fs = require('fs-extra')",
       "status": "pass",
-      "ms": 85,
+      "ms": 160,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 49,
       "code": "const fse = require('fs-extra')",
       "status": "pass",
-      "ms": 87,
+      "ms": 166,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 55,
       "code": "const fs = require('fs')\nconst fse = require('fs-extra')",
       "status": "pass",
-      "ms": 88,
+      "ms": 152,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 66,
       "code": "import { readFileSync } from 'fs'\nimport { readFile } from 'fs/promises'\nimport { outputFile, outputFileSync } from 'fs-extra/esm'",
       "status": "pass",
-      "ms": 91,
+      "ms": 172,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 74,
       "code": "import fs from 'fs'\nimport fse from 'fs-extra/esm'\n// fse.readFileSync is not a function; must use fs.readFileSync",
       "status": "pass",
-      "ms": 92,
+      "ms": 167,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 82,
       "code": "import fs from 'fs-extra'\n// both fs and fs-extra methods are defined",
       "status": "pass",
-      "ms": 84,
+      "ms": 165,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 97,
       "code": "const fs = require('fs-extra')\n\n// Async with promises:\nfs.copy('/tmp/myfile', '/tmp/mynewfile')\n  .then(() => console.log('success!'))\n  .catch(err => console.error(err))\n\n// Async with callbacks:\nfs.copy('/tmp/myfile', '/tmp/mynewfile', err => {\n  if (err) return console.error(err)\n  console.log('success!')\n})\n\n// Sync:\ntry {\n  fs.copySync('/tmp/myfile', '/tmp/mynewfile')\n  console.log('success!')\n} catch (err) {\n  console.error(err)\n}\n\n// Async/Await:\nasync function copyFiles () {\n  try {\n    await fs.copy('/tmp/myfile', '/tmp/mynewfile')\n    console.log('success!')\n  } catch (err) {\n    console.error(err)\n  }\n}\n\ncopyFiles()",
       "status": "pass",
-      "ms": 87,
+      "ms": 173,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

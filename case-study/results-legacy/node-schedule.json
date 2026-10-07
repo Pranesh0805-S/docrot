@@ -8,134 +8,163 @@
     "fail": 9,
     "timeout": 2,
     "apiChecked": 4,
-    "confirmed": 0,
+    "apiBroken": 0,
+    "invalid": 1,
+    "warned": 0,
+    "confirmed": 1,
     "categories": {
       "Long-running (inconclusive)": 2,
       "Incomplete snippet (missing context)": 8,
-      "Other": 1
+      "Invalid as written": 1
     },
-    "rotRate": 0
+    "rotRate": 0.083
   },
   "results": [
     {
       "line": 87,
       "code": "const schedule = require('node-schedule');\n\nconst job = schedule.scheduleJob('42 * * * *', function(){\n  console.log('The answer to life, the universe, and everything!');\n});",
       "status": "timeout",
-      "ms": 10024,
+      "ms": 10028,
       "stderr": "",
       "category": "Long-running (inconclusive)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 99,
       "code": "const job = schedule.scheduleJob('0 17 ? * 0,4-6', function(){\n  console.log('Today is recognized by Rebecca Black!');\n});",
       "status": "fail",
-      "ms": 74,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-1.mjs:6\r\nconst job = schedule.scheduleJob('0 17 ? * 0,4-6', function(){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-1.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 132,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-1.mjs:6\r\nconst job = schedule.scheduleJob('0 17 ? * 0,4-6', function(){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-1.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 108,
       "code": "const job = schedule.scheduleJob('0 1 * * *', function(fireDate){\n  console.log('This job was supposed to run at ' + fireDate + ', but actually ran at ' + new Date());\n});",
       "status": "fail",
-      "ms": 70,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-2.mjs:6\r\nconst job = schedule.scheduleJob('0 1 * * *', function(fireDate){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-2.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 138,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-2.mjs:6\r\nconst job = schedule.scheduleJob('0 1 * * *', function(fireDate){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-2.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 127,
       "code": "const schedule = require('node-schedule');\nconst date = new Date(2012, 11, 21, 5, 30, 0);\n\nconst job = schedule.scheduleJob(date, function(){\n  console.log('The world is going to end today.');\n});",
       "status": "pass",
-      "ms": 85,
+      "ms": 168,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 138,
       "code": "const schedule = require('node-schedule');\nconst date = new Date(2012, 11, 21, 5, 30, 0);\nconst x = 'Tada!';\nconst job = schedule.scheduleJob(date, function(y){\n  console.log(y);\n}.bind(null,x));\nx = 'Changing Data';",
       "status": "fail",
-      "ms": 87,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-4.mjs:12\r\nx = 'Changing Data';\r\n  ^\r\n\r\nTypeError: Assignment to constant variable.\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-4.mjs:12:3\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
-      "category": "Other",
+      "ms": 167,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-4.mjs:12\r\nx = 'Changing Data';\r\n  ^\r\n\r\nTypeError: Assignment to constant variable.\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-4.mjs:12:3\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "category": "Invalid as written",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [
+        "assignment to const 'x'"
+      ],
+      "warnings": []
     },
     {
       "line": 155,
       "code": "const schedule = require('node-schedule');\n\nconst rule = new schedule.RecurrenceRule();\nrule.minute = 42;\n\nconst job = schedule.scheduleJob(rule, function(){\n  console.log('The answer to life, the universe, and everything!');\n});",
       "status": "timeout",
-      "ms": 10025,
+      "ms": 10017,
       "stderr": "",
       "category": "Long-running (inconclusive)",
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 170,
       "code": "const rule = new schedule.RecurrenceRule();\nrule.dayOfWeek = [0, new schedule.Range(4, 6)];\nrule.hour = 17;\nrule.minute = 0;\n\nconst job = schedule.scheduleJob(rule, function(){\n  console.log('Today is recognized by Rebecca Black!');\n});",
       "status": "fail",
-      "ms": 72,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-6.mjs:6\r\nconst rule = new schedule.RecurrenceRule();\r\n             ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-6.mjs:6:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 132,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-6.mjs:6\r\nconst rule = new schedule.RecurrenceRule();\r\n             ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-6.mjs:6:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 183,
       "code": "const rule = new schedule.RecurrenceRule();\nrule.hour = 0;\nrule.minute = 0;\nrule.tz = 'Etc/UTC';\n\nconst job = schedule.scheduleJob(rule, function(){\n  console.log('A new day has begun in the UTC timezone!');\n});",
       "status": "fail",
-      "ms": 71,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-7.mjs:6\r\nconst rule = new schedule.RecurrenceRule();\r\n             ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-7.mjs:6:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 128,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-7.mjs:6\r\nconst rule = new schedule.RecurrenceRule();\r\n             ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-7.mjs:6:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 218,
       "code": "const job = schedule.scheduleJob({hour: 14, minute: 30, dayOfWeek: 0}, function(){\n  console.log('Time for tea!');\n});",
       "status": "fail",
-      "ms": 71,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-8.mjs:6\r\nconst job = schedule.scheduleJob({hour: 14, minute: 30, dayOfWeek: 0}, function(){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-8.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 134,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-8.mjs:6\r\nconst job = schedule.scheduleJob({hour: 14, minute: 30, dayOfWeek: 0}, function(){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-8.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 229,
       "code": "const startTime = new Date(Date.now() + 5000);\nconst endTime = new Date(startTime.getTime() + 5000);\nconst job = schedule.scheduleJob({ start: startTime, end: endTime, rule: '*/1 * * * * *' }, function(){\n  console.log('Time for tea!');\n});",
       "status": "fail",
-      "ms": 69,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-9.mjs:8\r\nconst job = schedule.scheduleJob({ start: startTime, end: endTime, rule: '*/1 * * * * *' }, function(){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-9.mjs:8:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 126,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-9.mjs:8\r\nconst job = schedule.scheduleJob({ start: startTime, end: endTime, rule: '*/1 * * * * *' }, function(){\r\n            ^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-9.mjs:8:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 241,
       "code": "schedule.gracefulShutdown();",
       "status": "fail",
-      "ms": 70,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-10.mjs:6\r\nschedule.gracefulShutdown();\r\n^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-10.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 124,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-10.mjs:6\r\nschedule.gracefulShutdown();\r\n^\r\n\r\nReferenceError: schedule is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-10.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 262,
       "code": "j.cancel();",
       "status": "fail",
-      "ms": 71,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-11.mjs:6\r\nj.cancel();\r\n^\r\n\r\nReferenceError: j is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-FFaJbo/snippet-11.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 134,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-11.mjs:6\r\nj.cancel();\r\n^\r\n\r\nReferenceError: j is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-VoLRTT/snippet-11.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

@@ -8,6 +8,9 @@
     "fail": 5,
     "timeout": 0,
     "apiChecked": 5,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 3,
@@ -21,61 +24,73 @@
       "line": 110,
       "code": "import inquirer from 'inquirer';\n\ninquirer\n  .prompt([/* Pass your questions in here */])\n  .then((answers) => {\n    // Use user feedback for... whatever!!\n  })\n  .catch((error) => {\n    if (error.isTtyError) {\n      // Prompt couldn't be rendered in the current environment\n    } else {\n      // Something else went wrong\n    }\n  });",
       "status": "pass",
-      "ms": 126,
+      "ms": 222,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 165,
       "code": "const prompt = inquirer.createPromptModule();\n\nprompt(questions).then(/* ... */);",
       "status": "fail",
-      "ms": 126,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-8tgIDP/snippet-1.mjs:8\r\nprompt(questions).then(/* ... */);\r\n       ^\r\n\r\nReferenceError: questions is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-8tgIDP/snippet-1.mjs:8:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 219,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-HPCfkL/snippet-1.mjs:8\r\nprompt(questions).then(/* ... */);\r\n       ^\r\n\r\nReferenceError: questions is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-HPCfkL/snippet-1.mjs:8:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 199,
       "code": "{\n  /* Preferred way: with promise */\n  filter() {\n    return new Promise(/* etc... */);\n  },\n\n  /* Legacy way: with this.async */\n  validate: function (input) {\n    // Declare function as asynchronous, and save the done callback\n    const done = this.async();\n\n    // Do async stuff\n    setTimeout(function() {\n      if (typeof input !== 'number') {\n        // Pass the return value in the done callback\n        done('You need to provide a number');\n      } else {\n        // Pass the return value in the done callback\n        done(null, true);\n      }\n    }, 3000);\n  }\n}",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-8tgIDP/snippet-2.mjs:8\r\n  filter() {\r\n           ^\r\n\r\nSyntaxError: Unexpected token '{'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 92,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-HPCfkL/snippet-2.mjs:8\r\n  filter() {\r\n           ^\r\n\r\nSyntaxError: Unexpected token '{'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 363,
       "code": "const prompts = new Rx.Subject();\ninquirer.prompt(prompts);\n\n// At some point in the future, push new questions\nprompts.next({/* question... */});\nprompts.next({/* question... */});\n\n// When you're done\nprompts.complete();",
       "status": "fail",
-      "ms": 121,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-8tgIDP/snippet-3.mjs:6\r\nconst prompts = new Rx.Subject();\r\n                ^\r\n\r\nReferenceError: Rx is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-8tgIDP/snippet-3.mjs:6:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 213,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-HPCfkL/snippet-3.mjs:6\r\nconst prompts = new Rx.Subject();\r\n                ^\r\n\r\nReferenceError: Rx is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-HPCfkL/snippet-3.mjs:6:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 377,
       "code": "inquirer.prompt(prompts).ui.process.subscribe(onEachAnswer, onError, onComplete);",
       "status": "fail",
-      "ms": 123,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-8tgIDP/snippet-4.mjs:6\r\ninquirer.prompt(prompts).ui.process.subscribe(onEachAnswer, onError, onComplete);\r\n                ^\r\n\r\nReferenceError: prompts is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-8tgIDP/snippet-4.mjs:6:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 210,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-HPCfkL/snippet-4.mjs:6\r\ninquirer.prompt(prompts).ui.process.subscribe(onEachAnswer, onError, onComplete);\r\n                ^\r\n\r\nReferenceError: prompts is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-HPCfkL/snippet-4.mjs:6:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 452,
       "code": "import customPrompt from '$$$/custom-prompt';\n\n// 1. Preferred solution with new plugins\nconst answer = await customPrompt({ ...config });\n\n// 2. Depreciated interface (or for old plugins)\ninquirer.registerPrompt('custom', customPrompt);\nconst answers = await inquirer.prompt([\n  {\n    type: 'custom',\n    ...config,\n  },\n]);",
       "status": "fail",
-      "ms": 111,
-      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '$$$' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-8tgIDP\\snippet-5.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 195,
+      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '$$$' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-HPCfkL\\snippet-5.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

@@ -8,6 +8,9 @@
     "fail": 43,
     "timeout": 0,
     "apiChecked": 61,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Needs network/external service": 12,
@@ -24,771 +27,925 @@
       "line": 562,
       "code": "import axios, { isCancel, AxiosError } from 'axios';",
       "status": "pass",
-      "ms": 168,
+      "ms": 319,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 568,
       "code": "import axios from 'axios';\n\nconsole.log(axios.isCancel('something'));",
       "status": "pass",
-      "ms": 170,
+      "ms": 334,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 576,
       "code": "const axios = require('axios');\n\nconsole.log(axios.isCancel('something'));",
       "status": "pass",
-      "ms": 176,
+      "ms": 323,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 584,
       "code": "import { default as axios } from 'axios';",
       "status": "pass",
-      "ms": 173,
+      "ms": 305,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 590,
       "code": "const axios = require('axios/dist/browser/axios.cjs'); // browser commonJS bundle (ES2017)\n// const axios = require('axios/dist/node/axios.cjs'); // node commonJS bundle (ES2017)",
       "status": "pass",
-      "ms": 201,
+      "ms": 368,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 611,
       "code": "import axios from 'axios';\n//const axios = require('axios'); // legacy way\n\ntry {\n  const response = await axios.get('/user?ID=12345');\n  console.log(response);\n} catch (error) {\n  console.error(error);\n}\n\n// Optionally the request above could also be done as\naxios\n  .get('/user', {\n    params: {\n      ID: 12345,\n    },\n    timeout: 5000, // 5 seconds. See \"Handling Timeouts\" below for matching error handling\n  })\n  .then(function (response) {\n    console.log(response);\n  })\n  .catch(function (error) {\n    console.log(error);\n  })\n  .finally(function () {\n    // always executed\n  });\n\n// Want to use async/await? Add the `async` keyword to your outer function/method.\nasync function getUser() {\n  try {\n    // Example: GET request with query parameters\n    const response = await axios.get('/user', {\n      params: {\n        ID: 12345,\n      },\n    });\n\n    // Using the `params` option improves readability and automatically formats query strings\n\n    console.log(response);\n  } catch (error) {\n    console.error(error);\n  }\n}",
       "status": "pass",
-      "ms": 184,
+      "ms": 340,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 667,
       "code": "const response = await axios.post('/user', {\n  firstName: 'Fred',\n  lastName: 'Flintstone',\n});\nconsole.log(response);",
       "status": "fail",
-      "ms": 187,
-      "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.httpMethod [as post] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:282:19) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 300,
+      "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.httpMethod [as post] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:282:19) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 677,
       "code": "function getUserAccount() {\n  return axios.get('/user/12345');\n}\n\nfunction getUserPermissions() {\n  return axios.get('/user/12345/permissions');\n}\n\nPromise.all([getUserAccount(), getUserPermissions()]).then(function (results) {\n  const acct = results[0];\n  const perm = results[1];\n});",
       "status": "fail",
-      "ms": 173,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 299,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 698,
       "code": "// Send a POST request\naxios({\n  method: 'post',\n  url: '/user/12345',\n  data: {\n    firstName: 'Fred',\n    lastName: 'Flintstone',\n  },\n});",
       "status": "fail",
-      "ms": 172,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at wrap (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/helpers/bind.js:12:15) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 300,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at wrap (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/helpers/bind.js:12:15) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 710,
       "code": "// GET request for remote image in node.js\nimport fs from 'fs';\nconst response = await axios({\n  method: 'get',\n  url: 'https://bit.ly/2mTM3nY',\n  responseType: 'stream',\n});\nresponse.data.pipe(fs.createWriteStream('ada_lovelace.jpg'));",
       "status": "pass",
-      "ms": 1408,
+      "ms": 1557,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 723,
       "code": "// Send a GET request (default method)\naxios('/user/12345');",
       "status": "fail",
-      "ms": 173,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at wrap (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/helpers/bind.js:12:15) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 316,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at wrap (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/helpers/bind.js:12:15) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 767,
       "code": "const instance = axios.create({\n  baseURL: 'https://some-domain.com/api/',\n  timeout: 1000,\n  headers: { 'X-Custom-Header': 'foobar' },\n});",
       "status": "pass",
-      "ms": 168,
+      "ms": 309,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 805,
       "code": "axios.defaults.maxContentLength = 10 * 1024 * 1024; // 10 MB\naxios.defaults.maxBodyLength = 10 * 1024 * 1024;",
       "status": "pass",
-      "ms": 171,
+      "ms": 321,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 814,
       "code": "{\n  // `url` is the server URL for the request\n  url: '/user',\n\n  // `method` is the request method to be used when making the request\n  method: 'get', // default\n\n  // Axios prepends `baseURL` to `url` unless `url` is absolute and `allowAbsoluteUrls` is set to true.\n  // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs\n  // to the methods of that instance.\n  // `baseURL` is not a security boundary. If `url` is attacker-controlled, validate it\n  // before passing it to axios. Relative URLs can contain `..` segments that resolve\n  // outside an intended path prefix after the final URL is parsed.\n  // HTTP(S) URLs must include `//` after the protocol. Values such as\n  // `https:example.com` and `https:/example.com` are rejected with ERR_INVALID_URL.\n  baseURL: 'https://some-domain.com/api/',\n\n  // `allowAbsoluteUrls` determines whether or not absolute URLs will override a configured `baseUrl`.\n  // When set to true (default), absolute values for `url` will override `baseUrl`.\n  // When set to false, absolute values for `url` will always be prepended by `baseUrl`.\n  allowAbsoluteUrls: true,\n\n  // `transformRequest` allows changes to the request data before it is sent to the server\n  // This is only applicable for request methods 'PUT', 'POST', 'PATCH' and 'DELETE'\n  // The last function in the array must return a string or an instance of Buffer, ArrayBuffer,\n  // FormData or Stream\n  // You may modify the headers object.\n  transformRequest: [function (data, headers) {\n    // Do whatever you want to transform the data\n\n    return data;\n  }],\n\n  // `transformResponse` allows changes to the response data to be made before\n  // it is passed to then/catch\n  transformResponse: [function (data) {\n    // Do whatever you want to transform the data\n\n    return data;\n  }],\n\n  // `parseReviver` is an optional function passed as the\n  // second argument (reviver) to JSON.parse()\n  parseReviver: function (key, value, context) {\n    // In modern environments, context.source provides the raw JSON string\n    // allowing for precision-safe parsing of BigInt\n    if (typeof value === 'number' && context?.source) {\n      const isInteger = Number.isInteger(value);\n      const isUnsafe = !Number.isSafeInteger(value);\n      const isValidIntegerString = /^-?\\d+$/.test(context.source);\n\n      if (isInteger && isUnsafe && isValidIntegerString) {\n        try {\n          return BigInt(context.source);\n        } catch {\n          // Fallback: return original value if parsing fails\n        }\n      }\n    }\n    return value;\n  },\n\n  // `headers` are custom headers to be sent\n  headers: {'X-Requested-With': 'XMLHttpRequest'},\n\n  // `params` are the URL parameters to be sent with the request\n  // Must be a plain object or a URLSearchParams object\n  params: {\n    ID: 12345\n  },\n\n  // `paramsSerializer` is an optional config that allows you to customize serializing `params`.\n  paramsSerializer: {\n\n    // Custom encoder function which sends key/value pairs in an iterative fashion.\n    encode?: (param: string): string => { /* Do custom operations here and return transformed string */ },\n\n    // Custom serializer function for the entire parameter. Allows the user to mimic pre 1.x behaviour.\n    serialize?: (params: Record<string, any>, options?: ParamsSerializerOptions ),\n\n    // Configuration for formatting array indexes in the params.\n    indexes: false, // Three available options: (1) indexes: null (leads to no brackets), (2) (default) indexes: false (leads to empty brackets), (3) indexes: true (leads to brackets with indexes).\n\n    // Maximum object nesting depth when serializing params. Payloads deeper than this throw an\n    // AxiosError with code ERR_FORM_DATA_DEPTH_EXCEEDED. Default: 100. Set to Infinity to disable.\n    maxDepth: 100\n\n  },\n\n  // `data` is the data to be sent as the request body\n  // Only applicable for request methods 'PUT', 'POST', 'DELETE', and 'PATCH'\n  // `data` is request-specific: axios does not inherit or deep-merge it from defaults.\n  // To add shared body fields, use a request interceptor or transformRequest.\n  // When no `transformRequest` is set, it must be of one of the following types:\n  // - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams\n  // - Browser only: FormData, File, Blob\n  // - React Native: FormData\n  // - Node only: Stream, Buffer, FormData (form-data package)\n  data: {\n    firstName: 'Fred'\n  },\n\n  // `formDataHeaderPolicy` controls how node.js FormData#getHeaders() is copied.\n  // 'legacy' (default) copies all returned headers for v1 compatibility.\n  // 'content-only' copies only Content-Type and Content-Length.\n  formDataHeaderPolicy: 'legacy',\n\n  // syntax alternative to send data into the body\n  // method post\n  // only the value is sent, not the key\n  data: 'Country=Brasil&City=Belo Horizonte',\n\n  // `timeout` specifies the number of milliseconds before the request times out.\n  // If the request takes longer than `timeout`, Axios aborts it.\n  timeout: 1000, // default is `0` (no timeout)\n\n  // `withCredentials` indicates whether or not cross-site Access-Control requests\n  // should be made using credentials\n  // This only controls whether the browser sends credentials.\n  // It does not control whether the XSRF header is added.\n  withCredentials: false, // default\n\n  // `adapter` allows custom handling of requests which makes testing easier.\n  // Return a promise and supply a valid response (see lib/adapters/README.md)\n  adapter: function (config) {\n    /* ... */\n  },\n  // Also, you can set the name of the built-in adapter, or provide an array with their names\n  // to choose the first available in the environment\n  adapter: 'xhr', // 'fetch' | 'http' | ['xhr', 'http', 'fetch']\n\n  // `auth` indicates that HTTP Basic auth should be used, and supplies credentials.\n  // This will set an `Authorization` header, overwriting any existing\n  // `Authorization` custom headers you have set using `headers`.\n  // If `auth` is omitted, the Node.js HTTP and fetch adapters can read\n  // HTTP Basic auth credentials from the request URL, for example\n  // `https://user:pass@example.com`. Axios decodes percent-encoded URL\n  // credentials, and `auth` takes precedence over URL-embedded credentials.\n  // The Node.js HTTP adapter preserves Basic auth on same-origin redirects\n  // and strips it on cross-origin redirects.\n  // Please note that only HTTP Basic auth is configurable through this parameter.\n  // For Bearer tokens and such, use `Authorization` custom headers instead.\n  auth: {\n    username: 'janedoe',\n    password: 's00pers3cret'\n  },\n\n  // `responseType` indicates the type of data that the server will respond with\n  // options are: 'arraybuffer', 'document', 'json', 'text', 'stream'\n  //   browser only: 'blob'\n  responseType: 'json', // default\n\n  // `responseEncoding` indicates encoding to use for decoding responses (Node.js only)\n  // Note: Ignored for `responseType` of 'stream' or client-side requests\n  // options are: 'ascii', 'ASCII', 'ansi', 'ANSI', 'binary', 'BINARY', 'base64', 'BASE64', 'base64url',\n  // 'BASE64URL', 'hex', 'HEX', 'latin1', 'LATIN1', 'ucs-2', 'UCS-2', 'ucs2', 'UCS2', 'utf-8', 'UTF-8',\n  // 'utf8', 'UTF8', 'utf16le', 'UTF16LE'\n  responseEncoding: 'utf8', // default\n\n  // `xsrfCookieName` is the name of the cookie to use as a value for the xsrf token\n  xsrfCookieName: 'XSRF-TOKEN', // default\n\n  // `xsrfHeaderName` is the name of the http header that carries the xsrf token value\n  xsrfHeaderName: 'X-XSRF-TOKEN', // default\n\n  // `withXSRFToken` defines whether to send the XSRF header in browser requests.\n  // `undefined` (default) - set XSRF header only for the same origin requests\n  // `true` - always set XSRF header, including for cross-origin requests\n  // `false` - never set XSRF header\n  // function - resolve with custom logic; receives the internal config object\n  withXSRFToken: boolean | undefined | ((config: InternalAxiosRequestConfig) => boolean | undefined),\n\n  // `withXSRFToken` controls whether Axios reads the XSRF cookie and sets the XSRF header.\n  // - `undefined` (default): the XSRF header is set only for same-origin requests.\n  // - `true`: attempt to set the XSRF header for all requests (including cross-origin).\n  // - `false`: never set the XSRF header.\n  // - function: a callback that receives the request `config` and returns `true`,\n  //   `false`, or `undefined` to decide per-request behavior.\n  //\n  // Note about `withCredentials`: `withCredentials` controls whether cross-site\n  // requests include credentials (cookies and HTTP auth). In older Axios versions,\n  // setting `withCredentials: true` implicitly caused Axios to set the XSRF header\n  // for cross-origin requests. Newer Axios separates these concerns: to allow the\n  // XSRF header to be sent for cross-origin requests you should set both\n  // `withCredentials: true` and `withXSRFToken: true`.\n  //\n  // Example:\n  // axios.get('/user', { withCredentials: true, withXSRFToken: true });\n\n  // `onUploadProgress` allows handling of progress events for uploads\n  // browser & node.js\n  onUploadProgress: function ({loaded, total, progress, bytes, estimated, rate, upload = true}) {\n    // Do whatever you want with the Axios progress event\n  },\n\n  // `onDownloadProgress` allows handling of progress events for downloads\n  // browser & node.js\n  onDownloadProgress: function ({loaded, total, progress, bytes, estimated, rate, download = true}) {\n    // Do whatever you want with the Axios progress event\n  },\n\n  // `maxContentLength` defines the max size of the response content in bytes.\n  // It is enforced by the Node.js HTTP adapter and the fetch adapter.\n  maxContentLength: 2000,\n\n  // `maxBodyLength` defines the max size of the request content in bytes.\n  // It is enforced by the Node.js HTTP adapter and the fetch adapter when the body length can be determined.\n  maxBodyLength: 2000,\n\n  // `redact` masks matching config keys when AxiosError#toJSON() is called.\n  // Matching is case-insensitive and recursive. It does not change the request.\n  redact: ['authorization', 'password'],\n\n  // `validateStatus` defines whether to resolve or reject the promise for a given\n  // HTTP response status code. If `validateStatus` returns `true` or is set to\n  // `null`, Axios resolves the promise; otherwise, Axios rejects it.\n  // Explicit `validateStatus: undefined` resolves every status by default for\n  // backward compatibility. Set `transitional.validateStatusUndefinedResolves`\n  // to `false` to make explicit `undefined` behave as if this option was omitted.\n  validateStatus: function (status) {\n    return status >= 200 && status < 300; // default\n  },\n\n  // `maxRedirects` defines the maximum number of redirects to follow in node.js.\n  // If set to 0, Axios follows no redirects.\n  maxRedirects: 21, // default\n\n  // `sensitiveHeaders` (Node only option) lists custom secret-bearing headers\n  // (such as `X-API-Key`) to remove from cross-origin redirects. Matching is\n  // case-insensitive. Same-origin redirects keep these headers. If\n  // `maxRedirects` is 0, this option is not used.\n  sensitiveHeaders: ['X-API-Key'],\n\n  // `beforeRedirect` defines a function that Axios calls before redirect.\n  // Use this to adjust the request options upon redirecting,\n  // to inspect the latest response headers,\n  // or to cancel the request by throwing an error\n  // If maxRedirects is set to 0, `beforeRedirect` is not used.\n\n  beforeRedirect: (options, { headers }) => {\n    if (\n      options.hostname === \"example.com\" &&\n      options.protocol === \"https:\"\n    ) {\n      options.auth = \"user:password\";\n    }\n  },\n  // Security note:\n  // The `beforeRedirect` hook runs after sensitive headers are stripped during redirects.\n  // `follow-redirects` removes credentials on protocol downgrades\n  // (HTTPS to HTTP). Because `beforeRedirect` runs after that step,\n  // re-injecting credentials without checking the destination can expose\n  // sensitive data. Only add credentials for trusted HTTPS destinations.\n\n  // `socketPath` defines a UNIX Socket to be used in node.js.\n  // e.g. '/var/run/docker.sock' to send requests to the docker daemon.\n  // Only either `socketPath` or `proxy` can be specified.\n  // If both are specified, `socketPath` is used.\n  //\n  // Security: when `socketPath` is set, hostname/port of the URL are ignored,\n  // which bypasses hostname-based SSRF protections. Never derive `socketPath`\n  // from untrusted input. Use `allowedSocketPaths` (below) to restrict accepted\n  // socket paths for defense-in-depth.\n  socketPath: null, // default\n\n  // `allowedSocketPaths` restricts which `socketPath` values are accepted.\n  // Accepts a string or array of strings. Entries and the incoming socketPath\n  // are compared after path.resolve(). A mismatch throws AxiosError with code\n  // `ERR_BAD_OPTION_VALUE`. When null/undefined, no restriction is applied.\n  allowedSocketPaths: null, // default\n\n  // `transport` determines the transport method for the request.\n  // If defined, Axios uses it. Otherwise, if `maxRedirects` is 0,\n  // Axios uses the default `http` or `https` library, depending on the protocol specified in `protocol`.\n  // Otherwise, Axios uses the `httpFollow` or `httpsFollow` library, again depending on the protocol,\n  // which can handle redirects.\n  transport: undefined, // default\n\n  // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http\n  // and https requests, respectively, in node.js. This allows options to be added like\n  // `keepAlive` that are not enabled by default before Node.js v19.0.0. After Node.js\n  // v19.0.0, you no longer need to customize the agent to enable `keepAlive` because\n  // `http.globalAgent` has `keepAlive` enabled by default.\n  httpAgent: new http.Agent({ keepAlive: true }),\n  httpsAgent: new https.Agent({ keepAlive: true }),\n\n  // `proxy` defines the hostname, port, and protocol of the proxy server.\n  // You can also define your proxy using the conventional `http_proxy` and\n  // `https_proxy` environment variables. If you are using environment variables\n  // for your proxy configuration, you can also define a `no_proxy` environment\n  // variable as a comma-separated list of domains that should not be proxied.\n  // Use `false` to disable proxies, ignoring environment variables.\n  // On Node.js versions with native environment proxy support, axios defers\n  // environment proxy handling to Node when the selected agent has `proxyEnv`\n  // enabled, including processes started with `NODE_USE_ENV_PROXY=1`,\n  // `--use-env-proxy`, or `NODE_OPTIONS=--use-env-proxy`. Custom agents without\n  // `proxyEnv` continue to use axios environment proxy resolution. Explicit\n  // `proxy` config is still handled by axios.\n  // `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and\n  // supplies credentials.\n  // For `http://` targets, axios sends the request to the proxy in\n  // forward-proxy mode and stamps `Proxy-Authorization` onto the request\n  // headers (overwriting any user-supplied `Proxy-Authorization` header).\n  // For `https://` targets, axios establishes a CONNECT tunnel through the\n  // proxy and performs TLS end-to-end with the origin; `Proxy-Authorization`\n  // is sent on the CONNECT request only, never on the wrapped TLS request,\n  // so the proxy never sees the URL, headers, or body. Axios forwards\n  // `httpsAgent` TLS options such as `ca`, `cert`, `key`, and\n  // `rejectUnauthorized` to the generated tunneling agent, so they still apply\n  // to the origin TLS connection.\n  // If you supply an `HttpsProxyAgent`, axios leaves tunneling to that agent.\n  // If the proxy server uses HTTPS, then you must set the protocol to `https`.\n  // A user-supplied `Host` header in `headers` is preserved when forwarding\n  // through a proxy (case-insensitive match on `host`/`Host`/`HOST`); this\n  // lets you target a virtual host that differs from the request URL, for\n  // example, hitting `127.0.0.1:4000` while having the proxy treat the\n  // request as `example.com`. If no `Host` header is supplied, axios\n  // defaults it to the request URL's `hostname:port` as before. The Host\n  // header is only set in forward-proxy mode (HTTP targets); for HTTPS\n  // tunneling the Host header is sent inside the TLS connection, not seen\n  // by the proxy.\n  proxy: {\n    protocol: 'https',\n    host: '127.0.0.1',\n    // hostname: '127.0.0.1' // Takes precedence over 'host' if both are defined\n    port: 9000,\n    auth: {\n      username: 'mikeymike',\n      password: 'rapunz3l'\n    }\n  },\n\n  // `cancelToken` specifies a cancel token that can be used to cancel the request\n  // (see Cancellation section below for details)\n  cancelToken: new CancelToken(function (cancel) {\n  }),\n\n  // an alternative way to cancel Axios requests using AbortController\n  signal: new AbortController().signal,\n\n  // `decompress` indicates whether or not the response body should be decompressed\n  // automatically. If set to `true` will also remove the 'content-encoding' header\n  // from the responses objects of all decompressed responses\n  // Axios supports gzip, deflate, brotli, and zstd when the current Node.js\n  // runtime provides the corresponding zlib decompressor.\n  // - Node only (XHR cannot turn off decompression)\n  decompress: true, // default\n\n  // `insecureHTTPParser` boolean.\n  // Indicates where to use an insecure HTTP parser that accepts invalid HTTP headers.\n  // This may allow interoperability with non-conformant HTTP implementations.\n  // Using the insecure parser should be avoided.\n  // see options https://nodejs.org/dist/latest-v12.x/docs/api/http.html#http_http_request_url_options_callback\n  // see also https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/#strict-http-header-parsing-none\n  insecureHTTPParser: undefined, // default\n\n  // transitional options for backward compatibility that may be removed in the newer versions\n  transitional: {\n    // silent JSON parsing mode\n    // `true`  - ignore JSON parsing errors and set response.data to null if parsing failed (old behaviour)\n    // `false` - throw SyntaxError if JSON parsing failed\n    // Important: this option only takes effect when `responseType` is explicitly set to 'json'.\n    // When `responseType` is omitted (defaults to no value), axios uses `forcedJSONParsing`\n    // to attempt JSON parsing, but will silently return the raw string on failure regardless\n    // of this setting. To have invalid JSON throw errors, use:\n    //   { responseType: 'json', transitional: { silentJSONParsing: false } }\n    silentJSONParsing: true, // default value for the current Axios version\n\n    // try to parse the response string as JSON even if `responseType` is not 'json'\n    forcedJSONParsing: true,\n\n    // throw ETIMEDOUT error instead of generic ECONNABORTED on request timeouts\n    clarifyTimeoutError: false,\n\n    // keep explicit `validateStatus: undefined` resolving every response status\n    // for backward compatibility. Set to false to make explicit undefined behave\n    // as if validateStatus was omitted.\n    validateStatusUndefinedResolves: true,\n\n    // advertise `zstd` in the default Accept-Encoding header when the current\n    // Node.js runtime supports zstd decompression. Axios still decompresses\n    // zstd responses when support exists and `decompress` is true.\n    advertiseZstdAcceptEncoding: false,\n\n    // use the legacy interceptor request/response ordering\n    legacyInterceptorReqResOrdering: true, // default\n  },\n\n  env: {\n    // The FormData class to be used to automatically serialize the payload into a FormData object\n    FormData: window?.FormData || global?.FormData\n  },\n\n  formSerializer: {\n      visitor: (value, key, path, helpers) => {}; // custom visitor function to serialize form values\n      dots: boolean; // use dots instead of brackets format\n      metaTokens: boolean; // keep special endings like {} in parameter key\n      indexes: boolean; // array indexes format null - no brackets, false - empty brackets, true - brackets with indexes\n      maxDepth: 100; // maximum object nesting depth; throws AxiosError (ERR_FORM_DATA_DEPTH_EXCEEDED) if exceeded. Set to Infinity to disable.\n  },\n\n  // http adapter only (node.js)\n  maxRate: [\n    100 * 1024, // 100KB/s upload limit,\n    100 * 1024  // 100KB/s download limit\n  ]\n}",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-13.mjs:11\r\n  method: 'get', // default\r\n        ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-13.mjs:11\r\n  method: 'get', // default\r\n        ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1226,
       "code": "axios.get('https://api.example.com/users', {\n  headers: { 'X-API-Key': 'secret' },\n  sensitiveHeaders: ['X-API-Key'],\n});",
       "status": "fail",
-      "ms": 194,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nAxiosError: getaddrinfo ENOTFOUND api.example.com\r\n    at AxiosError.from (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/AxiosError.js:108:24)\r\n    at RedirectableRequest.handleRequestError (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:1340:27)\r\n    at RedirectableRequest.emit (node:events:508:28)\r\n    at eventHandlers.<computed> (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-2HX6XT\\node_modules\\follow-redirects\\index.js:56:24)\r\n    at ClientRequest.emit (node:events:508:28)\r\n    at emitErrorEvent (node:_http_client:108:11)\r\n    at TLSSocket.socketErrorListener (node:_http_client:575:5)\r\n    at TLSSocket.emit (node:events:520:35)\r\n    at emitErrorNT (node:internal/streams/destroy:170:8)\r\n    at emitErrorCloseNT (node:internal/streams/destroy:129:3) {\r\n  isAxiosError: true,\r\n  code: 'ENOTFOUND',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': undefined,\r\n      'X-API-Key': 'secret',\r\n      'User-Agent': ",
+      "ms": 601,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nAxiosError: getaddrinfo ENOTFOUND api.example.com\r\n    at AxiosError.from (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/AxiosError.js:108:24)\r\n    at RedirectableRequest.handleRequestError (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:1340:27)\r\n    at RedirectableRequest.emit (node:events:508:28)\r\n    at eventHandlers.<computed> (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-TKwTof\\node_modules\\follow-redirects\\index.js:56:24)\r\n    at ClientRequest.emit (node:events:508:28)\r\n    at emitErrorEvent (node:_http_client:108:11)\r\n    at TLSSocket.socketErrorListener (node:_http_client:575:5)\r\n    at TLSSocket.emit (node:events:520:35)\r\n    at emitErrorNT (node:internal/streams/destroy:170:8)\r\n    at emitErrorCloseNT (node:internal/streams/destroy:129:3) {\r\n  isAxiosError: true,\r\n  code: 'ENOTFOUND',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': undefined,\r\n      'X-API-Key': 'secret',\r\n      'User-Agent': ",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1239,
       "code": "// Per-request: emit strict RFC 3986 percent-encoding for query values\naxios.get('/foo', {\n  params: { filter: JSON.stringify({ startedAt: '2026-01-23' }) },\n  paramsSerializer: { encode: encodeURIComponent },\n});\n\n// Or set it on the instance defaults\nconst client = axios.create({\n  paramsSerializer: { encode: encodeURIComponent },\n});",
       "status": "fail",
-      "ms": 169,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/foo'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 313,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/foo'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1266,
       "code": "{\n  // `data` is the response that was provided by the server\n  data: {},\n\n  // `status` is the HTTP status code from the server response\n  status: 200,\n\n  // `statusText` is the HTTP status message from the server response\n  statusText: 'OK',\n\n  // `headers` the HTTP headers that the server responded with\n  // All header names are lowercase and can be accessed using the bracket notation.\n  // Example: `response.headers['content-type']`\n  headers: {},\n\n  // `config` is the config that was provided to `axios` for the request\n  config: {},\n\n  // `request` is the request that generated this response\n  // It is the last ClientRequest instance in node.js (in redirects)\n  // and an XMLHttpRequest instance in the browser\n  request: {}\n}",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-16.mjs:8\r\n  data: {},\r\n          ^\r\n\r\nSyntaxError: Unexpected token ','\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-16.mjs:8\r\n  data: {},\r\n          ^\r\n\r\nSyntaxError: Unexpected token ','\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1294,
       "code": "const response = await axios.get('/user/12345');\nconsole.log(response.data);\nconsole.log(response.status);\nconsole.log(response.statusText);\nconsole.log(response.headers);\nconsole.log(response.config);",
       "status": "fail",
-      "ms": 169,
-      "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 312,
+      "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1311,
       "code": "axios.defaults.baseURL = 'https://api.example.com';\n\n// Important: If you use axios with multiple domains, Axios sends AUTH_TOKEN to all of them.\n// See below for an example using Custom instance defaults instead.\naxios.defaults.headers.common['Authorization'] = AUTH_TOKEN;\n\naxios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';",
       "status": "fail",
-      "ms": 166,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-18.mjs:10\r\naxios.defaults.headers.common['Authorization'] = AUTH_TOKEN;\r\n                                                 ^\r\n\r\nReferenceError: AUTH_TOKEN is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-18.mjs:10:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 303,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-18.mjs:10\r\naxios.defaults.headers.common['Authorization'] = AUTH_TOKEN;\r\n                                                 ^\r\n\r\nReferenceError: AUTH_TOKEN is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-18.mjs:10:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 4,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1323,
       "code": "// Set config defaults when creating the instance\nconst instance = axios.create({\n  baseURL: 'https://api.example.com',\n});\n\n// Alter defaults after instance has been created\ninstance.defaults.headers.common['Authorization'] = AUTH_TOKEN;",
       "status": "fail",
-      "ms": 167,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-19.mjs:12\r\ninstance.defaults.headers.common['Authorization'] = AUTH_TOKEN;\r\n                                                    ^\r\n\r\nReferenceError: AUTH_TOKEN is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-19.mjs:12:53\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 292,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-19.mjs:12\r\ninstance.defaults.headers.common['Authorization'] = AUTH_TOKEN;\r\n                                                    ^\r\n\r\nReferenceError: AUTH_TOKEN is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-19.mjs:12:53\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1339,
       "code": "// Create an instance using the config defaults provided by the library\n// At this point the timeout config value is `0` as is the default for the library\nconst instance = axios.create();\n\n// Override timeout default for the library\n// Now all requests using this instance will wait 2.5 seconds before timing out\ninstance.defaults.timeout = 2500;\n\n// Override timeout for this request as it's known to take a long time\ninstance.get('/longRequest', {\n  timeout: 5000,\n});",
       "status": "fail",
-      "ms": 171,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/longRequest'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 301,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/longRequest'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1359,
       "code": "const instance = axios.create();\n\n// Add a request interceptor\ninstance.interceptors.request.use(\n  function (config) {\n    // Do something before the request is sent\n    return config;\n  },\n  function (error) {\n    // Do something with the request error\n    return Promise.reject(error);\n  }\n);\n\n// Add a response interceptor\ninstance.interceptors.response.use(\n  function (response) {\n    // Any status code that lies within the range of 2xx causes this function to trigger\n    // Do something with response data\n    return response;\n  },\n  function (error) {\n    // Any status codes that fall outside the range of 2xx cause this function to trigger\n    // Do something with response error\n    return Promise.reject(error);\n  }\n);",
       "status": "pass",
-      "ms": 166,
+      "ms": 291,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1391,
       "code": "const instance = axios.create();\nconst myInterceptor = instance.interceptors.request.use(function () {\n  /*...*/\n});\ninstance.interceptors.request.eject(myInterceptor);",
       "status": "pass",
-      "ms": 171,
+      "ms": 293,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1401,
       "code": "const instance = axios.create();\ninstance.interceptors.request.use(function () {\n  /*...*/\n});\ninstance.interceptors.request.clear(); // Removes interceptors from requests\ninstance.interceptors.response.use(function () {\n  /*...*/\n});\ninstance.interceptors.response.clear(); // Removes interceptors from responses",
       "status": "pass",
-      "ms": 172,
+      "ms": 292,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1415,
       "code": "const instance = axios.create();\ninstance.interceptors.request.use(function () {\n  /*...*/\n});",
       "status": "pass",
-      "ms": 170,
+      "ms": 287,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1427,
       "code": "axios.interceptors.request.use(\n  function (config) {\n    config.headers.test = 'I am only a header!';\n    return config;\n  },\n  null,\n  { synchronous: true }\n);",
       "status": "pass",
-      "ms": 167,
+      "ms": 292,
       "stderr": "",
       "category": null,
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1442,
       "code": "axios.interceptors.request.use(\n  function validate(config) {\n    if (!config.headers.has('Authorization')) {\n      throw new Error('Authorization is required');\n    }\n    return config;\n  },\n  function rejectInvalidRequest(error) {\n    return Promise.reject(error);\n  },\n  { synchronous: true }\n);",
       "status": "pass",
-      "ms": 168,
+      "ms": 294,
       "stderr": "",
       "category": null,
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1459,
       "code": "axios.interceptors.request.use(\n  function prepare(config) {\n    throw new Error('Optional preparation failed');\n  },\n  function logPreparationFailure(error) {\n    console.warn(error);\n    // Returning normally dispatches with the last valid config.\n  },\n  { synchronous: true }\n);",
       "status": "pass",
-      "ms": 168,
+      "ms": 298,
       "stderr": "",
       "category": null,
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1478,
       "code": "function onGetCall(config) {\n  return config.method === 'get';\n}\naxios.interceptors.request.use(\n  function (config) {\n    config.headers.test = 'special get headers';\n    return config;\n  },\n  null,\n  { runWhen: onGetCall }\n);",
       "status": "pass",
-      "ms": 171,
+      "ms": 294,
       "stderr": "",
       "category": null,
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1504,
       "code": "const instance = axios.create();\n\nconst interceptor = (id) => (base) => {\n  console.log(id);\n  return base;\n};\n\ninstance.interceptors.request.use(interceptor('Request Interceptor 1'));\ninstance.interceptors.request.use(interceptor('Request Interceptor 2'));\ninstance.interceptors.request.use(interceptor('Request Interceptor 3'));\ninstance.interceptors.response.use(interceptor('Response Interceptor 1'));\ninstance.interceptors.response.use(interceptor('Response Interceptor 2'));\ninstance.interceptors.response.use(interceptor('Response Interceptor 3'));\n\n// Console output:\n// Request Interceptor 3\n// Request Interceptor 2\n// Request Interceptor 1\n// [HTTP request is made]\n// Response Interceptor 1\n// Response Interceptor 2\n// Response Interceptor 3",
       "status": "pass",
-      "ms": 170,
+      "ms": 294,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1576,
       "code": "axios.get('/user/12345').catch(function (error) {\n  if (error.response) {\n    // The request was made and the server responded with a status code\n    // that falls out of the range of 2xx\n    console.log(error.response.data);\n    console.log(error.response.status);\n    console.log(error.response.headers);\n  } else if (error.request) {\n    // The request was made but no response was received\n    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of\n    // http.ClientRequest in node.js\n    console.log(error.request);\n  } else {\n    // Something happened in setting up the request that triggered an Error\n    console.log('Error', error.message);\n  }\n  console.log(error.config);\n});",
       "status": "pass",
-      "ms": 174,
+      "ms": 306,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1603,
       "code": "axios.get('/user/12345', {\n  validateStatus: function (status) {\n    return status < 500; // Resolve only if the status code is less than 500\n  },\n});",
       "status": "fail",
-      "ms": 171,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 294,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1615,
       "code": "axios.get('/user/12345', {\n  validateStatus: undefined,\n  transitional: {\n    validateStatusUndefinedResolves: false,\n  },\n});",
       "status": "fail",
-      "ms": 171,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 300,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.<computed> [as get] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:269:17) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/user/12345'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1626,
       "code": "axios.get('/user/12345').catch(function (error) {\n  console.log(error.toJSON());\n});",
       "status": "fail",
-      "ms": 177,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-33.mjs:7\r\n  console.log(error.toJSON());\r\n                    ^\r\n\r\nTypeError: error.toJSON is not a function\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-33.mjs:7:21\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 299,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-33.mjs:7\r\n  console.log(error.toJSON());\r\n                    ^\r\n\r\nTypeError: error.toJSON is not a function\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-33.mjs:7:21\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Runtime API error (unverified)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1634,
       "code": "axios\n  .get('/user/12345', {\n    headers: { Authorization: 'Bearer token' },\n    redact: ['authorization'],\n  })\n  .catch(function (error) {\n    console.log(error.toJSON().config.headers.Authorization); // [REDACTED ****]\n  });",
       "status": "fail",
-      "ms": 174,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-34.mjs:12\r\n    console.log(error.toJSON().config.headers.Authorization); // [REDACTED ****]\r\n                      ^\r\n\r\nTypeError: error.toJSON is not a function\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-34.mjs:12:23\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 300,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-34.mjs:12\r\n    console.log(error.toJSON().config.headers.Authorization); // [REDACTED ****]\r\n                      ^\r\n\r\nTypeError: error.toJSON is not a function\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-34.mjs:12:23\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Runtime API error (unverified)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1647,
       "code": "async function fetchWithTimeout() {\n  try {\n    const response = await axios.get('https://example.com/data', {\n      timeout: 5000, // 5 seconds\n      transitional: {\n        // set to true if you prefer ETIMEDOUT over ECONNABORTED\n        clarifyTimeoutError: false,\n      },\n    });\n\n    console.log('Response:', response.data);\n  } catch (error) {\n    if (axios.isAxiosError(error)) {\n      if (error.code === 'ECONNABORTED' || error.code === 'ETIMEDOUT') {\n        console.error('Request timed out. Please try again.');\n        return;\n      }\n\n      console.error('Axios error:', error.message);\n      return;\n    }\n\n    console.error('Unexpected error:', error);\n  }\n}",
       "status": "pass",
-      "ms": 168,
+      "ms": 299,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1681,
       "code": "const controller = new AbortController();\n\naxios\n  .get('/foo/bar', {\n    signal: controller.signal,\n  })\n  .then(function (response) {\n    //...\n  });\n// cancel the request\ncontroller.abort();",
       "status": "fail",
-      "ms": 174,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: canceled\r\n    at AbortSignal.abort (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:637:38)\r\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:843:20)\r\n    at AbortSignal.dispatchEvent (node:internal/event_target:776:26)\r\n    at runAbort (node:internal/abort_controller:488:10)\r\n    at abortSignal (node:internal/abort_controller:459:3)\r\n    at AbortController.abort (node:internal/abort_controller:507:5)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-36.mjs:16:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': undefined\r\n    },\r\n    signal: AbortSignal {\r\n      Symbol(kEvents): SafeMap(0) {},\r\n   ",
+      "ms": 299,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: canceled\r\n    at AbortSignal.abort (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:637:38)\r\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:843:20)\r\n    at AbortSignal.dispatchEvent (node:internal/event_target:776:26)\r\n    at runAbort (node:internal/abort_controller:488:10)\r\n    at abortSignal (node:internal/abort_controller:459:3)\r\n    at AbortController.abort (node:internal/abort_controller:507:5)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-36.mjs:16:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': undefined\r\n    },\r\n    signal: AbortSignal {\r\n      Symbol(kEvents): SafeMap(0) {},\r\n   ",
       "category": "Demo behaviour (inconclusive)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1705,
       "code": "const CancelToken = axios.CancelToken;\nconst source = CancelToken.source();\n\naxios\n  .get('/user/12345', {\n    cancelToken: source.token,\n  })\n  .catch(function (thrown) {\n    if (axios.isCancel(thrown)) {\n      console.log('Request canceled', thrown.message);\n    } else {\n      // handle error\n    }\n  });\n\naxios.post(\n  '/user/12345',\n  {\n    name: 'new name',\n  },\n  {\n    cancelToken: source.token,\n  }\n);\n\n// cancel the request (the message parameter is optional)\nsource.cancel('Operation canceled by the user.');",
       "status": "fail",
-      "ms": 172,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: Operation canceled by the user.\r\n    at Object.cancel (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/cancel/CancelToken.js:60:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-37.mjs:32:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  __CANCEL__: true\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 302,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: Operation canceled by the user.\r\n    at Object.cancel (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/cancel/CancelToken.js:60:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-37.mjs:32:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  __CANCEL__: true\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Demo behaviour (inconclusive)",
       "apiChecked": 4,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1737,
       "code": "const CancelToken = axios.CancelToken;\nlet cancel;\n\naxios.get('/user/12345', {\n  cancelToken: new CancelToken(function executor(c) {\n    // An executor function receives a cancel function as a parameter\n    cancel = c;\n  }),\n});\n\n// cancel the request\ncancel();",
       "status": "fail",
-      "ms": 170,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: canceled\r\n    at cancel (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/cancel/CancelToken.js:60:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-38.mjs:17:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  __CANCEL__: true\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 295,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: canceled\r\n    at cancel (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/cancel/CancelToken.js:60:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-38.mjs:17:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  __CANCEL__: true\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Demo behaviour (inconclusive)",
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1754,
       "code": "const source = axios.CancelToken.source();\n\nconst listener = (cancel) => {\n  console.log(cancel.message);\n};\n\nsource.token.subscribe(listener);\n\nconst signal = source.token.toAbortSignal();\n// Pass `signal` to APIs that accept AbortSignal.\n\nsource.cancel('Operation canceled by the user.');\nsource.token.unsubscribe(listener);",
       "status": "pass",
-      "ms": 169,
+      "ms": 292,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1777,
       "code": "const controller = new AbortController();\nconst source = axios.CancelToken.source();\n\naxios.get('/user/12345', {\n  cancelToken: source.token,\n  signal: controller.signal,\n});\n\ncontroller.abort();\nsource.cancel('Operation canceled by the user.');",
       "status": "fail",
-      "ms": 173,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: canceled\r\n    at AbortSignal.abort (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:637:38)\r\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:843:20)\r\n    at AbortSignal.dispatchEvent (node:internal/event_target:776:26)\r\n    at runAbort (node:internal/abort_controller:488:10)\r\n    at abortSignal (node:internal/abort_controller:459:3)\r\n    at AbortController.abort (node:internal/abort_controller:507:5)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-40.mjs:14:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': undefined\r\n    },\r\n    cancelToken: CancelToken {\r\n      promise: Promise {\r\n        Can",
+      "ms": 308,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nCanceledError: canceled\r\n    at AbortSignal.abort (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:637:38)\r\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:843:20)\r\n    at AbortSignal.dispatchEvent (node:internal/event_target:776:26)\r\n    at runAbort (node:internal/abort_controller:488:10)\r\n    at abortSignal (node:internal/abort_controller:459:3)\r\n    at AbortController.abort (node:internal/abort_controller:507:5)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-40.mjs:14:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  isAxiosError: true,\r\n  code: 'ERR_CANCELED',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': undefined\r\n    },\r\n    cancelToken: CancelToken {\r\n      promise: Promise {\r\n        Can",
       "category": "Demo behaviour (inconclusive)",
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1796,
       "code": "const params = new URLSearchParams({ foo: 'bar' });\nparams.append('extraparam', 'value');\naxios.post('/foo', params);",
       "status": "fail",
-      "ms": 171,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.httpMethod [as post] (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/Axios.js:282:19) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/foo'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 294,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nTypeError: Invalid URL\r\n    at new URL (node:internal/url:819:25)\r\n    at dispatchHttpRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:724:22)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:463:5\r\n    at new Promise (<anonymous>)\r\n    at wrapAsync (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:443:10)\r\n    at http (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:568:12)\r\n    at Axios.dispatchRequest (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/dispatchRequest.js:54:10)\r\n    at Axios._request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:242:35)\r\n    at Axios.request (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:42:25)\r\n    at Axios.httpMethod [as post] (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/Axios.js:282:19) {\r\n  code: 'ERR_INVALID_URL',\r\n  input: '/foo'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1808,
       "code": "const qs = require('qs');\naxios.post('/foo', qs.stringify({ bar: 123 }));",
       "status": "fail",
-      "ms": 169,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'qs'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-2HX6XT\\snippet-42.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-42.mjs:6:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-2HX6XT\\\\snippet-42.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 259,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'qs'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-TKwTof\\snippet-42.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-42.mjs:6:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-TKwTof\\\\snippet-42.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1815,
       "code": "import qs from 'qs';\nconst data = { bar: 123 };\nconst options = {\n  method: 'POST',\n  headers: { 'content-type': 'application/x-www-form-urlencoded' },\n  data: qs.stringify(data),\n  url,\n};\naxios(options);",
       "status": "fail",
-      "ms": 125,
-      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'qs' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-2HX6XT\\snippet-43.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 176,
+      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'qs' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-TKwTof\\snippet-43.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1831,
       "code": "const querystring = require('querystring');\naxios.post('https://something.com/', querystring.stringify({ foo: 'bar' }));",
       "status": "fail",
-      "ms": 720,
-      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nAxiosError: Request failed with status code 403\r\n    at settle (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/core/settle.js:19:12)\r\n    at BrotliDecompress.handleStreamEnd (file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/node_modules/axios/lib/adapters/http.js:1318:13)\r\n    at BrotliDecompress.emit (node:events:508:28)\r\n    at endReadableNT (node:internal/streams/readable:1729:12)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {\r\n  isAxiosError: true,\r\n  code: 'ERR_BAD_REQUEST',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': 'application/x-www-form-urlencoded',\r\n      'User-Agent': 'axios/1.20.0',\r\n      'Content-Length': '7',\r\n      'Accept-Encoding': 'gzip, compress, deflate, br'\r\n    },\r\n    method: 'post',\r\n    url: 'https://something.com/',\r\n    data: 'foo=bar',\r\n    allowAbsoluteUrls: true\r\n  },\r\n  request: <ref *3> ClientRequest {\r\n    _events: [Object: null prototype] {\r\n      abort: [Function (anon",
+      "ms": 1020,
+      "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nAxiosError: Request failed with status code 403\r\n    at settle (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/core/settle.js:19:12)\r\n    at BrotliDecompress.handleStreamEnd (file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/node_modules/axios/lib/adapters/http.js:1318:13)\r\n    at BrotliDecompress.emit (node:events:508:28)\r\n    at endReadableNT (node:internal/streams/readable:1729:12)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {\r\n  isAxiosError: true,\r\n  code: 'ERR_BAD_REQUEST',\r\n  config: [Object: null prototype] {\r\n    transitional: {\r\n      silentJSONParsing: true,\r\n      forcedJSONParsing: true,\r\n      clarifyTimeoutError: false,\r\n      legacyInterceptorReqResOrdering: true,\r\n      advertiseZstdAcceptEncoding: false,\r\n      validateStatusUndefinedResolves: true\r\n    },\r\n    adapter: [ 'xhr', 'http', 'fetch' ],\r\n    transformRequest: [ [Function: transformRequest] ],\r\n    transformResponse: [ [Function: transformResponse] ],\r\n    timeout: 0,\r\n    xsrfCookieName: 'XSRF-TOKEN',\r\n    xsrfHeaderName: 'X-XSRF-TOKEN',\r\n    maxContentLength: -1,\r\n    maxBodyLength: -1,\r\n    env: {\r\n      FormData: [Function: FormData] {\r\n        LINE_BREAK: '\\r\\n',\r\n        DEFAULT_CONTENT_TYPE: 'application/octet-stream'\r\n      },\r\n      Blob: [class Blob]\r\n    },\r\n    validateStatus: [Function: validateStatus],\r\n    headers: Object [AxiosHeaders] {\r\n      Accept: 'application/json, text/plain, */*',\r\n      'Content-Type': 'application/x-www-form-urlencoded',\r\n      'User-Agent': 'axios/1.20.0',\r\n      'Content-Length': '7',\r\n      'Accept-Encoding': 'gzip, compress, deflate, br'\r\n    },\r\n    method: 'post',\r\n    url: 'https://something.com/',\r\n    data: 'foo=bar',\r\n    allowAbsoluteUrls: true\r\n  },\r\n  request: <ref *3> ClientRequest {\r\n    _events: [Object: null prototype] {\r\n      abort: [Function (anon",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1844,
       "code": "const data = {\n  x: 1,\n  arr: [1, 2, 3],\n  arr2: [1, [2], 3],\n  users: [\n    { name: 'Peter', surname: 'Griffin' },\n    { name: 'Thomas', surname: 'Anderson' },\n  ],\n};\n\nawait axios.postForm('https://postman-echo.com/post', data, {\n  headers: { 'content-type': 'application/x-www-form-urlencoded' },\n});",
       "status": "pass",
-      "ms": 975,
+      "ms": 997,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1862,
       "code": "  {\n    x: '1',\n    'arr[]': [ '1', '2', '3' ],\n    'arr2[0]': '1',\n    'arr2[1][0]': '2',\n    'arr2[2]': '3',\n    'arr3[]': [ '1', '2', '3' ],\n    'users[0][name]': 'Peter',\n    'users[0][surname]': 'griffin',\n    'users[1][name]': 'Thomas',\n    'users[1][surname]': 'Anderson'\n  }",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-46.mjs:8\r\n    'arr[]': [ '1', '2', '3' ],\r\n           ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 105,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-46.mjs:8\r\n    'arr[]': [ '1', '2', '3' ],\r\n           ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1879,
       "code": "const app = express();\n\napp.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies\n\napp.post('/', function (req, res, next) {\n  // echo body as JSON\n  res.send(JSON.stringify(req.body));\n});\n\nserver = app.listen(3000);",
       "status": "fail",
-      "ms": 170,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-47.mjs:6\r\nconst app = express();\r\n            ^\r\n\r\nReferenceError: express is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-47.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 312,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-47.mjs:6\r\nconst app = express();\r\n            ^\r\n\r\nReferenceError: express is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-47.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1900,
       "code": "const formData = new FormData();\nformData.append('foo', 'bar');\n\naxios.post('https://httpbin.org/post', formData);",
       "status": "pass",
-      "ms": 5487,
+      "ms": 4333,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1909,
       "code": "const FormData = require('form-data');\n\nconst form = new FormData();\nform.append('my_field', 'my value');\nform.append('my_buffer', Buffer.alloc(10));\nform.append('my_file', fs.createReadStream('/foo/bar.jpg'));\n\naxios.post('https://example.com', form);",
       "status": "fail",
-      "ms": 170,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-49.mjs:11\r\nform.append('my_file', fs.createReadStream('/foo/bar.jpg'));\r\n                       ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-49.mjs:11:24\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 314,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-49.mjs:11\r\nform.append('my_file', fs.createReadStream('/foo/bar.jpg'));\r\n                       ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-49.mjs:11:24\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1929,
       "code": "import axios from 'axios';\n\naxios\n  .post(\n    'https://httpbin.org/post',\n    { x: 1 },\n    {\n      headers: {\n        'Content-Type': 'multipart/form-data',\n      },\n    }\n  )\n  .then(({ data }) => console.log(data));",
       "status": "pass",
-      "ms": 1462,
+      "ms": 5820,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1949,
       "code": "const axios = require('axios');\nvar FormData = require('form-data');\n\naxios\n  .post(\n    'https://httpbin.org/post',\n    { x: 1, buf: Buffer.alloc(10) },\n    {\n      headers: {\n        'Content-Type': 'multipart/form-data',\n      },\n    }\n  )\n  .then(({ data }) => console.log(data));",
       "status": "pass",
-      "ms": 1842,
+      "ms": 6137,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1995,
       "code": "// Raise the limit for a schema that genuinely nests deeper than 100 levels:\naxios.postForm('/api', data, { formSerializer: { maxDepth: 200 } });\n\n// Same protection applies to params serialization:\naxios.get('/api', { params: data, paramsSerializer: { maxDepth: 200 } });",
       "status": "fail",
-      "ms": 170,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-52.mjs:7\r\naxios.postForm('/api', data, { formSerializer: { maxDepth: 200 } });\r\n                       ^\r\n\r\nReferenceError: data is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-52.mjs:7:24\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 309,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-52.mjs:7\r\naxios.postForm('/api', data, { formSerializer: { maxDepth: 200 } });\r\n                       ^\r\n\r\nReferenceError: data is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-52.mjs:7:24\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2005,
       "code": "const obj = {\n  x: 1,\n  arr: [1, 2, 3],\n  arr2: [1, [2], 3],\n  users: [\n    { name: 'Peter', surname: 'Griffin' },\n    { name: 'Thomas', surname: 'Anderson' },\n  ],\n  'obj2{}': [{ x: 1 }],\n};",
       "status": "pass",
-      "ms": 169,
+      "ms": 317,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2020,
       "code": "const formData = new FormData();\nformData.append('x', '1');\nformData.append('arr[]', '1');\nformData.append('arr[]', '2');\nformData.append('arr[]', '3');\nformData.append('arr2[0]', '1');\nformData.append('arr2[1][0]', '2');\nformData.append('arr2[2]', '3');\nformData.append('users[0][name]', 'Peter');\nformData.append('users[0][surname]', 'Griffin');\nformData.append('users[1][name]', 'Thomas');\nformData.append('users[1][surname]', 'Anderson');\nformData.append('obj2{}', '[{\"x\":1}]');",
       "status": "pass",
-      "ms": 169,
+      "ms": 317,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2040,
       "code": "const form = new FormData();\nform.append('user-name', 'johndoe');\nform.append('user.name', 'john');\n\nconsole.log(axios.formToJSON(form));\n// {\n//   'user-name': 'johndoe',\n//   user: { name: 'john' }\n// }",
       "status": "pass",
-      "ms": 169,
+      "ms": 312,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2060,
       "code": "await axios.postForm('https://httpbin.org/post', {\n  myVar: 'foo',\n  file: document.querySelector('#fileInput').files[0],\n});",
       "status": "fail",
-      "ms": 169,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-56.mjs:8\r\n  file: document.querySelector('#fileInput').files[0],\r\n        ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-56.mjs:8:9\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 308,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-56.mjs:8\r\n  file: document.querySelector('#fileInput').files[0],\r\n        ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-56.mjs:8:9\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2069,
       "code": "await axios.postForm('https://httpbin.org/post', {\n  'files[]': document.querySelector('#fileInput').files,\n});",
       "status": "fail",
-      "ms": 169,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-57.mjs:7\r\n  'files[]': document.querySelector('#fileInput').files,\r\n             ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-57.mjs:7:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 309,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-57.mjs:7\r\n  'files[]': document.querySelector('#fileInput').files,\r\n             ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-57.mjs:7:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2077,
       "code": "await axios.postForm('https://httpbin.org/post', document.querySelector('#fileInput').files);",
       "status": "fail",
-      "ms": 168,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-58.mjs:6\r\nawait axios.postForm('https://httpbin.org/post', document.querySelector('#fileInput').files);\r\n                                                 ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-58.mjs:6:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 303,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-58.mjs:6\r\nawait axios.postForm('https://httpbin.org/post', document.querySelector('#fileInput').files);\r\n                                                 ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-58.mjs:6:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2087,
       "code": "await axios.postForm('https://httpbin.org/post', document.querySelector('#htmlForm'));",
       "status": "fail",
-      "ms": 171,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-59.mjs:6\r\nawait axios.postForm('https://httpbin.org/post', document.querySelector('#htmlForm'));\r\n                                                 ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-59.mjs:6:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 291,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-59.mjs:6\r\nawait axios.postForm('https://httpbin.org/post', document.querySelector('#htmlForm'));\r\n                                                 ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-59.mjs:6:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2093,
       "code": "await axios.post('https://httpbin.org/post', document.querySelector('#htmlForm'), {\n  headers: {\n    'Content-Type': 'application/json',\n  },\n});",
       "status": "fail",
-      "ms": 169,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-60.mjs:6\r\nawait axios.post('https://httpbin.org/post', document.querySelector('#htmlForm'), {\r\n                                             ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-60.mjs:6:46\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 291,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-60.mjs:6\r\nawait axios.post('https://httpbin.org/post', document.querySelector('#htmlForm'), {\r\n                                             ^\r\n\r\nReferenceError: document is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-60.mjs:6:46\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2123,
       "code": "{\n  \"foo\": \"1\",\n  \"deep\": {\n    \"prop\": \"2\"\n  },\n  \"deep prop spaced\": \"3\",\n  \"baz\": [\n    \"4\",\n    \"5\"\n  ],\n  \"user\": {\n    \"age\": \"value2\"\n  }\n}",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-61.mjs:7\r\n  \"foo\": \"1\",\r\n       ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 92,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-61.mjs:7\r\n  \"foo\": \"1\",\r\n       ^\r\n\r\nSyntaxError: Unexpected token ':'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2149,
       "code": "await axios.post(url, data, {\n  onUploadProgress: function (axiosProgressEvent) {\n    /*{\n      loaded: number;\n      total?: number;\n      progress?: number; // in range [0..1]\n      bytes: number; // how many bytes have been transferred since the last trigger (delta)\n      estimated?: number; // estimated time in seconds\n      rate?: number; // upload speed in bytes\n      upload: true; // upload sign\n    }*/\n  },\n\n  onDownloadProgress: function (axiosProgressEvent) {\n    /*{\n      loaded: number;\n      total?: number;\n      progress?: number;\n      bytes: number;\n      estimated?: number;\n      rate?: number; // download speed in bytes\n      download: true; // download sign\n    }*/\n  },\n});",
       "status": "fail",
-      "ms": 167,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-62.mjs:6\r\nawait axios.post(url, data, {\r\n                 ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-62.mjs:6:18\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 297,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-62.mjs:6\r\nawait axios.post(url, data, {\r\n                 ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-62.mjs:6:18\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2179,
       "code": "const { data } = await axios.post(SERVER_URL, readableStream, {\n  onUploadProgress: ({ progress }) => {\n    console.log((progress * 100).toFixed(2));\n  },\n\n  headers: {\n    'Content-Length': contentLength,\n  },\n\n  maxRedirects: 0, // avoid buffering the entire stream\n});",
       "status": "fail",
-      "ms": 168,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-63.mjs:6\r\nconst { data } = await axios.post(SERVER_URL, readableStream, {\r\n                                  ^\r\n\r\nReferenceError: SERVER_URL is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-63.mjs:6:35\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 314,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-63.mjs:6\r\nconst { data } = await axios.post(SERVER_URL, readableStream, {\r\n                                  ^\r\n\r\nReferenceError: SERVER_URL is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-63.mjs:6:35\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2204,
       "code": "const { data } = await axios.post(LOCAL_SERVER_URL, myBuffer, {\n  onUploadProgress: ({ progress, rate }) => {\n    console.log(`Upload [${(progress * 100).toFixed(2)}%]: ${(rate / 1024).toFixed(2)}KB/s`);\n  },\n\n  maxRate: [100 * 1024], // 100KB/s limit\n});",
       "status": "fail",
-      "ms": 168,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-64.mjs:6\r\nconst { data } = await axios.post(LOCAL_SERVER_URL, myBuffer, {\r\n                                  ^\r\n\r\nReferenceError: LOCAL_SERVER_URL is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-64.mjs:6:35\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 295,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-64.mjs:6\r\nconst { data } = await axios.post(LOCAL_SERVER_URL, myBuffer, {\r\n                                  ^\r\n\r\nReferenceError: LOCAL_SERVER_URL is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-64.mjs:6:35\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2260,
       "code": "const headers = new AxiosHeaders({\n  foo: '1',\n  bar: '2',\n  baz: '3',\n});\n\nfor (const [header, value] of headers) {\n  console.log(header, value);\n}\n\n// foo 1\n// bar 2\n// baz 3",
       "status": "pass",
-      "ms": 168,
+      "ms": 299,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2281,
       "code": "const api = axios.create();\n\napi.defaults.headers.common = {\n  'content-type': undefined,\n  accept: undefined,\n};\n\nawait api.put(url, data, {\n  headers: {\n    'Content-Type': 'application/octet-stream',\n    Accept: 'application/json',\n  },\n});",
       "status": "fail",
-      "ms": 169,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-66.mjs:13\r\nawait api.put(url, data, {\r\n              ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-66.mjs:13:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 299,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-66.mjs:13\r\nawait api.put(url, data, {\r\n              ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-66.mjs:13:15\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2299,
       "code": "const headers = axios.AxiosHeaders.concat(\n  { 'content-type': undefined },\n  { 'Content-Type': 'application/octet-stream' }\n);\n\nawait axios.put(url, data, { headers });",
       "status": "fail",
-      "ms": 167,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-67.mjs:11\r\nawait axios.put(url, data, { headers });\r\n                ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-67.mjs:11:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 301,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-67.mjs:11\r\nawait axios.put(url, data, { headers });\r\n                ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-67.mjs:11:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2318,
       "code": "const headers = new AxiosHeaders(`\nHost: www.bing.com\nUser-Agent: curl/7.54.0\nAccept: */*`);\n\nconsole.log(headers);\n\n// Object [AxiosHeaders] {\n//   host: 'www.bing.com',\n//   'user-agent': 'curl/7.54.0',\n//   accept: '*/*'\n// }",
       "status": "pass",
-      "ms": 171,
+      "ms": 296,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2354,
       "code": "const headers = new AxiosHeaders();\n\nheaders.set(\n  new Map([\n    ['X-Trace-Id', 'abc123'],\n    ['Accept', 'application/json'],\n  ])\n);",
       "status": "pass",
-      "ms": 170,
+      "ms": 293,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2464,
       "code": "const headers = new AxiosHeaders({\n  foo: '1',\n});\n\nheaders.Foo = '2';\nheaders.FOO = '3';\n\nconsole.log(headers.toJSON()); // [Object: null prototype] { foo: '1', Foo: '2', FOO: '3' }\nconsole.log(headers.normalize().toJSON()); // [Object: null prototype] { foo: '3' }\nconsole.log(headers.normalize(true).toJSON()); // [Object: null prototype] { Foo: '3' }",
       "status": "pass",
-      "ms": 169,
+      "ms": 300,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2543,
       "code": "const { data } = axios.get(url, {\n  adapter: 'fetch', // by default ['xhr', 'http', 'fetch']\n});",
       "status": "fail",
-      "ms": 168,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-71.mjs:6\r\nconst { data } = axios.get(url, {\r\n                           ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-71.mjs:6:28\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 290,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-71.mjs:6\r\nconst { data } = axios.get(url, {\r\n                           ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-71.mjs:6:28\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2551,
       "code": "const fetchAxios = axios.create({\n  adapter: 'fetch',\n});\n\nconst { data } = fetchAxios.get(url);",
       "status": "fail",
-      "ms": 168,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-72.mjs:10\r\nconst { data } = fetchAxios.get(url);\r\n                                ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-2HX6XT/snippet-72.mjs:10:33\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 291,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-72.mjs:10\r\nconst { data } = fetchAxios.get(url);\r\n                                ^\r\n\r\nReferenceError: url is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-TKwTof/snippet-72.mjs:10:33\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2577,
       "code": "import customFetchFunction from 'customFetchModule';\n\nconst instance = axios.create({\n  adapter: 'fetch',\n  onDownloadProgress(e) {\n    console.log('downloadProgress', e);\n  },\n  env: {\n    fetch: customFetchFunction,\n    Request: null, // undefined -> use the global constructor\n    Response: null,\n  },\n});",
       "status": "fail",
-      "ms": 126,
-      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'customFetchModule' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-2HX6XT\\snippet-73.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 214,
+      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'customFetchModule' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-TKwTof\\snippet-73.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2597,
       "code": "import { fetch } from '@tauri-apps/plugin-http';\nimport axios from 'axios';\n\nconst instance = axios.create({\n  adapter: 'fetch',\n  onDownloadProgress(e) {\n    console.log('downloadProgress', e);\n  },\n  env: {\n    fetch,\n  },\n});\n\nconst { data } = await instance.get('https://google.com');",
       "status": "fail",
-      "ms": 127,
-      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@tauri-apps/plugin-http' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-2HX6XT\\snippet-74.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 221,
+      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@tauri-apps/plugin-http' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-TKwTof\\snippet-74.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2618,
       "code": "export async function load({ fetch }) {\n  const { data: post } = await axios.get('https://jsonplaceholder.typicode.com/posts/1', {\n    adapter: 'fetch',\n    env: {\n      fetch,\n      Request: null,\n      Response: null,\n    },\n  });\n\n  return { post };\n}",
       "status": "pass",
-      "ms": 168,
+      "ms": 294,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 2643,
       "code": "const form = new FormData();\n\nform.append('foo', '123');\n\nconst { data, headers, status } = await axios.post('https://httpbin.org/post', form, {\n  onUploadProgress(e) {\n    console.log('upload progress', e);\n  },\n  onDownloadProgress(e) {\n    console.log('download progress', e);\n  },\n  responseType: 'arraybuffer',\n});",
       "status": "pass",
-      "ms": 4099,
+      "ms": 2621,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

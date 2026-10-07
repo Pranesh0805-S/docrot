@@ -8,6 +8,9 @@
     "fail": 0,
     "timeout": 0,
     "apiChecked": 4,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {},
     "rotRate": 0
@@ -17,51 +20,61 @@
       "line": 14,
       "code": "const semver = require('semver')\n\nsemver.valid('1.2.3') // '1.2.3'\nsemver.valid('a.b.c') // null\nsemver.clean('  =v1.2.3   ') // '1.2.3'\nsemver.satisfies('1.2.3', '1.x || >=2.5.0 || 5.0.0 - 7.2.3') // true\nsemver.gt('1.2.3', '9.8.7') // false\nsemver.lt('1.2.3', '9.8.7') // true\nsemver.minVersion('>=1.0.0') // '1.0.0'\nsemver.valid(semver.coerce('v2')) // '2.0.0'\nsemver.valid(semver.coerce('42.6.7.9.3-alpha')) // '42.6.7'",
       "status": "pass",
-      "ms": 80,
+      "ms": 146,
       "stderr": "",
       "category": null,
       "apiChecked": 7,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 31,
       "code": "// load the whole API at once in a single object\nconst semver = require('semver')\n\n// or just load the bits you need\n// all of them listed here, just pick and choose what you want\n\n// classes\nconst SemVer = require('semver/classes/semver')\nconst Comparator = require('semver/classes/comparator')\nconst Range = require('semver/classes/range')\n\n// functions for working with versions\nconst semverParse = require('semver/functions/parse')\nconst semverValid = require('semver/functions/valid')\nconst semverClean = require('semver/functions/clean')\nconst semverInc = require('semver/functions/inc')\nconst semverDiff = require('semver/functions/diff')\nconst semverMajor = require('semver/functions/major')\nconst semverMinor = require('semver/functions/minor')\nconst semverPatch = require('semver/functions/patch')\nconst semverPrerelease = require('semver/functions/prerelease')\nconst semverCompare = require('semver/functions/compare')\nconst semverRcompare = require('semver/functions/rcompare')\nconst semverCompareLoose = require('semver/functions/compare-loose')\nconst semverCompareBuild = require('semver/functions/compare-build')\nconst semverSort = require('semver/functions/sort')\nconst semverRsort = require('semver/functions/rsort')\nconst semverTruncate = require('semver/functions/truncate')\n\n// low-level comparators between versions\nconst semverGt = require('semver/functions/gt')\nconst semverLt = require('semver/functions/lt')\nconst semverEq = require('semver/functions/eq')\nconst semverNeq = require('semver/functions/neq')\nconst semverGte = require('semver/functions/gte')\nconst semverLte = require('semver/functions/lte')\nconst semverCmp = require('semver/functions/cmp')\nconst semverCoerce = require('semver/functions/coerce')\n\n// working with ranges\nconst semverSatisfies = require('semver/functions/satisfies')\nconst semverMaxSatisfying = require('semver/ranges/max-satisfying')\nconst semverMinSatisfying = require('semver/ranges/min-satisfying')\nconst semverToComparators = require('semver/ranges/to-comparators')\nconst semverMinVersion = require('semver/ranges/min-version')\nconst semverValidRange = require('semver/ranges/valid')\nconst semverOutside = require('semver/ranges/outside')\nconst semverGtr = require('semver/ranges/gtr')\nconst semverLtr = require('semver/ranges/ltr')\nconst semverIntersects = require('semver/ranges/intersects')\nconst semverSimplifyRange = require('semver/ranges/simplify')\nconst semverRangeSubset = require('semver/ranges/subset')",
       "status": "pass",
-      "ms": 82,
+      "ms": 141,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 225,
       "code": "semver.inc('1.2.3', 'prerelease', 'beta')\n// '1.2.4-beta.0'",
       "status": "pass",
-      "ms": 80,
+      "ms": 132,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 258,
       "code": "semver.inc('1.2.3', 'prerelease', 'beta', '1')\n// '1.2.4-beta.1'",
       "status": "pass",
-      "ms": 78,
+      "ms": 135,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 263,
       "code": "semver.inc('1.2.3', 'prerelease', 'beta', false)\n// '1.2.4-beta'",
       "status": "pass",
-      "ms": 76,
+      "ms": 135,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

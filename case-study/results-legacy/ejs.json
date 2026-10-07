@@ -8,6 +8,9 @@
     "fail": 6,
     "timeout": 0,
     "apiChecked": 4,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 4,
@@ -21,81 +24,97 @@
       "line": 15,
       "code": "app.get('/', (req, res) => {\n  res.render('index', req.query);\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-0.mjs:6\r\napp.get('/', (req, res) => {\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-0.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 102,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-0.mjs:6\r\napp.get('/', (req, res) => {\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-0.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 31,
       "code": "import ejs from 'ejs';\n// Or\nconst ejs = require('ejs');",
       "status": "fail",
-      "ms": 51,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-1.mjs:8\r\nconst ejs = require('ejs');\r\n      ^\r\n\r\nSyntaxError: Identifier 'ejs' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 88,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-1.mjs:8\r\nconst ejs = require('ejs');\r\n      ^\r\n\r\nSyntaxError: Identifier 'ejs' has already been declared\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 87,
       "code": "const template = ejs.compile(str, options);\ntemplate(data);\n// => Rendered HTML string\n\nejs.render(str, data, options);\n// => Rendered HTML string\n\nejs.renderFile(filename, data, options, function(err, str){\n    // str => Rendered HTML string\n});",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-2.mjs:6\r\nconst template = ejs.compile(str, options);\r\n                             ^\r\n\r\nReferenceError: str is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-2.mjs:6:30\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-2.mjs:6\r\nconst template = ejs.compile(str, options);\r\n                             ^\r\n\r\nReferenceError: str is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-2.mjs:6:30\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 3,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 175,
       "code": "ejs.render(template, data, {escape: myEscapeFunction});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-3.mjs:6\r\nejs.render(template, data, {escape: myEscapeFunction});\r\n           ^\r\n\r\nReferenceError: template is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-3.mjs:6:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 100,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-3.mjs:6\r\nejs.render(template, data, {escape: myEscapeFunction});\r\n           ^\r\n\r\nReferenceError: template is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-3.mjs:6:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 222,
       "code": "import ejs from 'ejs';\nconst users = ['geddy', 'neil', 'alex'];\n\n// Just one template\nejs.render('<p>[?= users.join(\" | \"); ?]</p>', {users: users}, {delimiter: '?', openDelimiter: '[', closeDelimiter: ']'});\n// => '<p>geddy | neil | alex</p>'\n\n// Or globally\nejs.delimiter = '?';\nejs.openDelimiter = '[';\nejs.closeDelimiter = ']';\nejs.render('<p>[?= users.join(\" | \"); ?]</p>', {users: users});\n// => '<p>geddy | neil | alex</p>'",
       "status": "pass",
-      "ms": 59,
+      "ms": 98,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 244,
       "code": "import ejs from 'ejs';\nimport { LRUCache } from 'lru-cache';\n\nejs.cache = LRUCache({max: 100}); // LRU cache with 100-item limit",
       "status": "fail",
-      "ms": 60,
-      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'lru-cache' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-QdraVp\\snippet-5.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "node:internal/modules/package_json_reader:301\r\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\r\n        ^\r\n\r\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'lru-cache' imported from C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-f21DPh\\snippet-5.mjs\r\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\r\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\r\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\r\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\r\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)\r\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)\r\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)\r\n    at #resolve (node:internal/modules/esm/loader:701:17)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)\r\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33) {\r\n  code: 'ERR_MODULE_NOT_FOUND'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 259,
       "code": "import ejs from 'ejs';\n\nconst myFileLoad = function (filePath) {\n  return 'myFileLoad: ' + fs.readFileSync(filePath);\n};\n\nejs.fileLoader = myFileLoad;",
       "status": "pass",
-      "ms": 58,
+      "ms": 117,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 317,
       "code": "let str = \"Hello <%= include('file', {person: 'John'}); %>\",\n    fn = ejs.compile(str);\n\nfn(data, null, function(path, d){ // include callback\n  // path -> 'file'\n  // d -> {person: 'John'}\n  // Put your code here\n  // Return the contents of file as a string\n}); // returns rendered string",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-7.mjs:9\r\nfn(data, null, function(path, d){ // include callback\r\n   ^\r\n\r\nReferenceError: data is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-QdraVp/snippet-7.mjs:9:4\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-7.mjs:9\r\nfn(data, null, function(path, d){ // include callback\r\n   ^\r\n\r\nReferenceError: data is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-f21DPh/snippet-7.mjs:9:4\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

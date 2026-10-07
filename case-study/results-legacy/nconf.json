@@ -8,6 +8,9 @@
     "fail": 6,
     "timeout": 0,
     "apiChecked": 13,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Other": 2,
@@ -22,151 +25,181 @@
       "line": 10,
       "code": "  var fs    = require('fs'),\n      nconf = require('nconf');\n\n  //\n  // Setup nconf to use (in-order):\n  //   1. Command-line arguments\n  //   2. Environment variables\n  //   3. A file located at 'path/to/config.json'\n  //\n  nconf.argv()\n   .env()\n   .file({ file: 'path/to/config.json' });\n\n  //\n  // Set a few variables on `nconf`.\n  //\n  nconf.set('database:host', '127.0.0.1');\n  nconf.set('database:port', 5984);\n\n  //\n  // Get the entire database object from nconf. This will output\n  // { host: '127.0.0.1', port: 5984 }\n  //\n  console.log('foo: ' + nconf.get('foo'));\n  console.log('NODE_ENV: ' + nconf.get('NODE_ENV'));\n  console.log('database: ' + nconf.get('database'));\n\n  //\n  // Save the configuration object to disk\n  //\n  nconf.save(function (err) {\n    fs.readFile('path/to/your/config.json', function (err, data) {\n      console.dir(JSON.parse(data.toString()))\n    });\n  });",
       "status": "fail",
-      "ms": 473,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-0.mjs:38\r\n      console.dir(JSON.parse(data.toString()))\r\n                                  ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'toString')\r\n    at ReadFileContext.callback (file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-0.mjs:38:35)\r\n    at FSReqCallback.readFileAfterOpen [as oncomplete] (node:fs:297:13)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 633,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-0.mjs:38\r\n      console.dir(JSON.parse(data.toString()))\r\n                                  ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'toString')\r\n    at ReadFileContext.callback (file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-0.mjs:38:35)\r\n    at FSReqCallback.readFileAfterOpen [as oncomplete] (node:fs:297:13)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Other",
       "apiChecked": 4,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 74,
       "code": "  var nconf = require('nconf');\n\n  //\n  // 1. any overrides\n  //\n  nconf.overrides({\n    'always': 'be this value'\n  });\n\n  //\n  // 2. `process.env`\n  // 3. `process.argv`\n  //\n  nconf.env().argv();\n\n  //\n  // 4. Values in `config.json`\n  //\n  nconf.file('/path/to/config.json');\n\n  //\n  // Or with a custom name\n  // Note: A custom key must be supplied for hierarchy to work if multiple files are used.\n  //\n  nconf.file('custom', '/path/to/config.json');\n\n  //\n  // Or searching from a base directory.\n  // Note: `name` is optional.\n  //\n  nconf.file(name, {\n    file: 'config.json',\n    dir: 'search/from/here',\n    search: true\n  });\n\n  //\n  // 5. Any default values\n  //\n  nconf.defaults({\n    'if nothing else': 'use this value'\n  });",
       "status": "fail",
-      "ms": 117,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-1.mjs:36\r\n  nconf.file(name, {\r\n             ^\r\n\r\nReferenceError: name is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-1.mjs:36:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 176,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-1.mjs:36\r\n  nconf.file(name, {\r\n             ^\r\n\r\nReferenceError: name is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-1.mjs:36:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 4,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 126,
       "code": "  nconf.add('supplied', { type: 'literal', store: { 'some': 'config' });\n  nconf.add('user', { type: 'file', file: '/path/to/userconf.json' });\n  nconf.add('global', { type: 'file', file: '/path/to/globalconf.json' });",
       "status": "fail",
-      "ms": 53,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-2.mjs:6\r\n  nconf.add('supplied', { type: 'literal', store: { 'some': 'config' });\r\n                                                                      ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 90,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-2.mjs:6\r\n  nconf.add('supplied', { type: 'literal', store: { 'some': 'config' });\r\n                                                                      ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 136,
       "code": "  //\n  // Get one of 'NODEJS_PORT' and 'PORT' as a return value\n  //\n  var port = nconf.any('NODEJS_PORT', 'PORT');\n\n  //\n  // Get one of 'NODEJS_IP' and 'IPADDRESS' using a callback\n  //\n  nconf.any(['NODEJS_IP', 'IPADDRESS'], function(err, value) {\n    console.log('Connect to IP address ' + value);\n  });",
       "status": "pass",
-      "ms": 64,
+      "ms": 113,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 153,
       "code": "  //\n  // Load a file store onto nconf with the specified settings\n  //\n  nconf.use('file', { file: '/path/to/some/config-file.json' });\n\n  //\n  // Replace the file store with new settings\n  //\n  nconf.use('file', { file: 'path/to/a-new/config-file.json' });",
       "status": "pass",
-      "ms": 68,
+      "ms": 116,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 168,
       "code": "  nconf.remove('file');",
       "status": "pass",
-      "ms": 61,
+      "ms": 109,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 175,
       "code": "  nconf.defaults({\n    keya: 'a',\n  });\n\n  nconf.required(['keya', 'keyb']);\n  // Error: Missing required keys: keyb",
       "status": "fail",
-      "ms": 65,
-      "stderr": "C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-fm7SC7\\node_modules\\nconf\\lib\\nconf\\provider.js:364\r\n    throw new Error('Missing required keys: ' + missing.join(', '));\r\n          ^\r\n\r\nError: Missing required keys: keyb\r\n    at Provider.required (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-fm7SC7\\node_modules\\nconf\\lib\\nconf\\provider.js:364:11)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-6.mjs:10:9\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 114,
+      "stderr": "C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-vX2SGa\\node_modules\\nconf\\lib\\nconf\\provider.js:364\r\n    throw new Error('Missing required keys: ' + missing.join(', '));\r\n          ^\r\n\r\nError: Missing required keys: keyb\r\n    at Provider.required (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-vX2SGa\\node_modules\\nconf\\lib\\nconf\\provider.js:364:11)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-6.mjs:10:9\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Other",
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 189,
       "code": "  nconf.use('memory');",
       "status": "pass",
-      "ms": 62,
+      "ms": 107,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 222,
       "code": "  //\n  // Can optionally also be an object literal to pass to `yargs`.\n  //\n  nconf.argv({\n    \"x\": {\n      alias: 'example',\n      describe: 'Example description for usage generation',\n      demand: true,\n      default: 'some-value',\n      parseValues: true,\n      transform: function(obj) {\n        if (obj.key === 'foo') {\n          obj.value = 'baz';\n        }\n        return obj;\n      }\n    }\n  });",
       "status": "pass",
-      "ms": 87,
+      "ms": 150,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 245,
       "code": "  nconf.argv(require('yargs')\n    .version('1.2.3')\n    .usage('My usage definition')\n    .strict()\n    .options({\n      \"x\": {\n        alias: 'example',\n        describe: 'Example description for usage generation',\n        demand: true,\n        default: 'some-value'\n      }\n    }));",
       "status": "pass",
-      "ms": 89,
+      "ms": 151,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 295,
       "code": "  //\n  // Can optionally also be an Array of values to limit process.env to.\n  //\n  nconf.env(['only', 'load', 'these', 'values', 'from', 'process.env']);\n\n  //\n  // Can also specify a separator for nested keys (instead of the default ':')\n  //\n  nconf.env('__');\n  // Get the value of the env variable 'database__host'\n  var dbHost = nconf.get('database:host');\n\n  //\n  // Can also lowerCase keys. \n  // Especially handy when dealing with environment variables which are usually \n  // uppercased while argv are lowercased.\n  //\n\n  // Given an environment variable PORT=3001\n  nconf.env();\n  var port = nconf.get('port') // undefined\n\n  nconf.env({ lowerCase: true });\n  var port = nconf.get('port') // 3001\n\n  //\n  // Or use all options\n  //\n  nconf.env({\n    separator: '__',\n    match: /^whatever_matches_this_will_be_whitelisted/\n    whitelist: ['database__host', 'only', 'load', 'these', 'values', 'if', 'whatever_doesnt_match_but_is_whitelisted_gets_loaded_too'],\n    lowerCase: true,\n    parseValues: true,\n    transform: function(obj) {\n      if (obj.key === 'foo') {\n        obj.value = 'baz';\n      }\n      return obj;\n    }\n  });\n  var dbHost = nconf.get('database:host');",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-10.mjs:37\r\n    whitelist: ['database__host', 'only', 'load', 'these', 'values', 'if', 'whatever_doesnt_match_but_is_whitelisted_gets_loaded_too'],\r\n    ^^^^^^^^^\r\n\r\nSyntaxError: Unexpected identifier 'whitelist'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 91,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-10.mjs:37\r\n    whitelist: ['database__host', 'only', 'load', 'these', 'values', 'if', 'whatever_doesnt_match_but_is_whitelisted_gets_loaded_too'],\r\n    ^^^^^^^^^\r\n\r\nSyntaxError: Unexpected identifier 'whitelist'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 343,
       "code": "  nconf.defaults({\n    'some': 'default value'\n  });",
       "status": "pass",
-      "ms": 63,
+      "ms": 106,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 354,
       "code": "  nconf.file('path/to/your/config.json');\n  // add multiple files, hierarchically. notice the unique key for each file\n  nconf.file('user', 'path/to/your/user.json');\n  nconf.file('global', 'path/to/your/global.json');",
       "status": "pass",
-      "ms": 66,
+      "ms": 114,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 369,
       "code": "nconf.file('secure-file', {\n  file: 'path/to/secure-file.json',\n  secure: {\n    secret: 'super-secretzzz-keyzz',\n    alg: 'aes-256-ctr'\n  }\n})",
       "status": "pass",
-      "ms": 69,
+      "ms": 113,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 404,
       "code": "  var nconf = require('nconf');\n\n  //\n  // Requiring `nconf-redis` will extend the `nconf`\n  // module.\n  //\n  require('nconf-redis');\n\n  nconf.use('redis', { host: 'localhost', port: 6379, ttl: 60 * 60 * 1000 });",
       "status": "fail",
-      "ms": 63,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'nconf-redis'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-fm7SC7\\snippet-14.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-fm7SC7/snippet-14.mjs:12:3\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-fm7SC7\\\\snippet-14.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 109,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'nconf-redis'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-vX2SGa\\snippet-14.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-vX2SGa/snippet-14.mjs:12:3\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-vX2SGa\\\\snippet-14.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

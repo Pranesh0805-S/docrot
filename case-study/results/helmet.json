@@ -8,382 +8,459 @@
     "fail": 37,
     "timeout": 0,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 37
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 7,
       "code": "import helmet from \"helmet\";\n\nconst app = express();\n\napp.use(helmet());",
       "status": "fail",
-      "ms": 85,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-0.mjs:8\r\nconst app = express();\r\n            ^\r\n\r\nReferenceError: express is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-0.mjs:8:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 154,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-0.mjs:8\r\nconst app = express();\r\n            ^\r\n\r\nReferenceError: express is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-0.mjs:8:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 23,
       "code": "// Disable the Content-Security-Policy and X-Download-Options headers\napp.use(\n  helmet({\n    contentSecurityPolicy: false,\n    xDownloadOptions: false,\n  }),\n);",
       "status": "fail",
-      "ms": 76,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-1.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-1.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 112,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-1.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-1.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 35,
       "code": "// Configure the Content-Security-Policy header.\napp.use(\n  helmet({\n    contentSecurityPolicy: {\n      directives: {\n        \"script-src\": [\"'self'\", \"example.com\"],\n      },\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 62,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-2.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-2.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-2.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-2.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 76,
       "code": "// Sets all of the defaults, but overrides `script-src`\n// and disables the default `style-src`.\napp.use(\n  helmet({\n    contentSecurityPolicy: {\n      directives: {\n        \"script-src\": [\"'self'\", \"example.com\"],\n        \"style-src\": null,\n      },\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-3.mjs:8\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-3.mjs:8:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-3.mjs:8\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-3.mjs:8:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 91,
       "code": "// Sets the `script-src` directive to\n// \"'self' 'nonce-e33cc...'\"\n// (or similar)\napp.use((req, res, next) => {\n  res.locals.cspNonce = crypto.randomBytes(32).toString(\"hex\");\n  next();\n});\napp.use(\n  helmet({\n    contentSecurityPolicy: {\n      directives: {\n        scriptSrc: [\"'self'\", (req, res) => `'nonce-${res.locals.cspNonce}'`],\n      },\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-4.mjs:9\r\napp.use((req, res, next) => {\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-4.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-4.mjs:9\r\napp.use((req, res, next) => {\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-4.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 112,
       "code": "// Sets \"Content-Security-Policy: default-src 'self';\n// script-src 'self' example.com;object-src 'none';\n// upgrade-insecure-requests\"\napp.use(\n  helmet({\n    contentSecurityPolicy: {\n      useDefaults: false,\n      directives: {\n        defaultSrc: [\"'self'\"],\n        scriptSrc: [\"'self'\", \"example.com\"],\n        objectSrc: [\"'none'\"],\n        upgradeInsecureRequests: [],\n      },\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-5.mjs:9\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-5.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-5.mjs:9\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-5.mjs:9:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 151,
       "code": "// Sets the Content-Security-Policy-Report-Only header\napp.use(\n  helmet({\n    contentSecurityPolicy: {\n      directives: {/* ... */},\n      reportOnly: true,\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-6.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-6.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-6.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-6.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 165,
       "code": "const isDevelopment = app.get(\"env\") === \"development\";\n\napp.use(\n  helmet({\n    contentSecurityPolicy: {\n      directives: {\n        // Disable upgrade-insecure-requests in development.\n        \"upgrade-insecure-requests\": isDevelopment ? null : [],\n      },\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-7.mjs:6\r\nconst isDevelopment = app.get(\"env\") === \"development\";\r\n                      ^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-7.mjs:6:23\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 95,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-7.mjs:6\r\nconst isDevelopment = app.get(\"env\") === \"development\";\r\n                      ^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-7.mjs:6:23\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 184,
       "code": "app.use(\n  helmet({\n    contentSecurityPolicy: false,\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-8.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-8.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-8.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-8.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 203,
       "code": "// Helmet does not set Cross-Origin-Embedder-Policy\n// by default.\napp.use(helmet());\n\n// Sets \"Cross-Origin-Embedder-Policy: require-corp\"\napp.use(helmet({ crossOriginEmbedderPolicy: true }));\n\n// Sets \"Cross-Origin-Embedder-Policy: credentialless\"\napp.use(helmet({ crossOriginEmbedderPolicy: { policy: \"credentialless\" } }));",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-9.mjs:8\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-9.mjs:8:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-9.mjs:8\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-9.mjs:8:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 230,
       "code": "// Sets \"Cross-Origin-Opener-Policy: same-origin\"\napp.use(helmet());\n\n// Sets \"Cross-Origin-Opener-Policy: same-origin-allow-popups\"\napp.use(\n  helmet({\n    crossOriginOpenerPolicy: { policy: \"same-origin-allow-popups\" },\n  }),\n);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-10.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-10.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-10.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-10.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 244,
       "code": "app.use(\n  helmet({\n    crossOriginOpenerPolicy: false,\n  }),\n);",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-11.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-11.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-11.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-11.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 267,
       "code": "// Sets \"Cross-Origin-Resource-Policy: same-origin\"\napp.use(helmet());\n\n// Sets \"Cross-Origin-Resource-Policy: same-site\"\napp.use(helmet({ crossOriginResourcePolicy: { policy: \"same-site\" } }));",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-12.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-12.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-12.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-12.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 277,
       "code": "app.use(\n  helmet({\n    crossOriginResourcePolicy: false,\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-13.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-13.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 95,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-13.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-13.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 302,
       "code": "// Sets \"Origin-Agent-Cluster: ?1\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-14.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-14.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-14.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-14.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 309,
       "code": "app.use(\n  helmet({\n    originAgentCluster: false,\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-15.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-15.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-15.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-15.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 332,
       "code": "// Sets \"Referrer-Policy: no-referrer\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-16.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-16.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-16.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-16.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 339,
       "code": "// Sets \"Referrer-Policy: no-referrer\"\napp.use(\n  helmet({\n    referrerPolicy: {\n      policy: \"no-referrer\",\n    },\n  }),\n);\n\n// Sets \"Referrer-Policy: origin,unsafe-url\"\napp.use(\n  helmet({\n    referrerPolicy: {\n      policy: [\"origin\", \"unsafe-url\"],\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-17.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-17.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-17.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-17.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 361,
       "code": "app.use(\n  helmet({\n    referrerPolicy: false,\n  }),\n);",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-18.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-18.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 93,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-18.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-18.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 384,
       "code": "// Sets \"Strict-Transport-Security: max-age=31536000; includeSubDomains\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-19.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-19.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-19.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-19.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 395,
       "code": "// Sets \"Strict-Transport-Security: max-age=123456; includeSubDomains\"\napp.use(\n  helmet({\n    strictTransportSecurity: {\n      maxAge: 123456,\n    },\n  }),\n);\n\n// Sets \"Strict-Transport-Security: max-age=123456\"\napp.use(\n  helmet({\n    strictTransportSecurity: {\n      maxAge: 123456,\n      includeSubDomains: false,\n    },\n  }),\n);\n\n// Sets \"Strict-Transport-Security: max-age=123456; includeSubDomains; preload\"\napp.use(\n  helmet({\n    strictTransportSecurity: {\n      maxAge: 63072000,\n      preload: true,\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-20.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-20.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 95,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-20.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-20.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 428,
       "code": "app.use(\n  helmet({\n    strictTransportSecurity: false,\n  }),\n);",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-21.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-21.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-21.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-21.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 455,
       "code": "// Sets \"X-Content-Type-Options: nosniff\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-22.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-22.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-22.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-22.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 462,
       "code": "app.use(\n  helmet({\n    xContentTypeOptions: false,\n  }),\n);",
       "status": "fail",
-      "ms": 54,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-23.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-23.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-23.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-23.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 485,
       "code": "// Sets \"X-DNS-Prefetch-Control: off\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-24.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-24.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-24.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-24.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 494,
       "code": "// Sets \"X-DNS-Prefetch-Control: off\"\napp.use(\n  helmet({\n    xDnsPrefetchControl: { allow: false },\n  }),\n);\n\n// Sets \"X-DNS-Prefetch-Control: on\"\napp.use(\n  helmet({\n    xDnsPrefetchControl: { allow: true },\n  }),\n);",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-25.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-25.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-25.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-25.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 512,
       "code": "app.use(\n  helmet({\n    xDnsPrefetchControl: false,\n  }),\n);",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-26.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-26.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-26.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-26.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 537,
       "code": "// Sets \"X-Download-Options: noopen\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-27.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-27.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-27.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-27.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 544,
       "code": "app.use(\n  helmet({\n    xDownloadOptions: false,\n  }),\n);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-28.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-28.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-28.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-28.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 567,
       "code": "// Sets \"X-Frame-Options: SAMEORIGIN\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-29.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-29.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-29.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-29.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 576,
       "code": "// Sets \"X-Frame-Options: DENY\"\napp.use(\n  helmet({\n    xFrameOptions: { action: \"deny\" },\n  }),\n);\n\n// Sets \"X-Frame-Options: SAMEORIGIN\"\napp.use(\n  helmet({\n    xFrameOptions: { action: \"sameorigin\" },\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-30.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-30.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-30.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-30.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 594,
       "code": "app.use(\n  helmet({\n    xFrameOptions: false,\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-31.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-31.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 95,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-31.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-31.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 617,
       "code": "// Sets \"X-Permitted-Cross-Domain-Policies: none\"\napp.use(helmet());",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-32.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-32.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-32.mjs:7\r\napp.use(helmet());\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-32.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 626,
       "code": "// Sets \"X-Permitted-Cross-Domain-Policies: none\"\napp.use(\n  helmet({\n    xPermittedCrossDomainPolicies: {\n      permittedPolicies: \"none\",\n    },\n  }),\n);\n\n// Sets \"X-Permitted-Cross-Domain-Policies: by-content-type\"\napp.use(\n  helmet({\n    xPermittedCrossDomainPolicies: {\n      permittedPolicies: \"by-content-type\",\n    },\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-33.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-33.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-33.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-33.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 648,
       "code": "app.use(\n  helmet({\n    xPermittedCrossDomainPolicies: false,\n  }),\n);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-34.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-34.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 95,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-34.mjs:6\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-34.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 673,
       "code": "// Not required, but recommended for Express users:\napp.disable(\"x-powered-by\");\n\n// Ask Helmet to ignore the X-Powered-By header.\napp.use(\n  helmet({\n    xPoweredBy: false,\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-35.mjs:7\r\napp.disable(\"x-powered-by\");\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-35.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-35.mjs:7\r\napp.disable(\"x-powered-by\");\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-35.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 704,
       "code": "// This is not recommended.\napp.use(\n  helmet({\n    xXssProtection: false,\n  }),\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-36.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-cxBd4R/snippet-36.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-36.mjs:7\r\napp.use(\r\n^\r\n\r\nReferenceError: app is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-7VF09A/snippet-36.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

@@ -8,32 +8,39 @@
     "fail": 2,
     "timeout": 0,
     "apiChecked": 0,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Not runnable as-is (fragment/TypeScript)": 2
     },
-    "rotRate": null
+    "rotRate": 0
   },
   "results": [
     {
       "line": 59,
       "code": "#!/usr/bin/env node\nimport yargs from 'yargs';\nimport { hideBin } from 'yargs/helpers';\nconst argv = yargs(hideBin(process.argv)).parse()\n\nif (argv.ships > 3 && argv.distance < 53.5) {\n  console.log('Plunder more riffiwobbles!')\n} else {\n  console.log('Retreat from the xupptumblers!')\n}",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BudndT/snippet-0.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NMoVNq/snippet-0.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 84,
       "code": "#!/usr/bin/env node\nimport yargs from 'yargs';\nimport { hideBin } from 'yargs/helpers';\n\nyargs(hideBin(process.argv))\n  .command('serve [port]', 'start the server', (yargs) => {\n    return yargs\n      .positional('port', {\n        describe: 'port to bind on',\n        default: 5000\n      })\n  }, (argv) => {\n    if (argv.verbose) console.info(`start server on :${argv.port}`)\n    serve(argv.port)\n  })\n  .option('verbose', {\n    alias: 'v',\n    type: 'boolean',\n    description: 'Run with verbose logging'\n  })\n  .parse()",
       "status": "fail",
-      "ms": 52,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-BudndT/snippet-1.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-NMoVNq/snippet-1.mjs:6\r\n#!/usr/bin/env node\r\n^\r\n\r\nSyntaxError: Invalid or unexpected token\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

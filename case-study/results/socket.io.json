@@ -8,6 +8,9 @@
     "fail": 6,
     "timeout": 1,
     "apiChecked": 1,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Incomplete snippet (missing context)": 2,
@@ -22,71 +25,85 @@
       "line": 58,
       "code": "io.on('connection', socket => {\n  socket.emit('request', /* … */); // emit an event to the socket\n  io.emit('broadcast', /* … */); // emit an event to all connected sockets\n  socket.on('reply', () => { /* … */ }); // listen to the event\n});",
       "status": "fail",
-      "ms": 122,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-0.mjs:6\r\nio.on('connection', socket => {\r\n^\r\n\r\nReferenceError: io is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-0.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 197,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-0.mjs:6\r\nio.on('connection', socket => {\r\n^\r\n\r\nReferenceError: io is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-0.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 100,
       "code": "const server = require('http').createServer();\nconst io = require('socket.io')(server);\nio.on('connection', client => {\n  client.on('event', data => { /* … */ });\n  client.on('disconnect', () => { /* … */ });\n});\nserver.listen(3000);",
       "status": "timeout",
-      "ms": 10014,
+      "ms": 10020,
       "stderr": "",
       "category": "Long-running (inconclusive)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 112,
       "code": "const io = require('socket.io')();\nio.on('connection', client => { ... });\nio.listen(3000);",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-2.mjs:7\r\nio.on('connection', client => { ... });\r\n                                ^^^\r\n\r\nSyntaxError: Unexpected token '...'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-2.mjs:7\r\nio.on('connection', client => { ... });\r\n                                ^^^\r\n\r\nSyntaxError: Unexpected token '...'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 120,
       "code": "import { Server } from \"socket.io\";\nconst io = new Server(server);\nio.listen(3000);",
       "status": "fail",
-      "ms": 115,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-3.mjs:7\r\nconst io = new Server(server);\r\n                      ^\r\n\r\nReferenceError: server is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-3.mjs:7:23\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 232,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-3.mjs:7\r\nconst io = new Server(server);\r\n                      ^\r\n\r\nReferenceError: server is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-3.mjs:7:23\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 133,
       "code": "const app = require('express')();\nconst server = require('http').createServer(app);\nconst io = require('socket.io')(server);\nio.on('connection', () => { /* … */ });\nserver.listen(3000);",
       "status": "fail",
-      "ms": 115,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-6DzvC5\\snippet-4.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-4.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-6DzvC5\\\\snippet-4.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 223,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'express'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-DMbgwc\\snippet-4.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-4.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-DMbgwc\\\\snippet-4.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 146,
       "code": "const app = require('koa')();\nconst server = require('http').createServer(app.callback());\nconst io = require('socket.io')(server);\nio.on('connection', () => { /* … */ });\nserver.listen(3000);",
       "status": "fail",
-      "ms": 113,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'koa'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-6DzvC5\\snippet-5.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-5.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-6DzvC5\\\\snippet-5.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 215,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'koa'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-DMbgwc\\snippet-5.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-5.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-DMbgwc\\\\snippet-5.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 160,
       "code": "const app = require('fastify')();\napp.register(require('fastify-socket.io'));\napp.ready().then(() => {\n    app.io.on('connection', () => { /* … */ });\n})\napp.listen(3000);",
       "status": "fail",
-      "ms": 115,
-      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'fastify'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-6DzvC5\\snippet-6.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-6DzvC5/snippet-6.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-6DzvC5\\\\snippet-6.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 241,
+      "stderr": "node:internal/modules/cjs/loader:1456\r\n  const err = new Error(message);\r\n              ^\r\n\r\nError: Cannot find module 'fastify'\r\nRequire stack:\r\n- C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-DMbgwc\\snippet-6.mjs\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1456:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1066:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1071:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1242:25)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-DMbgwc/snippet-6.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\prane\\\\AppData\\\\Local\\\\Temp\\\\docrot-DMbgwc\\\\snippet-6.mjs'\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Missing dependency/module",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }

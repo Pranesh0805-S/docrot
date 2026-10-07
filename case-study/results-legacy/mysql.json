@@ -8,6 +8,9 @@
     "fail": 47,
     "timeout": 2,
     "apiChecked": 17,
+    "apiBroken": 0,
+    "invalid": 0,
+    "warned": 0,
     "confirmed": 0,
     "categories": {
       "Needs network/external service": 1,
@@ -23,91 +26,109 @@
       "line": 101,
       "code": "var mysql      = require('mysql');\nvar connection = mysql.createConnection({\n  host     : 'localhost',\n  user     : 'me',\n  password : 'secret',\n  database : 'my_db'\n});\n\nconnection.connect();\n\nconnection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {\n  if (error) throw error;\n  console.log('The solution is: ', results[0].solution);\n});\n\nconnection.end();",
       "status": "fail",
-      "ms": 996,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-0.mjs:17\r\n  if (error) throw error;\r\n             ^\r\n\r\nAggregateError [ECONNREFUSED]: \r\n    at internalConnectMultiple (node:net:1142:49)\r\n    at afterConnectMultiple (node:net:1723:7)\r\n    --------------------\r\n    at Protocol._enqueue (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-qh3Uaj\\node_modules\\mysql\\lib\\protocol\\Protocol.js:144:48)\r\n    at Protocol.handshake (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-qh3Uaj\\node_modules\\mysql\\lib\\protocol\\Protocol.js:51:23)\r\n    at Connection.connect (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-qh3Uaj\\node_modules\\mysql\\lib\\Connection.js:116:18)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-0.mjs:14:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  code: 'ECONNREFUSED',\r\n  fatal: true,\r\n  [errors]: [\r\n    Error: connect ECONNREFUSED ::1:3306\r\n        at createConnectionError (node:net:1686:14)\r\n        at afterConnectMultiple (node:net:1716:16) {\r\n      errno: -4078,\r\n      code: 'ECONNREFUSED',\r\n      syscall: 'connect',\r\n      address: '::1',\r\n      port: 3306\r\n    },\r\n    Error: connect ECONNREFUSED 127.0.0.1:3306\r\n        at createConnectionError (node:net:1686:14)\r\n        at afterConnectMultiple (node:net:1716:16) {\r\n      errno: -4078,\r\n      code: 'ECONNREFUSED',\r\n      syscall: 'connect',\r\n      address: '127.0.0.1',\r\n      port: 3306\r\n    }\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 1391,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-0.mjs:17\r\n  if (error) throw error;\r\n             ^\r\n\r\nAggregateError [ECONNREFUSED]: \r\n    at internalConnectMultiple (node:net:1142:49)\r\n    at afterConnectMultiple (node:net:1723:7)\r\n    --------------------\r\n    at Protocol._enqueue (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-LCsxgQ\\node_modules\\mysql\\lib\\protocol\\Protocol.js:144:48)\r\n    at Protocol.handshake (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-LCsxgQ\\node_modules\\mysql\\lib\\protocol\\Protocol.js:51:23)\r\n    at Connection.connect (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-LCsxgQ\\node_modules\\mysql\\lib\\Connection.js:116:18)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-0.mjs:14:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  code: 'ECONNREFUSED',\r\n  fatal: true,\r\n  [errors]: [\r\n    Error: connect ECONNREFUSED ::1:3306\r\n        at createConnectionError (node:net:1686:14)\r\n        at afterConnectMultiple (node:net:1716:16) {\r\n      errno: -4078,\r\n      code: 'ECONNREFUSED',\r\n      syscall: 'connect',\r\n      address: '::1',\r\n      port: 3306\r\n    },\r\n    Error: connect ECONNREFUSED 127.0.0.1:3306\r\n        at createConnectionError (node:net:1686:14)\r\n        at afterConnectMultiple (node:net:1716:16) {\r\n      errno: -4078,\r\n      code: 'ECONNREFUSED',\r\n      syscall: 'connect',\r\n      address: '127.0.0.1',\r\n      port: 3306\r\n    }\r\n  ]\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Needs network/external service",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 166,
       "code": "var mysql      = require('mysql');\nvar connection = mysql.createConnection({\n  host     : 'example.org',\n  user     : 'bob',\n  password : 'secret'\n});\n\nconnection.connect(function(err) {\n  if (err) {\n    console.error('error connecting: ' + err.stack);\n    return;\n  }\n\n  console.log('connected as id ' + connection.threadId);\n});",
       "status": "timeout",
-      "ms": 10018,
+      "ms": 10020,
       "stderr": "",
       "category": "Long-running (inconclusive)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 186,
       "code": "var mysql      = require('mysql');\nvar connection = mysql.createConnection(...);\n\nconnection.query('SELECT 1', function (error, results, fields) {\n  if (error) throw error;\n  // connected!\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-2.mjs:7\r\nvar connection = mysql.createConnection(...);\r\n                                           ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 101,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-2.mjs:7\r\nvar connection = mysql.createConnection(...);\r\n                                           ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 255,
       "code": "var connection = mysql.createConnection('mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700');",
       "status": "pass",
-      "ms": 104,
+      "ms": 192,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 276,
       "code": "var connection = mysql.createConnection({\n  host : 'localhost',\n  ssl  : {\n    ca : fs.readFileSync(__dirname + '/mysql-ca.crt')\n  }\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-4.mjs:9\r\n    ca : fs.readFileSync(__dirname + '/mysql-ca.crt')\r\n         ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-4.mjs:9:10\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 110,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-4.mjs:9\r\n    ca : fs.readFileSync(__dirname + '/mysql-ca.crt')\r\n         ^\r\n\r\nReferenceError: fs is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-4.mjs:9:10\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 288,
       "code": "var connection = mysql.createConnection({\n  host : 'localhost',\n  ssl  : {\n    // DO NOT DO THIS\n    // set up your ca correctly to trust the connection\n    rejectUnauthorized: false\n  }\n});",
       "status": "pass",
-      "ms": 103,
+      "ms": 191,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 307,
       "code": "var connection = mysql.createConnection({\n  // disable FOUND_ROWS flag, enable IGNORE_SPACE flag\n  flags: '-FOUND_ROWS,IGNORE_SPACE'\n});",
       "status": "pass",
-      "ms": 103,
+      "ms": 190,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 361,
       "code": "connection.end(function(err) {\n  // The connection is terminated now\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-7.mjs:6\r\nconnection.end(function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-7.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 108,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-7.mjs:6\r\nconnection.end(function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-7.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 377,
       "code": "connection.destroy();",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-8.mjs:6\r\nconnection.destroy();\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-8.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-8.mjs:6\r\nconnection.destroy();\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-8.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 391,
@@ -117,507 +138,609 @@
       "stderr": "",
       "category": "Long-running (inconclusive)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 413,
       "code": "var mysql = require('mysql');\nvar pool  = mysql.createPool(...);\n\npool.getConnection(function(err, connection) {\n  if (err) throw err; // not connected!\n\n  // Use the connection\n  connection.query('SELECT something FROM sometable', function (error, results, fields) {\n    // When done with the connection, release it.\n    connection.release();\n\n    // Handle error after the release.\n    if (error) throw error;\n\n    // Don't use the connection here, it has been returned to the pool.\n  });\n});",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-10.mjs:7\r\nvar pool  = mysql.createPool(...);\r\n                                ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 105,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-10.mjs:7\r\nvar pool  = mysql.createPool(...);\r\n                                ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 474,
       "code": "pool.on('acquire', function (connection) {\n  console.log('Connection %d acquired', connection.threadId);\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-11.mjs:6\r\npool.on('acquire', function (connection) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-11.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-11.mjs:6\r\npool.on('acquire', function (connection) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-11.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 486,
       "code": "pool.on('connection', function (connection) {\n  connection.query('SET SESSION auto_increment_increment=1')\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-12.mjs:6\r\npool.on('connection', function (connection) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-12.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 106,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-12.mjs:6\r\npool.on('connection', function (connection) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-12.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 497,
       "code": "pool.on('enqueue', function () {\n  console.log('Waiting for available connection slot');\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-13.mjs:6\r\npool.on('enqueue', function () {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-13.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 104,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-13.mjs:6\r\npool.on('enqueue', function () {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-13.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 509,
       "code": "pool.on('release', function (connection) {\n  console.log('Connection %d released', connection.threadId);\n});",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-14.mjs:6\r\npool.on('release', function (connection) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-14.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 102,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-14.mjs:6\r\npool.on('release', function (connection) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-14.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 523,
       "code": "pool.end(function (err) {\n  // all connections in the pool have ended\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-15.mjs:6\r\npool.end(function (err) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-15.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 105,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-15.mjs:6\r\npool.end(function (err) {\r\n^\r\n\r\nReferenceError: pool is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-15.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 547,
       "code": "// create\nvar poolCluster = mysql.createPoolCluster();\n\n// add configurations (the config is a pool config object)\npoolCluster.add(config); // add configuration with automatic name\npoolCluster.add('MASTER', masterConfig); // add a named configuration\npoolCluster.add('SLAVE1', slave1Config);\npoolCluster.add('SLAVE2', slave2Config);\n\n// remove configurations\npoolCluster.remove('SLAVE2'); // By nodeId\npoolCluster.remove('SLAVE*'); // By target group : SLAVE1-2\n\n// Target Group : ALL(anonymous, MASTER, SLAVE1-2), Selector : round-robin(default)\npoolCluster.getConnection(function (err, connection) {});\n\n// Target Group : MASTER, Selector : round-robin\npoolCluster.getConnection('MASTER', function (err, connection) {});\n\n// Target Group : SLAVE1-2, Selector : order\n// If can't connect to SLAVE1, return SLAVE2. (remove SLAVE1 in the cluster)\npoolCluster.on('remove', function (nodeId) {\n  console.log('REMOVED NODE : ' + nodeId); // nodeId = SLAVE1\n});\n\n// A pattern can be passed with *  as wildcard\npoolCluster.getConnection('SLAVE*', 'ORDER', function (err, connection) {});\n\n// The pattern can also be a regular expression\npoolCluster.getConnection(/^SLAVE[12]$/, function (err, connection) {});\n\n// of namespace : of(pattern, selector)\npoolCluster.of('*').getConnection(function (err, connection) {});\n\nvar pool = poolCluster.of('SLAVE*', 'RANDOM');\npool.getConnection(function (err, connection) {});\npool.getConnection(function (err, connection) {});\npool.query(function (error, results, fields) {});\n\n// close all connections\npoolCluster.end(function (err) {\n  // all connections in the pool cluster have ended\n});",
       "status": "fail",
-      "ms": 152,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-16.mjs:10\r\npoolCluster.add(config); // add configuration with automatic name\r\n                ^\r\n\r\nReferenceError: config is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-16.mjs:10:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 236,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-16.mjs:10\r\npoolCluster.add(config); // add configuration with automatic name\r\n                ^\r\n\r\nReferenceError: config is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-16.mjs:10:17\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 606,
       "code": "var clusterConfig = {\n  removeNodeErrorCount: 1, // Remove the node immediately when connection fails.\n  defaultSelector: 'ORDER'\n};\n\nvar poolCluster = mysql.createPoolCluster(clusterConfig);",
       "status": "pass",
-      "ms": 105,
+      "ms": 196,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 620,
       "code": "connection.changeUser({user : 'john'}, function(err) {\n  if (err) throw err;\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-18.mjs:6\r\nconnection.changeUser({user : 'john'}, function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-18.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 104,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-18.mjs:6\r\nconnection.changeUser({user : 'john'}, function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-18.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 668,
       "code": "connection.query('SELECT * FROM `books` WHERE `author` = \"David\"', function (error, results, fields) {\n  // error will be an Error if one occurred during the query\n  // results will contain the results of the query\n  // fields will contain information about the returned results fields (if any)\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-19.mjs:6\r\nconnection.query('SELECT * FROM `books` WHERE `author` = \"David\"', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-19.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 105,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-19.mjs:6\r\nconnection.query('SELECT * FROM `books` WHERE `author` = \"David\"', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-19.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 679,
       "code": "connection.query('SELECT * FROM `books` WHERE `author` = ?', ['David'], function (error, results, fields) {\n  // error will be an Error if one occurred during the query\n  // results will contain the results of the query\n  // fields will contain information about the returned results fields (if any)\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-20.mjs:6\r\nconnection.query('SELECT * FROM `books` WHERE `author` = ?', ['David'], function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-20.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 104,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-20.mjs:6\r\nconnection.query('SELECT * FROM `books` WHERE `author` = ?', ['David'], function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-20.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 692,
       "code": "connection.query({\n  sql: 'SELECT * FROM `books` WHERE `author` = ?',\n  timeout: 40000, // 40s\n  values: ['David']\n}, function (error, results, fields) {\n  // error will be an Error if one occurred during the query\n  // results will contain the results of the query\n  // fields will contain information about the returned results fields (if any)\n});",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-21.mjs:6\r\nconnection.query({\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-21.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-21.mjs:6\r\nconnection.query({\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-21.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 708,
       "code": "connection.query({\n    sql: 'SELECT * FROM `books` WHERE `author` = ?',\n    timeout: 40000, // 40s\n  },\n  ['David'],\n  function (error, results, fields) {\n    // error will be an Error if one occurred during the query\n    // results will contain the results of the query\n    // fields will contain information about the returned results fields (if any)\n  }\n);",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-22.mjs:6\r\nconnection.query({\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-22.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 107,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-22.mjs:6\r\nconnection.query({\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-22.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 726,
       "code": "connection.query(\n  'SELECT * FROM `books` WHERE `author` = ?',\n  'David',\n  function (error, results, fields) {\n    // error will be an Error if one occurred during the query\n    // results will contain the results of the query\n    // fields will contain information about the returned results fields (if any)\n  }\n);",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-23.mjs:6\r\nconnection.query(\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-23.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 108,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-23.mjs:6\r\nconnection.query(\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-23.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 748,
       "code": "var userId = 'some user provided value';\nvar sql    = 'SELECT * FROM users WHERE id = ' + connection.escape(userId);\nconnection.query(sql, function (error, results, fields) {\n  if (error) throw error;\n  // ...\n});",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-24.mjs:7\r\nvar sql    = 'SELECT * FROM users WHERE id = ' + connection.escape(userId);\r\n                                                 ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-24.mjs:7:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 105,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-24.mjs:7\r\nvar sql    = 'SELECT * FROM users WHERE id = ' + connection.escape(userId);\r\n                                                 ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-24.mjs:7:50\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 760,
       "code": "connection.query('SELECT * FROM users WHERE id = ?', [userId], function (error, results, fields) {\n  if (error) throw error;\n  // ...\n});",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-25.mjs:6\r\nconnection.query('SELECT * FROM users WHERE id = ?', [userId], function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-25.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 109,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-25.mjs:6\r\nconnection.query('SELECT * FROM users WHERE id = ?', [userId], function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-25.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 771,
       "code": "connection.query('UPDATE users SET foo = ?, bar = ?, baz = ? WHERE id = ?', ['a', 'b', 'c', userId], function (error, results, fields) {\n  if (error) throw error;\n  // ...\n});",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-26.mjs:6\r\nconnection.query('UPDATE users SET foo = ?, bar = ?, baz = ? WHERE id = ?', ['a', 'b', 'c', userId], function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-26.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 104,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-26.mjs:6\r\nconnection.query('UPDATE users SET foo = ?, bar = ?, baz = ? WHERE id = ?', ['a', 'b', 'c', userId], function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-26.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 807,
       "code": "var post  = {id: 1, title: 'Hello MySQL'};\nvar query = connection.query('INSERT INTO posts SET ?', post, function (error, results, fields) {\n  if (error) throw error;\n  // Neat!\n});\nconsole.log(query.sql); // INSERT INTO posts SET `id` = 1, `title` = 'Hello MySQL'",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-27.mjs:7\r\nvar query = connection.query('INSERT INTO posts SET ?', post, function (error, results, fields) {\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-27.mjs:7:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 104,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-27.mjs:7\r\nvar query = connection.query('INSERT INTO posts SET ?', post, function (error, results, fields) {\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-27.mjs:7:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 818,
       "code": "var CURRENT_TIMESTAMP = { toSqlString: function() { return 'CURRENT_TIMESTAMP()'; } };\nvar sql = mysql.format('UPDATE posts SET modified = ? WHERE id = ?', [CURRENT_TIMESTAMP, 42]);\nconsole.log(sql); // UPDATE posts SET modified = CURRENT_TIMESTAMP() WHERE id = 42",
       "status": "pass",
-      "ms": 59,
+      "ms": 107,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 831,
       "code": "var CURRENT_TIMESTAMP = mysql.raw('CURRENT_TIMESTAMP()');\nvar sql = mysql.format('UPDATE posts SET modified = ? WHERE id = ?', [CURRENT_TIMESTAMP, 42]);\nconsole.log(sql); // UPDATE posts SET modified = CURRENT_TIMESTAMP() WHERE id = 42",
       "status": "pass",
-      "ms": 58,
+      "ms": 102,
       "stderr": "",
       "category": null,
       "apiChecked": 2,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 840,
       "code": "var query = \"SELECT * FROM posts WHERE title=\" + mysql.escape(\"Hello MySQL\");\n\nconsole.log(query); // SELECT * FROM posts WHERE title='Hello MySQL'",
       "status": "pass",
-      "ms": 61,
+      "ms": 99,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 852,
       "code": "var sorter = 'date';\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId(sorter);\nconnection.query(sql, function (error, results, fields) {\n  if (error) throw error;\n  // ...\n});",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-31.mjs:7\r\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId(sorter);\r\n                                               ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-31.mjs:7:48\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-31.mjs:7\r\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId(sorter);\r\n                                               ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-31.mjs:7:48\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 863,
       "code": "var sorter = 'date';\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId('posts.' + sorter);\n// -> SELECT * FROM posts ORDER BY `posts`.`date`",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-32.mjs:7\r\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId('posts.' + sorter);\r\n                                               ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-32.mjs:7:48\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-32.mjs:7\r\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId('posts.' + sorter);\r\n                                               ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-32.mjs:7:48\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 872,
       "code": "var sorter = 'date.2';\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId(sorter, true);\n// -> SELECT * FROM posts ORDER BY `date.2`",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-33.mjs:7\r\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId(sorter, true);\r\n                                               ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-33.mjs:7:48\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-33.mjs:7\r\nvar sql    = 'SELECT * FROM posts ORDER BY ' + connection.escapeId(sorter, true);\r\n                                               ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-33.mjs:7:48\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 881,
       "code": "var userId = 1;\nvar columns = ['username', 'email'];\nvar query = connection.query('SELECT ?? FROM ?? WHERE id = ?', [columns, 'users', userId], function (error, results, fields) {\n  if (error) throw error;\n  // ...\n});\n\nconsole.log(query.sql); // SELECT `username`, `email` FROM `users` WHERE id = 1",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-34.mjs:8\r\nvar query = connection.query('SELECT ?? FROM ?? WHERE id = ?', [columns, 'users', userId], function (error, results, fields) {\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-34.mjs:8:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 93,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-34.mjs:8\r\nvar query = connection.query('SELECT ?? FROM ?? WHERE id = ?', [columns, 'users', userId], function (error, results, fields) {\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-34.mjs:8:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 899,
       "code": "var sql = \"SELECT * FROM ?? WHERE ?? = ?\";\nvar inserts = ['users', 'id', userId];\nsql = mysql.format(sql, inserts);",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-35.mjs:7\r\nvar inserts = ['users', 'id', userId];\r\n                              ^\r\n\r\nReferenceError: userId is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-35.mjs:7:31\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-35.mjs:7\r\nvar inserts = ['users', 'id', userId];\r\n                              ^\r\n\r\nReferenceError: userId is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-35.mjs:7:31\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 913,
       "code": "connection.config.queryFormat = function (query, values) {\n  if (!values) return query;\n  return query.replace(/\\:(\\w+)/g, function (txt, key) {\n    if (values.hasOwnProperty(key)) {\n      return this.escape(values[key]);\n    }\n    return txt;\n  }.bind(this));\n};\n\nconnection.query(\"UPDATE posts SET title = :title\", { title: \"Hello MySQL\" });",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-36.mjs:6\r\nconnection.config.queryFormat = function (query, values) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-36.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-36.mjs:6\r\nconnection.config.queryFormat = function (query, values) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-36.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 932,
       "code": "connection.query('INSERT INTO posts SET ?', {title: 'test'}, function (error, results, fields) {\n  if (error) throw error;\n  console.log(results.insertId);\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-37.mjs:6\r\nconnection.query('INSERT INTO posts SET ?', {title: 'test'}, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-37.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-37.mjs:6\r\nconnection.query('INSERT INTO posts SET ?', {title: 'test'}, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-37.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 950,
       "code": "connection.query('DELETE FROM posts WHERE title = \"wrong\"', function (error, results, fields) {\n  if (error) throw error;\n  console.log('deleted ' + results.affectedRows + ' rows');\n})",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-38.mjs:6\r\nconnection.query('DELETE FROM posts WHERE title = \"wrong\"', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-38.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-38.mjs:6\r\nconnection.query('DELETE FROM posts WHERE title = \"wrong\"', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-38.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 964,
       "code": "connection.query('UPDATE posts SET ...', function (error, results, fields) {\n  if (error) throw error;\n  console.log('changed ' + results.changedRows + ' rows');\n})",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-39.mjs:6\r\nconnection.query('UPDATE posts SET ...', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-39.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-39.mjs:6\r\nconnection.query('UPDATE posts SET ...', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-39.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 976,
       "code": "connection.connect(function(err) {\n  if (err) throw err;\n  console.log('connected as id ' + connection.threadId);\n});",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-40.mjs:6\r\nconnection.connect(function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-40.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-40.mjs:6\r\nconnection.connect(function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-40.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 994,
       "code": "var query = connection.query('SELECT * FROM posts');\nquery\n  .on('error', function(err) {\n    // Handle error, an 'end' event will be emitted after this as well\n  })\n  .on('fields', function(fields) {\n    // the field packets for the rows to follow\n  })\n  .on('result', function(row) {\n    // Pausing the connnection is useful if your processing involves I/O\n    connection.pause();\n\n    processRow(row, function() {\n      connection.resume();\n    });\n  })\n  .on('end', function() {\n    // all rows have been received\n  });",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-41.mjs:6\r\nvar query = connection.query('SELECT * FROM posts');\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-41.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 96,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-41.mjs:6\r\nvar query = connection.query('SELECT * FROM posts');\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-41.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1050,
       "code": "connection.query('SELECT * FROM posts')\n  .stream({highWaterMark: 5})\n  .pipe(...);",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-42.mjs:8\r\n  .pipe(...);\r\n           ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 92,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-42.mjs:8\r\n  .pipe(...);\r\n           ^\r\n\r\nSyntaxError: Unexpected token ')'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\r\n    at #translate (node:internal/modules/esm/loader:473:20)\r\n    at afterLoad (node:internal/modules/esm/loader:529:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\r\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\r\n    at afterResolve (node:internal/modules/esm/loader:625:52)\r\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\r\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\r\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Not runnable as-is (fragment/TypeScript)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1062,
       "code": "var connection = mysql.createConnection({multipleStatements: true});",
       "status": "pass",
-      "ms": 103,
+      "ms": 179,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1068,
       "code": "connection.query('SELECT 1; SELECT 2', function (error, results, fields) {\n  if (error) throw error;\n  // `results` is an array with one element for every statement in the query:\n  console.log(results[0]); // [{1: 1}]\n  console.log(results[1]); // [{2: 2}]\n});",
       "status": "fail",
-      "ms": 57,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-44.mjs:6\r\nconnection.query('SELECT 1; SELECT 2', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-44.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-44.mjs:6\r\nconnection.query('SELECT 1; SELECT 2', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-44.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1079,
       "code": "var query = connection.query('SELECT 1; SELECT 2');\n\nquery\n  .on('fields', function(fields, index) {\n    // the fields for the result rows that follow\n  })\n  .on('result', function(row, index) {\n    // index refers to the statement this result belongs to (starts at 0)\n  });",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-45.mjs:6\r\nvar query = connection.query('SELECT 1; SELECT 2');\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-45.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-45.mjs:6\r\nvar query = connection.query('SELECT 1; SELECT 2');\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-45.mjs:6:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1117,
       "code": "var options = {sql: '...', nestTables: true};\nconnection.query(options, function (error, results, fields) {\n  if (error) throw error;\n  /* results will be an array like this now:\n  [{\n    table1: {\n      fieldA: '...',\n      fieldB: '...',\n    },\n    table2: {\n      fieldA: '...',\n      fieldB: '...',\n    },\n  }, ...]\n  */\n});",
       "status": "fail",
-      "ms": 55,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-46.mjs:7\r\nconnection.query(options, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-46.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 94,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-46.mjs:7\r\nconnection.query(options, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-46.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1138,
       "code": "var options = {sql: '...', nestTables: '_'};\nconnection.query(options, function (error, results, fields) {\n  if (error) throw error;\n  /* results will be an array like this now:\n  [{\n    table1_fieldA: '...',\n    table1_fieldB: '...',\n    table2_fieldA: '...',\n    table2_fieldB: '...',\n  }, ...]\n  */\n});",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-47.mjs:7\r\nconnection.query(options, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-47.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-47.mjs:7\r\nconnection.query(options, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-47.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1157,
       "code": "connection.beginTransaction(function(err) {\n  if (err) { throw err; }\n  connection.query('INSERT INTO posts SET title=?', title, function (error, results, fields) {\n    if (error) {\n      return connection.rollback(function() {\n        throw error;\n      });\n    }\n\n    var log = 'Post ' + results.insertId + ' added';\n\n    connection.query('INSERT INTO log SET data=?', log, function (error, results, fields) {\n      if (error) {\n        return connection.rollback(function() {\n          throw error;\n        });\n      }\n      connection.commit(function(err) {\n        if (err) {\n          return connection.rollback(function() {\n            throw err;\n          });\n        }\n        console.log('success!');\n      });\n    });\n  });\n});",
       "status": "fail",
-      "ms": 56,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-48.mjs:6\r\nconnection.beginTransaction(function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-48.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-48.mjs:6\r\nconnection.beginTransaction(function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-48.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1198,
       "code": "connection.ping(function (err) {\n  if (err) throw err;\n  console.log('Server responded to ping');\n})",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-49.mjs:6\r\nconnection.ping(function (err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-49.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-49.mjs:6\r\nconnection.ping(function (err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-49.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1213,
       "code": "// Kill query after 60s\nconnection.query({sql: 'SELECT COUNT(*) AS count FROM big_table', timeout: 60000}, function (error, results, fields) {\n  if (error && error.code === 'PROTOCOL_SEQUENCE_TIMEOUT') {\n    throw new Error('too long to count table rows!');\n  }\n\n  if (error) {\n    throw error;\n  }\n\n  console.log(results[0].count + ' rows');\n});",
       "status": "fail",
-      "ms": 61,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-50.mjs:7\r\nconnection.query({sql: 'SELECT COUNT(*) AS count FROM big_table', timeout: 60000}, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-50.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 97,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-50.mjs:7\r\nconnection.query({sql: 'SELECT COUNT(*) AS count FROM big_table', timeout: 60000}, function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-50.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1259,
       "code": "var connection = require('mysql').createConnection({\n  port: 84943, // WRONG PORT\n});\n\nconnection.connect(function(err) {\n  console.log(err.code); // 'ECONNREFUSED'\n  console.log(err.fatal); // true\n});\n\nconnection.query('SELECT 1', function (error, results, fields) {\n  console.log(error.code); // 'ECONNREFUSED'\n  console.log(error.fatal); // true\n});",
       "status": "fail",
-      "ms": 105,
-      "stderr": "node:net:1338\r\n    validatePort(port);\r\n    ^\r\n\r\nRangeError [ERR_SOCKET_BAD_PORT]: Port should be >= 0 and < 65536. Received type number (84943).\r\n    at lookupAndConnect (node:net:1338:5)\r\n    at Socket.connect (node:net:1293:5)\r\n    at Object.connect (node:net:245:17)\r\n    at Connection.connect (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-qh3Uaj\\node_modules\\mysql\\lib\\Connection.js:76:13)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-51.mjs:10:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  code: 'ERR_SOCKET_BAD_PORT'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 185,
+      "stderr": "node:net:1338\r\n    validatePort(port);\r\n    ^\r\n\r\nRangeError [ERR_SOCKET_BAD_PORT]: Port should be >= 0 and < 65536. Received type number (84943).\r\n    at lookupAndConnect (node:net:1338:5)\r\n    at Socket.connect (node:net:1293:5)\r\n    at Object.connect (node:net:245:17)\r\n    at Connection.connect (C:\\Users\\prane\\AppData\\Local\\Temp\\docrot-LCsxgQ\\node_modules\\mysql\\lib\\Connection.js:76:13)\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-51.mjs:10:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  code: 'ERR_SOCKET_BAD_PORT'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Other",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1279,
       "code": "connection.query('USE name_of_db_that_does_not_exist', function (error, results, fields) {\n  console.log(error.code); // 'ER_BAD_DB_ERROR'\n});\n\nconnection.query('SELECT 1', function (error, results, fields) {\n  console.log(error); // null\n  console.log(results.length); // 1\n});",
       "status": "fail",
-      "ms": 59,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-52.mjs:6\r\nconnection.query('USE name_of_db_that_does_not_exist', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-52.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-52.mjs:6\r\nconnection.query('USE name_of_db_that_does_not_exist', function (error, results, fields) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-52.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1295,
       "code": "connection.on('error', function(err) {\n  console.log(err.code); // 'ER_BAD_DB_ERROR'\n});\n\nconnection.query('USE name_of_db_that_does_not_exist');",
       "status": "fail",
-      "ms": 58,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-53.mjs:6\r\nconnection.on('error', function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-53.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 99,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-53.mjs:6\r\nconnection.on('error', function(err) {\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-53.mjs:6:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1310,
       "code": "// I am Chuck Norris:\nconnection.on('error', function() {});",
       "status": "fail",
-      "ms": 64,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-54.mjs:7\r\nconnection.on('error', function() {});\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-54.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 103,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-54.mjs:7\r\nconnection.on('error', function() {});\r\n^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-54.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1373,
       "code": "var connection = require('mysql').createConnection({typeCast: false});",
       "status": "pass",
-      "ms": 105,
+      "ms": 180,
       "stderr": "",
       "category": null,
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1379,
       "code": "var options = {sql: '...', typeCast: false};\nvar query = connection.query(options, function (error, results, fields) {\n  if (error) throw error;\n  // ...\n});",
       "status": "fail",
-      "ms": 60,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-56.mjs:7\r\nvar query = connection.query(options, function (error, results, fields) {\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-56.mjs:7:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 98,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-56.mjs:7\r\nvar query = connection.query(options, function (error, results, fields) {\r\n            ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-56.mjs:7:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 0,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1425,
       "code": "connection = mysql.createConnection({\n  typeCast: function (field, next) {\n    if (field.type === 'TINY' && field.length === 1) {\n      return (field.string() === '1'); // 1 = true, 0 = false\n    } else {\n      return next();\n    }\n  }\n});",
       "status": "fail",
-      "ms": 109,
-      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-57.mjs:6\r\nconnection = mysql.createConnection({\r\n           ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-qh3Uaj/snippet-57.mjs:6:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
+      "ms": 195,
+      "stderr": "file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-57.mjs:6\r\nconnection = mysql.createConnection({\r\n           ^\r\n\r\nReferenceError: connection is not defined\r\n    at file:///C:/Users/prane/AppData/Local/Temp/docrot-LCsxgQ/snippet-57.mjs:6:12\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.14.1\r\n",
       "category": "Incomplete snippet (missing context)",
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1445,
       "code": "var connection = mysql.createConnection({debug: true});",
       "status": "pass",
-      "ms": 105,
+      "ms": 182,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     },
     {
       "line": 1452,
       "code": "var connection = mysql.createConnection({debug: ['ComQueryPacket', 'RowDataPacket']});",
       "status": "pass",
-      "ms": 104,
+      "ms": 183,
       "stderr": "",
       "category": null,
       "apiChecked": 1,
-      "apiMissing": []
+      "apiMissing": [],
+      "invalid": [],
+      "warnings": []
     }
   ]
 }
