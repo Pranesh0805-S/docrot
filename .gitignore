@@ -2,3 +2,4 @@ node_modules
 .tmp
 *.log
 .env
+todays_terminal_log.txt

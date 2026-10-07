@@ -2,16 +2,31 @@ import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { execFile } from 'node:child_process';
 
-const ESM = /^\s*(import\s.+from|import\s*['"]|export\s)/m;
-
 function safeEnv() {
   const { PATH, Path, SystemRoot, TEMP, TMP } = process.env;
   return { PATH: PATH ?? Path, SystemRoot, TEMP, TMP };
 }
 
-export async function runSnippet(dir, snippet, index, timeoutMs = 10000) {
-  const file = `snippet-${index}${ESM.test(snippet.code) ? '.mjs' : '.cjs'}`;
-  await writeFile(join(dir, file), snippet.code);
+function aliasOf(name) {
+  return name.replace(/^@[^/]+\//, '').replace(/[-.](\w)/g, (_, c) => c.toUpperCase());
+}
+
+// Snippets are README fragments, so give them the names the docs assume:
+// the package's default export (e.g. `axios`) and its named exports (e.g. `AxiosHeaders`).
+function buildSource(code, pkgName) {
+  let pre = "import { createRequire } from 'node:module';\n";
+  pre += 'const require = createRequire(import.meta.url);\n';
+  if (pkgName) {
+    pre += `import * as __m from '${pkgName}';\n`;
+    pre += 'for (const [k, v] of Object.entries(__m)) if (k !== "default" && !(k in globalThis)) globalThis[k] = v;\n';
+    pre += `if (!(${JSON.stringify(aliasOf(pkgName))} in globalThis)) globalThis[${JSON.stringify(aliasOf(pkgName))}] = __m.default ?? __m;\n`;
+  }
+  return pre + code;
+}
+
+export async function runSnippet(dir, snippet, index, ctx = {}, timeoutMs = 10000) {
+  const file = `snippet-${index}.mjs`;
+  await writeFile(join(dir, file), buildSource(snippet.code, ctx.name ?? ''));
 
   return new Promise((resolve) => {
     const started = Date.now();
