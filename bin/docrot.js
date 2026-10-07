@@ -45,9 +45,10 @@ program
     }
     await writeJson(`${opts.out}/_summary.json`, rows);
     const done = rows.filter((r) => !r.error);
+    const total = done.reduce((a, r) => a + r.snippets, 0);
     const checked = done.reduce((a, r) => a + r.checked, 0);
     const broken = done.reduce((a, r) => a + r.broken, 0);
-    console.log(`\n${done.length}/${names.length} packages audited, ${broken} of ${checked} API-checked snippets broken`);
+    console.log(`\n${done.length}/${names.length} packages audited: ${broken} of ${total} JavaScript snippets confirmed broken (${checked} had API references checked)`);
   });
 
 await program.parseAsync();
