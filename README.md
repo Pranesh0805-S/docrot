@@ -11,9 +11,11 @@ Unlike tools that run your own docs with a hand-written setup file (such as mark
 Requires Node.js 22.12 or newer.
 
 ```bash
-npx docrot check axios
-npx docrot check mime --at 4.1.0 --json report.json
-npx docrot audit packages.json
+npx @pranesh08/docrot check axios
+npx @pranesh08/docrot check mime --at 4.1.0 --json report.json
+npx @pranesh08/docrot audit packages.json
+
+Or install it once with npm i -g @pranesh08/docrot and run docrot check axios
 ```
 
 | Command | What it does |

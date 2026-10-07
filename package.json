@@ -1,5 +1,5 @@
 {
-  "name": "docrot",
+  "name": "@pranesh08/docrot",
   "version": "0.1.0",
   "description": "Finds broken code examples in npm package documentation",
   "type": "module",
@@ -42,5 +42,8 @@
     "code-examples",
     "testing",
     "npm"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
