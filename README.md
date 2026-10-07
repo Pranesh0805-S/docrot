@@ -14,8 +14,14 @@ Requires Node.js 22.12 or newer.
 npx @pranesh08/docrot check axios
 npx @pranesh08/docrot check mime --at 4.1.0 --json report.json
 npx @pranesh08/docrot audit packages.json
+```
 
+```bash
 Or install it once with npm i -g @pranesh08/docrot and run docrot check axios
+```
+
+```bash
+Also available from GitHub Packages as @pranesh0805-s/docrot (installing from there needs a GitHub token). The npm package is the easiest way to install.
 ```
 
 | Command | What it does |
